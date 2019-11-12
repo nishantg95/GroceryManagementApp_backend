@@ -8,33 +8,37 @@
 	background: linear-gradient(to bottom, #6dd5ed, #2193b0);
 	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
 .center {
-  line-height: 400px;
-  height: 250px;
-  text-align: center;
-  font-size:45px;
-  color: white;
+	line-height: 400px;
+	height: 250px;
+	text-align: center;
+	font-size: 45px;
+	color: white;
 }
 
 /* If the text has multiple lines, add the following: */
 .centerp {
-  text-align: center;
-  color: white;
+	text-align: center;
+	color: white;
 }
 
 .bar {
-    text-align:center;
-    width:50%;
-    margin:15px auto;
-    height: 50px;
+	text-align: center;
+	width: 50%;
+	margin: 15px auto;
 }
-
 </style>
-<body id = backdrop>
-	<h2 class = center>Welcome Back, Nishant!!</h2>
-	<p class = centerp>You have 4 ingredients in your inventory.</p>
+<body id="backdrop">
+	<h2 class="center">Welcome Back, Nishant!!</h2>
+	<p class="centerp">You have 4 ingredients in your inventory.</p>
 	<div class="bar">
-	<progress max="100" value="77">Health: OK</progress>
+		<p> Overall health:
+		<progress max="100" value="77"></progress>
+		</p>
+	</div>
+	<div style="text-align: center">
+		<input type="button" value="Show more">
 	</div>
 </body>
 </html>
