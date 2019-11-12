@@ -14,18 +14,18 @@ import com.nishant.models.Item;
 @Controller
 public class ItemController {
 	
-//	   @RequestMapping(value = "/", method = RequestMethod.GET)
-//	   public String homePage() {
-//		   return "index";
-//	   }
+	   @RequestMapping(value = "/", method = RequestMethod.GET)
+	   public String homePage() {
+		   return "index";
+	   }
 	   
 	
-	   @RequestMapping(value = "/viewItem", method = RequestMethod.GET)
+	   @RequestMapping(value = "/addItem", method = RequestMethod.GET)
 	    public ModelAndView showForm() {
 	        return new ModelAndView("itemForm", "item", new Item());
 	    }
 	 
-	    @RequestMapping(value = "/addItem", method = RequestMethod.POST)
+	    @RequestMapping(value = "/viewItem", method = RequestMethod.POST)
 	    public String submit(@Valid @ModelAttribute("item")Item item, 
 	      BindingResult result, ModelMap model) {
 	        if (result.hasErrors()) {
