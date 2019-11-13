@@ -33,12 +33,18 @@
 	<h2 class="center">Welcome Back, Nishant!!</h2>
 	<p class="centerp">You have 4 ingredients in your inventory.</p>
 	<div class="bar">
-		<p> Overall health:
-		<progress max="100" value="77"></progress>
+		<p>
+			Overall health:
+			<progress max="100" value="77"></progress>
 		</p>
 	</div>
 	<div style="text-align: center">
-		<input type="button" value="Show more">
+		<!--
+		<form action="addItem">
+			<button type="submit" >Show more</button>
+		</form> 
+		-->
+		<button onclick="window.location.href = 'addItem';">Show More</button>
 	</div>
 </body>
 </html>
