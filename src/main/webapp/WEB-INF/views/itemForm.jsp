@@ -1,23 +1,31 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-    <head>
-    </head>
-    <style type="text/css">
-#backdrop {
-	background: #2193b0; /* fallback for old browsers */
-	background: -webkit-linear-gradient(to bottom, #6dd5ed, #2193b0);
-	/* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to bottom, #6dd5ed, #2193b0);
-	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}</style>
-    <body id = backdrop>
+<!--TODO: Move the css to resources/css  -->
+<head>
+<link href="<c:url value='/static/css/master.css' />" rel="stylesheet"></link>
+<title>Grocery Management App</title>
+</head>
+<style>
+    .required:after { 
+    	content:" *";
+    	color:red
+    }
+    .requiredfootnote:before { 
+    	content:"* ";
+    	color:red
+    }
+</style>
+    <body>
         <h3>Welcome, Enter The Employee Details</h3>
+        <br>
         <form:form method="POST"
           action="viewItem" modelAttribute="item">
-             <table>
+             <table align="center">
                 <tr>
-                    <td><form:label path="name">Name</form:label></td>
-                    <td><form:input path="name"/></td>
+                    <td class="required"><form:label path="name">Name</form:label></td>
+                    <td><form:input path="name" required="required" /></td>
                 </tr>
                 <tr>
                     <td><form:label path="id">Id</form:label></td>
@@ -25,11 +33,18 @@
                 </tr>
                 <tr>
                     <td><form:label path="expiry">
-                      Contact Number</form:label></td>
+                      Expiry</form:label></td>
                     <td><form:input path="expiry"/></td>
                 </tr>
+                <tr></tr>
                 <tr>
+                	<td/>
                     <td><input type="submit" value="Submit"/></td>
+                </tr>
+                <tr></tr>
+                <tr>
+                	<td/>
+                	<td class="requiredfootnote">Required</td>
                 </tr>
             </table>
         </form:form>
