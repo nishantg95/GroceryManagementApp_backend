@@ -36,4 +36,9 @@ public class ItemController {
 	        model.addAttribute("id", item.getId());
 	        return "itemView";
 	    }
+	    
+	    @RequestMapping(value = "/items" ,method = RequestMethod.GET)
+	    public String userView() {
+	    	return "userItemsView";
+	    }
 	}
