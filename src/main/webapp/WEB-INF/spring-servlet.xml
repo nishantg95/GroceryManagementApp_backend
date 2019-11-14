@@ -13,7 +13,7 @@
 
 	<!-- Provide support for component scanning -->
 	<context:component-scan
-		base-package="com.nishant.controllers" />
+		base-package="com.nishant" />
 		
 	<!-- Add static resources from static folder -->
 	<mvc:resources mapping="/static/**" location="/static/" />

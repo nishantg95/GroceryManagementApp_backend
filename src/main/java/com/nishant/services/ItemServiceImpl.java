@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.nishant.models.Item;
 
 
-@Service("itemService")
+@Service
 public class ItemServiceImpl implements ItemService {
 	
 	private static final AtomicLong counter = new AtomicLong();
@@ -51,7 +51,7 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public void deleteItemById(long id) {
+	public void deleteItemById(Long id) {
 		//TODO : add implementation
 		
 	}

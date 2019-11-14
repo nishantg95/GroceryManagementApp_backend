@@ -20,14 +20,14 @@
 </style>
 <body data-ng-app="myApp" class="ng-cloak">
 	<!-- Center div -->
-	<div id="inner">
+	<div id="inner" data-ng-controller="ItemController as ctrl">
 		<!-- Map page to controller -->
-		<div class="container" data-ng-controller="ItemController as ctrl">
+		<div class="container" >
 			<h3>Items Available</h3>
 			<!-- Form Container -->
 			<div class="formcontainer overflow-auto">
 				<form data-ng-submit="ctrl.submit()" name="asyncForm"
-					class="form-inline" action="">
+					class="form-inline" >
 					<!-- Hide ID -->
 					<input type="hidden" data-ng-model="ctrl.item.id" />
 					<!-- Name field -->
@@ -55,7 +55,7 @@
 			<!-- List view of Items -->
 			<div class="panel">
 				<!-- Table container div -->
-				<div class="tablecontainer">
+				<div class="tablecontainer" >
 					<table class="table">
 						<thead>
 							<tr>

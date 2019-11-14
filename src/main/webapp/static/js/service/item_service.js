@@ -8,8 +8,7 @@ ItemService.inject = ['$http'];
 
 function ItemService($http){
 	
-	var REST_SERVICE_URI = "http://localhost:8080/GroceryManagementApp/items"
-	
+	var REST_SERVICE_URI = "http://localhost:8080/GroceryManagementApp/items";
 	var factory = {
 			fetchAllItems: fetchAllItems,
 			createItem: createItem,
@@ -29,7 +28,7 @@ function ItemService($http){
 	}
 	
 	function createItem(item){
-		return $http.post(REST_SERVICE_URI, item).then(function(resp){
+		return $http.post(REST_SERVICE_URI+"/item/", item).then(function(resp){
 			console.debug(resp.data);
 		}).catch(function(error){
 			console.error(error);

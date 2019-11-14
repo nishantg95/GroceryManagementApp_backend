@@ -10,7 +10,7 @@ public interface ItemService {
 	Item findbyName(String name);
 	void saveItem(Item item);
 	void updateItem(Item item);
-	void deleteItemById(long id);
+	void deleteItemById(Long id);
 	List<Item> findAllItems(); 
 	void deleteAllItems();
 	public boolean isItemExist(Item item);
