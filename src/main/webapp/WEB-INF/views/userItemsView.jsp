@@ -23,7 +23,7 @@
 	<div id="inner">
 		<!-- Map page to controller -->
 		<div class="container" data-ng-controller="ItemController as ctrl">
-			<div class="panel-heading">Items Available</div>
+			<h3>Items Available</h3>
 			<!-- Form Container -->
 			<div class="formcontainer overflow-auto">
 				<form data-ng-submit="ctrl.submit()" name="asyncForm"
@@ -62,6 +62,7 @@
 								<th>ID</th>
 								<th>Name</th>
 								<th>Expiry</th>
+								<th width="20%"></th>
 							</tr>
 						</thead>
 						<tbody>

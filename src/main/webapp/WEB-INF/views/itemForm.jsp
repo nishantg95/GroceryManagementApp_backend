@@ -24,7 +24,7 @@
     }
 </style>
     <body>
-        <h3>Welcome, Enter The Employee Details</h3>
+        <h3>Enter new item</h3>
         <br>
         <form:form method="POST"
           action="viewItem" modelAttribute="item">
