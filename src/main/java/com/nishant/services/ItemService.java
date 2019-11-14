@@ -16,9 +16,3 @@ public interface ItemService {
 	public boolean isItemExist(Item item);
 
 }
-
-
-
-
-
-}

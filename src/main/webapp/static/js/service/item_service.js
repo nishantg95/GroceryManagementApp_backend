@@ -1,14 +1,14 @@
 'use strict'
 
 angular
-	.module('myapp')
+	.module('myApp')
 	.factory('ItemService', ItemService);
 
 ItemService.inject = ['$http'];
 
 function ItemService($http){
 	
-	var REST_SERVICE_URI = "http://localhost:8080/GroceryManagementApp/item"
+	var REST_SERVICE_URI = "http://localhost:8080/GroceryManagementApp/items"
 	
 	var factory = {
 			fetchAllItems: fetchAllItems,

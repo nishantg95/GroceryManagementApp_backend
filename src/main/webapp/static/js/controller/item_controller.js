@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-	.module('myapp')
+	.module('myApp')
 	.controller('ItemController',ItemController);
 
 ItemController.inject = ['$scope', 'ItemService'];
@@ -92,6 +92,6 @@ function ItemController($scope, ItemService){
  
     function reset(){
         self.item={id:null,name:'',expiry:''};
-        $scope.myForm.$setPristine(); //reset Form
+        $scope.asyncForm.$setPristine(); //reset Form
     }
 }

@@ -1,12 +1,13 @@
 package com.nishant.services;
 
-import java.nio.channels.NonReadableChannelException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
-
+import org.springframework.stereotype.Service;
 import com.nishant.models.Item;
 
+
+@Service("itemService")
 public class ItemServiceImpl implements ItemService {
 	
 	private static final AtomicLong counter = new AtomicLong();
