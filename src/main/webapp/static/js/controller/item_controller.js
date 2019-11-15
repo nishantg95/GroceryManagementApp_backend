@@ -23,6 +23,7 @@ function ItemController($scope, ItemService){
             .then(
             function(d) {
                 self.items = d;
+                console.log("Fetching items "+self.item);
             },
             function(errResponse){
                 console.error('Error while fetching Items');

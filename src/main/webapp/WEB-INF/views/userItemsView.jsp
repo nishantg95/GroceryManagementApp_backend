@@ -18,31 +18,33 @@
 	margin: 0 auto;
 }
 </style>
-<body data-ng-app="myApp" class="ng-cloak">
+<body ng-app="myApp" >
 	<!-- Center div -->
-	<div id="inner" data-ng-controller="ItemController as ctrl">
+	<div id="inner" ng-controller="ItemController as ctrl">
+	
 		<!-- Map page to controller -->
 		<div class="container" >
 			<h3>Items Available</h3>
 			<!-- Form Container -->
 			<div class="formcontainer overflow-auto">
-				<form data-ng-submit="ctrl.submit()" name="asyncForm"
+				<form ng-submit="ctrl.submit()" name="asyncForm"
 					class="form-inline" >
 					<!-- Hide ID -->
-					<input type="hidden" data-ng-model="ctrl.item.id" />
+					<input type="hidden" ng-model="ctrl.item.id" />
 					<!-- Name field -->
-					<input type="text" data-ng-model="ctrl.item.name" id="name"
+					<input type="text" ng-model="ctrl.item.name" id="name"
 						class="form-control input-sm" placeholder="Item name" required />
 					<!--  TODO: Spans for validation -->
 					<!-- Expiry field -->
-					<input type="text" data-ng-model="ctrl.item.expiry" id="expiry"
+					<input type="text" ng-model="ctrl.item.expiry" id="expiry"
 						class="form-control input-sm" placeholder="Expiry Duration" />
 					<div class="row">
 						<div class="form-actions floatRight">
 							<input type="submit" value="{{!ctrl.item.id ? 'Add' : 'Update'}}"
 								class="btn">
-							<button type="button" data-ng-click="ctrl.reset()" class="btn "
-								data-ng-disabled="asyncForm.$pristine">Reset Form</button>
+							<button type="button" ng-click="ctrl.reset()" class="btn "
+								ng-disabled="asyncForm.$pristine">Reset Form</button>
+							<button type="button" ng-click="ctrl.fetchAllItems()">Refresh</button>
 						</div>
 					</div>
 
@@ -66,14 +68,14 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr data-ng-repeat="i in ctrl.items">
-								<td>data-ng-bind="i.id"</td>
-								<td>data-ng-bind="i.name"</td>
-								<td>data-ng-bind="i.expiry"</td>
+							<tr ng-repeat="i in ctrl.items">
+								<td ng-bind="i.id"></td>
+								<td ng-bind="i.name"></td>
+								<td ng-bind="i.expiry"></td>
 								<td>
-									<button type="button" data-ng-click="ctrl.edit(i.id)"
+									<button type="button" ng-click="ctrl.edit(i.id)"
 										class="btn">Edit</button>
-									<button type="button" data-ng-click="ctrl.remove(i.id)"
+									<button type="button" ng-click="ctrl.remove(i.id)"
 										class="btn ">Remove</button>
 								</td>
 							</tr>
@@ -88,7 +90,7 @@
 
 			<!-- Map page to controller -->
 		</div>
-		<!-- Center div -->
+	<!-- Center div -->
 	</div>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"

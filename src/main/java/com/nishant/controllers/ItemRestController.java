@@ -15,14 +15,16 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.nishant.models.Item;
 import com.nishant.services.ItemService;
 @RestController
-public class ItemController2 {
+@RequestMapping(value = "/data/items")
+public class ItemRestController {
 	@Autowired
 	ItemService itemService;
     //-------------------Retrieve All Items--------------------------------------------------------
     
-    @RequestMapping(value = "items/", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public ResponseEntity<List<Item>> listAllItems() {
         List<Item> items = itemService.findAllItems();
+        System.out.println("From ItemRestController"+items);
         if(items.isEmpty()){
             return new ResponseEntity<List<Item>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
         }
@@ -30,8 +32,8 @@ public class ItemController2 {
     }
     //-------------------Create a Item--------------------------------------------------------
     
-    @RequestMapping(value = "/items/item/", method = RequestMethod.POST)
-    public ResponseEntity<Void> createItem(@RequestBody Item item,    UriComponentsBuilder ucBuilder) {
+    @RequestMapping(value = "/item", method = RequestMethod.POST)
+    public ResponseEntity<Void> createItem(@RequestBody Item item, UriComponentsBuilder ucBuilder) {
         System.out.println("Creating Item " + item.getName());
   
         if (itemService.isItemExist(item)) {
