@@ -13,46 +13,43 @@
 	<link href="<c:url value='/static/css/master.css' />" rel="stylesheet"></link>
 	<title>Grocery Management App</title>
 </head>
-<style>
-    .required:after { 
-    	content:" *";
-    	color:red
-    }
-    .requiredfootnote:before { 
-    	content:"* ";
-    	color:red
-    }
-</style>
     <body>
         <h3>Enter new item</h3>
         <br>
-        <form:form method="POST"
-          action="viewItem" modelAttribute="item">
-             <table align="center">
-                <tr>
-                    <td class="required"><form:label path="name">Name</form:label></td>
-                    <td><form:input path="name" required="required" /></td>
-                </tr>
-                <tr>
-                    <td><form:label path="id">Id</form:label></td>
-                    <td><form:input path="id"/></td>
-                </tr>
-                <tr>
-                    <td><form:label path="expiry">
-                      Expiry</form:label></td>
-                    <td><form:input path="expiry"/></td>
-                </tr>
-                <tr></tr>
-                <tr>
-                	<td/>
-                    <td><input type="submit" value="Submit"/></td>
-                </tr>
-                <tr></tr>
-                <tr>
-                	<td/>
-                	<td class="requiredfootnote">Required</td>
-                </tr>
-            </table>
-        </form:form>
+        <div id="inner">
+	        <form:form method="POST" id="syncForm"
+	          action="viewItem" modelAttribute="item">
+	             <table>
+	                <tr>
+	                    <td class="required"><form:label path="name">Name</form:label></td>
+	                    <td><form:input path="name" id="nameField" required="required" /></td>
+	                </tr>
+	                <tr>
+	                    <td><form:label path="id">Id</form:label></td>
+	                    <td><form:input id="idField" path="id"/></td>
+	                </tr>
+	                <tr>
+	                    <td><form:label path="expiry">
+	                      Expiry</form:label></td>
+	                    <td><form:input id="expiryField" path="expiry"/></td>
+	                </tr>
+	                <tr></tr>
+	                <tr>
+	                	<td/>
+	                    <td><input id="syncSubmitButton" type="submit" value="Submit"/></td>
+	                </tr>
+	                <tr></tr>
+	                <tr>
+	                	<td/>
+	                	<td class="requiredfootnote">Required</td>
+	                </tr>
+	            </table>
+	        </form:form>
+        </div>
+        <br>
+        <br>
+        <div id="center_button">
+			<button id="backFromAsync" onclick="history.go(-1)">Back</button>
+		</div>        
     </body>
 </html>

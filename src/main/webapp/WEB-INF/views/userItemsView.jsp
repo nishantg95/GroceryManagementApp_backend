@@ -12,12 +12,7 @@
 	<link href="<c:url value='/static/css/master.css' />" rel="stylesheet"></link>
 	<title>Grocery Management App</title>
 </head>
-<style type="text/css">
-#inner {
-	width: 50%;
-	margin: 0 auto;
-}
-</style>
+
 <body ng-app="myApp" >
 	<!-- Center div -->
 	<div id="inner" ng-controller="ItemController as ctrl">
@@ -30,7 +25,7 @@
 				<form ng-submit="ctrl.submit()" name="asyncForm"
 					class="form-inline" >
 					<!-- Hide ID -->
-					<input type="hidden" ng-model="ctrl.item.id" />
+					<input type="text" ng-model="ctrl.item.id" disabled/>
 					<!-- Name field -->
 					<input type="text" ng-model="ctrl.item.name" id="name"
 						class="form-control input-sm" placeholder="Item name" required />
@@ -38,6 +33,7 @@
 					<!-- Expiry field -->
 					<input type="text" ng-model="ctrl.item.expiry" id="expiry"
 						class="form-control input-sm" placeholder="Expiry Duration" />
+					<div class="row"><br></div>
 					<div class="row">
 						<div class="form-actions floatRight">
 							<input type="submit" value="{{!ctrl.item.id ? 'Add' : 'Update'}}"
@@ -74,9 +70,9 @@
 								<td ng-bind="i.expiry"></td>
 								<td>
 									<button type="button" ng-click="ctrl.edit(i.id)"
-										class="btn">Edit</button>
+										class="btn" disabled>Edit</button>
 									<button type="button" ng-click="ctrl.remove(i.id)"
-										class="btn ">Remove</button>
+										class="btn " disabled>Remove</button>
 								</td>
 							</tr>
 
@@ -89,6 +85,14 @@
 			</div>
 
 			<!-- Map page to controller -->
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<div id="center_button">
+			<button id="backFromAsync" onclick="history.go(-1)">Back</button>
 		</div>
 	<!-- Center div -->
 	</div>

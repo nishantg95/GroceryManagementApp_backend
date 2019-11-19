@@ -14,5 +14,6 @@
 </head>
 <body>
 	<h3>Error</h3>
+	<p> Something went wrong, please retry your submission</p>
 </body>
 </html>

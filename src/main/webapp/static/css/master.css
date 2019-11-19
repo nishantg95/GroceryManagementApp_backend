@@ -1,3 +1,4 @@
+/********************************* Universal elements **************************************/
 body {
 	background: #56CCF2; /* fallback for old browsers */
 	background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);
@@ -25,3 +26,37 @@ p {
 	text-align: center;
 	color: white;
 }
+
+td,table {
+    align: center;
+}
+
+#center_button{
+	line-height: 200px;
+	text-align: center;
+}
+/************************************ Page speciifc style elements **************************************/
+
+	/*index.jsp */
+.bar {
+	text-align: center;
+	width: 50%;
+	margin: 15px auto;
+}
+
+	/*itemForm.jsp */
+	
+.required:after { 
+   	content:" *";
+   	color:red
+}
+.requiredfootnote:before { 
+   	content:"* ";
+   	color:red
+}
+	/* userItemsView.jsp */
+#inner {
+	width: 50%;
+	margin: 0 auto;
+}
+

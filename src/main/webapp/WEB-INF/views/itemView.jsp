@@ -15,19 +15,26 @@
 </head>
 <body>
 	<h3>Submitted Item Information</h3>
-	<table>
-		<tr>
-			<td>Name :</td>
-			<td>${name}</td>
-		</tr>
-		<tr>
-			<td>ID :</td>
-			<td>${id}</td>
-		</tr>
-		<tr>
-			<td>Expiry Duration :</td>
-			<td>${expiry}</td>
-		</tr>
-	</table>
+	<div id="inner">
+		<table id="syncFormResult">
+			<tr>
+				<td>Name :</td>
+				<td>${name}</td>
+			</tr>
+			<tr>
+				<td>ID :</td>
+				<td>${id}</td>
+			</tr>
+			<tr>
+				<td>Expiry Duration :</td>
+				<td>${expiry}</td>
+			</tr>
+		</table>
+	</div>
+	<br>
+	<br>
+	<div id="center_button">
+		<button id="backFromAsync" onclick="history.go(-1)">Back</button>
+	</div>
 </body>
 </html>
