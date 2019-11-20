@@ -20,7 +20,7 @@
 				<form ng-submit="ctrl.submit()" name="asyncForm"
 					class="form-inline" >
 					<!-- Hide ID -->
-					<input type="text" ng-model="ctrl.item.id" disabled/>
+					<input type="text" ng-model="ctrl.item.id" disabled placeholder="ID"/>
 					<!-- Name field -->
 					<input type="text" ng-model="ctrl.item.name" id="name"
 						class="form-control input-sm" placeholder="Item name" required />
