@@ -1,5 +1,4 @@
 (function(){
-	console.log("What is this wizardry?");
 	'use strict';
 	
 	angular

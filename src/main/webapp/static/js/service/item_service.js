@@ -1,5 +1,4 @@
 (function(){
-	console.log("Thisi is IIFE");
 	'use strict'
 	
 	angular
