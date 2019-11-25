@@ -36,10 +36,11 @@ public class ItemRestController {
     public ResponseEntity<Void> createItem(@RequestBody Item item, UriComponentsBuilder ucBuilder) {
         System.out.println("Creating Item " + item.getName());
   
-        if (itemService.isItemExist(item)) {
-            System.out.println("A Item with name " + item.getName() + " already exist");
-            return new ResponseEntity<Void>(HttpStatus.CONFLICT);
-        }
+		/*
+		 * if (! itemService.findbyName(item.getName()).equals(null)) {
+		 * System.out.println("A Item with name " + item.getName() + " already exist");
+		 * return new ResponseEntity<Void>(HttpStatus.CONFLICT); }
+		 */
   
         itemService.saveItem(item);
   
