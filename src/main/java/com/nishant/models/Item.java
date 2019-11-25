@@ -1,44 +1,92 @@
 package com.nishant.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="ITEM")
 public class Item {
 	
-	private String name;
-	private Long id;
-	private String expiry;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	
-//	private java.sql.Date todaysDate;
-//	https://stackoverflow.com/questions/15164864/how-to-accept-date-params-in-a-get-request-to-spring-mvc-controller
-//	https://stackoverflow.com/questions/41911605/convert-and-save-date-with-spring-mvc
+	@Column(name="NAME", nullable = false)
+	private String name;
+	
+	@Column(name="EXPIRY")
+	private String expiry;
 
-	public Item(Long id, String name, String expiry) {
-		this.name = name;
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
 		this.id = id;
-		this.expiry = expiry;
-		
 	}
-	public Item() {
 
-	}
-	@Override
-	public String toString() {
-		return "Item [name=" + name + ", id=" + id + ", expiry=" + expiry + "]";
-	}
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+
 	public String getExpiry() {
 		return expiry;
 	}
+
 	public void setExpiry(String expiry) {
 		this.expiry = expiry;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((expiry == null) ? 0 : expiry.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Item other = (Item) obj;
+		if (expiry == null) {
+			if (other.expiry != null)
+				return false;
+		} else if (!expiry.equals(other.expiry))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Item [id=" + id + ", name=" + name + ", expiry=" + expiry + "]";
+	}
+	
+	
+	
 }
