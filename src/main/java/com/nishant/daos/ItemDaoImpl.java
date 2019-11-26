@@ -87,10 +87,13 @@ public class ItemDaoImpl implements ItemDao {
 
 	@Override
 	public boolean isItemExist(Item item) {
-		Item checker =  findByName(item.getName());
-		if(checker.equals(null))
-			return false;
-		return true;
+		if(item != null) {
+			Item returnItem = findByName(item.getName());
+			if (returnItem != null) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }
