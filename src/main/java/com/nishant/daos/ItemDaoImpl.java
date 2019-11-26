@@ -48,8 +48,7 @@ public class ItemDaoImpl implements ItemDao {
 		Query query = getSession().createSQLQuery("delete from Item where name = :name");
 		query.setString("name", name);
 		query.executeUpdate();
-		
-		
+			
 	}
 
 	@Override
@@ -63,6 +62,35 @@ public class ItemDaoImpl implements ItemDao {
 	public void updateItem(Item item) {
 		getSession().update(item);
 		
+	}
+
+	@Override
+	public Item findById(Integer id) {
+		Criteria criteria = getSession().createCriteria(Item.class);
+		criteria.add(Restrictions.eq("id", id));
+		return (Item) criteria.uniqueResult();
+	}
+
+	@Override
+	public void deleteItemById(Integer id) {
+		Query query = getSession().createSQLQuery("delete from Item where id = :id");
+		query.setInteger("id",id);
+		query.executeUpdate();
+		
+	}
+
+	@Override
+	public void deleteAllItems() {
+		Query query = getSession().createSQLQuery("delete from Item");
+		query.executeUpdate();
+	}
+
+	@Override
+	public boolean isItemExist(Item item) {
+		Item checker =  findByName(item.getName());
+		if(checker.equals(null))
+			return false;
+		return true;
 	}
 
 }

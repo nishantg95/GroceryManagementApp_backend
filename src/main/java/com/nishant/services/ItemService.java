@@ -6,7 +6,7 @@ import com.nishant.models.Item;
 
 public interface ItemService {
 
-//	Item findById(Long id);
+	Item findById(Integer id);
 	
 	Item findbyName(String name);
 	
@@ -14,12 +14,12 @@ public interface ItemService {
 	
 	void updateItem(Item item);
 	
-//	void deleteItemById(Long id);
+	void deleteItemById(Integer id);
 	
 	List<Item> findAllItems();
 	
-//	void deleteAllItems();
+	void deleteAllItems();
 	
-//	public boolean isItemExist(Item item);
+	public boolean isItemExist(Item item);
 
 }

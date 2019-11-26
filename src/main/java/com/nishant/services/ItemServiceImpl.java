@@ -38,6 +38,28 @@ public class ItemServiceImpl implements ItemService {
 	public List<Item> findAllItems() {
 		return dao.findAllItems();
 	}
+
+	@Override
+	public Item findById(Integer id) {
+		return dao.findById(id);
+	}
+
+	@Override
+	public void deleteItemById(Integer id) {
+		dao.deleteItemById(id);
+		
+	}
+
+	@Override
+	public void deleteAllItems() {
+		dao.deleteAllItems();
+		
+	}
+
+	@Override
+	public boolean isItemExist(Item item) {
+		return dao.isItemExist(item);
+	}
 	
 	
 

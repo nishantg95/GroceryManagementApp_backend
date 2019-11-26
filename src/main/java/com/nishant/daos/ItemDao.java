@@ -22,5 +22,13 @@ public interface ItemDao {
 	Item findByName(String name);
 	
 	void updateItem(Item item);
+
+	Item findById(Integer id);
+
+	void deleteItemById(Integer id);
+
+	void deleteAllItems();
+
+	boolean isItemExist(Item item);
 	
 }
