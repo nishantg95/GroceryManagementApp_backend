@@ -38,7 +38,7 @@
 		}
 		
 		function updateItem(item, id){
-			return $http.put(REST_SERVICE_URI+"/item"+id, item).then(function(resp){
+			return $http.put(REST_SERVICE_URI+"/item/"+id, item).then(function(resp){
 				console.debug(resp.data);
 			}).catch(function(error){
 				console.error(error);
@@ -46,7 +46,7 @@
 		}
 		
 		function deleteItem(id) {
-			return $http.delete(REST_SERVICE_URI+"/item"+id).then(function(resp){
+			return $http.delete(REST_SERVICE_URI+"/item/"+id).then(function(resp){
 				console.debug(resp.data);
 			}).catch(function(error){
 				console.error(error);

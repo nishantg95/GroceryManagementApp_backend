@@ -65,9 +65,9 @@
 								<td ng-bind="i.expiry"></td>
 								<td>
 									<button type="button" ng-click="ctrl.edit(i.id)"
-										class="btn" disabled>Edit</button>
+										class="btn" >Edit</button>
 									<button type="button" ng-click="ctrl.remove(i.id)"
-										class="btn " disabled>Remove</button>
+										class="btn " >Remove</button>
 								</td>
 							</tr>
 
