@@ -110,7 +110,7 @@ public class ItemRestController {
      
     //------------------- Delete All Items --------------------------------------------------------
       
-    @RequestMapping(value = "/item/", method = RequestMethod.DELETE)
+    @RequestMapping(value = "", method = RequestMethod.DELETE)
     public ResponseEntity<Item> deleteAllItems() {
         System.out.println("Deleting All Items");
   
