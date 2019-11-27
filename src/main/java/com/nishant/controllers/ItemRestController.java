@@ -20,7 +20,8 @@ import com.nishant.models.Item;
 @RestController
 @RequestMapping(value = "/data/items")
 public class ItemRestController {
-	
+
+@Autowired
 ItemManager itemManager;
     //-------------------Retrieve All Items--------------------------------------------------------
     

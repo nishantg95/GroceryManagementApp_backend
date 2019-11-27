@@ -3,10 +3,12 @@ package com.nishant.managers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.nishant.models.Item;
 import com.nishant.services.ItemService;
 
+@Service
 public class ItemManagerImpl implements ItemManager{
 	
 	@Autowired
