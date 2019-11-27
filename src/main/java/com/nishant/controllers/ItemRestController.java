@@ -14,18 +14,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.nishant.managers.ItemManager;
 import com.nishant.models.Item;
-import com.nishant.services.ItemService;
+
 @RestController
 @RequestMapping(value = "/data/items")
 public class ItemRestController {
-	@Autowired
-	ItemService itemService;
+	
+ItemManager itemManager;
     //-------------------Retrieve All Items--------------------------------------------------------
     
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ResponseEntity<List<Item>> listAllItems() {
-        List<Item> items = itemService.findAllItems();
+        List<Item> items = itemManager.findAllItems();
         System.out.println("From ItemRestController"+items);
         if(items.isEmpty()){
             return new ResponseEntity<List<Item>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
@@ -38,7 +39,7 @@ public class ItemRestController {
     @RequestMapping(value = "/item/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Item> getItem(@PathVariable("id") Integer id) {
         System.out.println("Fetching Item with id " + id);
-        Item item = itemService.findById(id);
+        Item item = itemManager.findById(id);
         if (item == null) {
             System.out.println("Item with id " + id + " not found");
             return new ResponseEntity<Item>(HttpStatus.NOT_FOUND);
@@ -54,13 +55,13 @@ public class ItemRestController {
     public ResponseEntity<Void> createItem(@RequestBody Item item, UriComponentsBuilder ucBuilder) {
         System.out.println("Creating Item " + item.getName());
         
-        if (itemService.isItemExist(item)) {
+        if (itemManager.isItemExist(item)) {
 		  System.out.println("A Item with name " + item.getName() + " already exist");
 		  return new ResponseEntity<Void>(HttpStatus.CONFLICT);
 		  
         }
 		   
-        itemService.saveItem(item);
+        itemManager.saveItem(item);
   
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/item/{id}").buildAndExpand(item.getId()).toUri());
@@ -73,7 +74,7 @@ public class ItemRestController {
     public ResponseEntity<Item> updateItem(@PathVariable("id") Integer id, @RequestBody Item item) {
         System.out.println("Updating Item " + id);
           
-        Item currentItem = itemService.findById(id);
+        Item currentItem = itemManager.findById(id);
           
         if (currentItem==null) {
             System.out.println("Item with id " + id + " not found");
@@ -84,7 +85,7 @@ public class ItemRestController {
         currentItem.setExpiry(item.getExpiry());
         
           
-        itemService.updateItem(currentItem);
+        itemManager.updateItem(currentItem);
         return new ResponseEntity<Item>(currentItem, HttpStatus.OK);
     }
   
@@ -96,13 +97,13 @@ public class ItemRestController {
     public ResponseEntity<Item> deleteItem(@PathVariable("id") Integer id) {
         System.out.println("Fetching & Deleting Item with id " + id);
   
-        Item item = itemService.findById(id);
+        Item item = itemManager.findById(id);
         if (item == null) {
             System.out.println("Unable to delete. Item with id " + id + " not found");
             return new ResponseEntity<Item>(HttpStatus.NOT_FOUND);
         }
   
-        itemService.deleteItemById(id);
+        itemManager.deleteItemById(id);
         return new ResponseEntity<Item>(HttpStatus.NO_CONTENT);
     }
   
@@ -114,7 +115,7 @@ public class ItemRestController {
     public ResponseEntity<Item> deleteAllItems() {
         System.out.println("Deleting All Items");
   
-        itemService.deleteAllItems();
+        itemManager.deleteAllItems();
         return new ResponseEntity<Item>(HttpStatus.NO_CONTENT);
     }
     
