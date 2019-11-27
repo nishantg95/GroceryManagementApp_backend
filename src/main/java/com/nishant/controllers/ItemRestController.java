@@ -1,12 +1,18 @@
 package com.nishant.controllers;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +29,8 @@ public class ItemRestController {
 
 @Autowired
 ItemManager itemManager;
+
+
     //-------------------Retrieve All Items--------------------------------------------------------
     
     @RequestMapping(value = "", method = RequestMethod.GET)
@@ -81,13 +89,10 @@ ItemManager itemManager;
             System.out.println("Item with id " + id + " not found");
             return new ResponseEntity<Item>(HttpStatus.NOT_FOUND);
         }
-  
-        currentItem.setName(item.getName());
-        currentItem.setExpiry(item.getExpiry());
+
         
-          
-        itemManager.updateItem(currentItem);
-        return new ResponseEntity<Item>(currentItem, HttpStatus.OK);
+        itemManager.updateItem(item);
+        return new ResponseEntity<Item>(item, HttpStatus.OK);
     }
   
      
@@ -101,11 +106,11 @@ ItemManager itemManager;
         Item item = itemManager.findById(id);
         if (item == null) {
             System.out.println("Unable to delete. Item with id " + id + " not found");
-            return new ResponseEntity<Item>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Item>(HttpStatus.NO_CONTENT);
         }
   
         itemManager.deleteItemById(id);
-        return new ResponseEntity<Item>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<Item>(HttpStatus.OK);
     }
   
       

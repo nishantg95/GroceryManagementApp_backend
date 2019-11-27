@@ -9,7 +9,7 @@
 	
 	function ItemController($scope, ItemService){
 		var self = this;
-		self.item = {id:null, name:'',expiry:''};
+		self.item = {id:null, name:'',expiry:'', purchaseDate:null};
 		self.items = [];
 		
 		self.submit = submit;
@@ -73,14 +73,10 @@
 	        reset();
 	    }
 	 
-	    function edit(id){
-	        console.log('id to be edited', id);
-	        for(var i = 0; i < self.items.length; i++){
-	            if(self.items[i].id === id) {
-	                self.item = angular.copy(self.items[i]);
-	                break;
-	            }
-	        }
+	    function edit(item){
+	        console.log('item to be edited', item);
+	        self.item = item;
+	        self.item.purchaseDate = new Date(self.item.purchaseDate);
 	    }
 	 
 	    function remove(id){

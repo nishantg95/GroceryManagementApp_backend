@@ -28,6 +28,9 @@
 					<!-- Expiry field -->
 					<input type="text" ng-model="ctrl.item.expiry" id="expiry"
 						class="form-control input-sm" placeholder="Expiry Duration" />
+					<!-- Today's date field -->
+					<input type="date" ng-model="ctrl.item.purchaseDate" id="purchase_date"
+						class="form-control input-sm" placeholder="Purchase date" />
 					<div class="row"><br></div>
 					<div class="row">
 						<div class="form-actions floatRight">
@@ -55,6 +58,7 @@
 								<th>ID</th>
 								<th>Name</th>
 								<th>Expiry</th>
+								<th>Date</th>
 								<th width="20%"></th>
 							</tr>
 						</thead>
@@ -63,8 +67,9 @@
 								<td ng-bind="i.id"></td>
 								<td ng-bind="i.name"></td>
 								<td ng-bind="i.expiry"></td>
+								<td ng-bind="i.purchaseDate|date:'MM-dd-yyyy'"></td>
 								<td>
-									<button type="button" ng-click="ctrl.edit(i.id)"
+									<button type="button" ng-click="ctrl.edit(i)"
 										class="btn" >Edit</button>
 									<button type="button" ng-click="ctrl.remove(i.id)"
 										class="btn " >Remove</button>

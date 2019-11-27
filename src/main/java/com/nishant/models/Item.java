@@ -6,6 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.apache.naming.java.javaURLContextFactory;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name="ITEM")
@@ -20,6 +26,10 @@ public class Item {
 	
 	@Column(name="EXPIRY")
 	private String expiry;
+	
+	
+	@Column(name="PURCHASE_DATE",nullable = false)
+	private java.sql.Date purchaseDate;
 
 	public Integer getId() {
 		return id;
@@ -45,6 +55,14 @@ public class Item {
 		this.expiry = expiry;
 	}
 
+	public java.sql.Date getPurchaseDate() {
+		return purchaseDate;
+	}
+
+	public void setPurchaseDate(java.sql.Date purchaseDate) {
+		this.purchaseDate = purchaseDate;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -52,6 +70,7 @@ public class Item {
 		result = prime * result + ((expiry == null) ? 0 : expiry.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((purchaseDate == null) ? 0 : purchaseDate.hashCode());
 		return result;
 	}
 
@@ -79,13 +98,20 @@ public class Item {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
+		if (purchaseDate == null) {
+			if (other.purchaseDate != null)
+				return false;
+		} else if (!purchaseDate.equals(other.purchaseDate))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Item [id=" + id + ", name=" + name + ", expiry=" + expiry + "]";
+		return "Item [id=" + id + ", name=" + name + ", expiry=" + expiry + ", purchaseDate=" + purchaseDate + "]";
 	}
+
+	
 	
 	
 	
