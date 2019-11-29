@@ -20,6 +20,6 @@ public interface ItemManager {
 	
 	void deleteAllItems();
 	
-	public boolean isItemExist(Item item);
+	public Boolean isItemExist(Item item);
 
 }

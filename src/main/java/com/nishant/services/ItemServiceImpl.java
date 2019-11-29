@@ -23,14 +23,14 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public void saveItem(Item item) {
-		dao.saveItem(item);
+	public Boolean saveItem(Item item) {
+		return dao.saveItem(item);
 		
 	}
 
 	@Override
-	public void updateItem(Item item) {
-		dao.updateItem(item);
+	public Boolean updateItem(Item item) {
+		return dao.updateItem(item);
 		
 	}
 
@@ -45,19 +45,19 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public void deleteItemById(Integer id) {
-		dao.deleteItemById(id);
+	public Integer deleteItemById(Integer id) {
+		return dao.deleteItemById(id);
 		
 	}
 
 	@Override
-	public void deleteAllItems() {
-		dao.deleteAllItems();
+	public Integer deleteAllItems() {
+		return dao.deleteAllItems();
 		
 	}
 
 	@Override
-	public boolean isItemExist(Item item) {
+	public Boolean isItemExist(Item item) {
 		return dao.isItemExist(item);
 	}
 	

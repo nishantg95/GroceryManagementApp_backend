@@ -32,8 +32,18 @@ public class ItemDaoImpl implements ItemDao {
 	}
 
 	@Override
-	public void saveItem(Item item) {
-		getSession().persist(item);
+	public Boolean saveItem(Item item) {
+		try {
+			//Try updating, if successful, return TRUE
+			getSession().persist(item);
+			return Boolean.TRUE;
+			
+		} catch (Exception e) {
+
+			System.out.println("Unable to save the item from DAO session");
+			e.printStackTrace();
+		}
+		return Boolean.FALSE;
 		
 	}
 
@@ -43,13 +53,6 @@ public class ItemDaoImpl implements ItemDao {
 		return (List<Item>) criteria.list();
 	}
 
-	@Override
-	public void deleteItemByName(String name) {
-		Query query = getSession().createSQLQuery("delete from Item where name = :name");
-		query.setString("name", name);
-		query.executeUpdate();
-			
-	}
 
 	@Override
 	public Item findByName(String name) {
@@ -59,8 +62,18 @@ public class ItemDaoImpl implements ItemDao {
 	}
 
 	@Override
-	public void updateItem(Item item) {
-		getSession().update(item);
+	public Boolean updateItem(Item item) {
+		try {
+			//Try updating, if successful, return TRUE
+			getSession().update(item);
+			return Boolean.TRUE;
+			
+		} catch (Exception e) {
+
+			System.out.println("Unable to update the item from DAO session");
+			e.printStackTrace();
+		}
+		return Boolean.FALSE;
 		
 	}
 
@@ -72,21 +85,23 @@ public class ItemDaoImpl implements ItemDao {
 	}
 
 	@Override
-	public void deleteItemById(Integer id) {
+	public Integer deleteItemById(Integer id) {
 		Query query = getSession().createSQLQuery("delete from Item where id = :id");
 		query.setInteger("id",id);
-		query.executeUpdate();
+		Integer deletedCountDao = query.executeUpdate();
+		return deletedCountDao;
 		
 	}
 
 	@Override
-	public void deleteAllItems() {
+	public Integer deleteAllItems() {
 		Query query = getSession().createSQLQuery("delete from Item");
-		query.executeUpdate();
+		Integer deletedCountDao = query.executeUpdate();
+		return deletedCountDao;
 	}
 
 	@Override
-	public boolean isItemExist(Item item) {
+	public Boolean isItemExist(Item item) {
 		if(item != null) {
 			Item returnItem = findByName(item.getName());
 			if (returnItem != null) {
@@ -95,5 +110,4 @@ public class ItemDaoImpl implements ItemDao {
 		}
 		return false;
 	}
-
 }

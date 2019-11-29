@@ -13,22 +13,20 @@ import com.nishant.models.Item;
  */
 public interface ItemDao {
 	
-	void saveItem(Item item);
+	Boolean saveItem(Item item);
 	
 	List<Item> findAllItems();
 	
-	void deleteItemByName(String name);
-	
 	Item findByName(String name);
 	
-	void updateItem(Item item);
+	Boolean updateItem(Item item);
 
 	Item findById(Integer id);
 
-	void deleteItemById(Integer id);
+	Integer deleteItemById(Integer id);
 
-	void deleteAllItems();
+	Integer deleteAllItems();
 
-	boolean isItemExist(Item item);
+	Boolean isItemExist(Item item);
 	
 }

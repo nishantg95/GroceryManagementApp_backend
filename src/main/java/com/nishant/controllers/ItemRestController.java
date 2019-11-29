@@ -1,18 +1,12 @@
 package com.nishant.controllers;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +32,7 @@ ItemManager itemManager;
         List<Item> items = itemManager.findAllItems();
         System.out.println("From ItemRestController"+items);
         if(items.isEmpty()){
-            return new ResponseEntity<List<Item>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
+            return new ResponseEntity<List<Item>>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<List<Item>>(items, HttpStatus.OK);
     }
@@ -51,7 +45,7 @@ ItemManager itemManager;
         Item item = itemManager.findById(id);
         if (item == null) {
             System.out.println("Item with id " + id + " not found");
-            return new ResponseEntity<Item>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Item>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<Item>(item, HttpStatus.OK);
     }
@@ -122,7 +116,7 @@ ItemManager itemManager;
         System.out.println("Deleting All Items");
   
         itemManager.deleteAllItems();
-        return new ResponseEntity<Item>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<Item>(HttpStatus.OK);
     }
     
     

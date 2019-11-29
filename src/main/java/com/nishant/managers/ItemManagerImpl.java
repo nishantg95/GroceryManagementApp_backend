@@ -26,19 +26,32 @@ public class ItemManagerImpl implements ItemManager{
 
 	@Override
 	public void saveItem(Item item) {
-		itemService.saveItem(item);
+		Boolean flag = itemService.saveItem(item);
+		if(flag == Boolean.TRUE) {
+			System.out.println("Manager: Following Item was saved successfully"+item);
+		}
+		else {
+			System.out.println("Manager: Following Item saved failed"+item);
+		}
 		
 	}
 
 	@Override
 	public void updateItem(Item item) {
-		itemService.updateItem(item);
+		Boolean flag = itemService.updateItem(item);
+		if(flag == Boolean.TRUE) {
+			System.out.println("Manager: Following Item was updated successfully"+item);
+		}
+		else {
+			System.out.println("Manager: Following Item update failed"+item);
+		}
 		
 	}
 
 	@Override
 	public void deleteItemById(Integer id) {
-		itemService.deleteItemById(id);
+		Integer deletedCountManager = itemService.deleteItemById(id);
+		System.out.println("Manager: Number of items deleted successfully = "+deletedCountManager);
 		
 	}
 
@@ -49,11 +62,12 @@ public class ItemManagerImpl implements ItemManager{
 
 	@Override
 	public void deleteAllItems() {
-		itemService.deleteAllItems();
+		Integer deletedCountManager = itemService.deleteAllItems();
+		System.out.println("Manager: Number of items deleted successfully = "+deletedCountManager);
 	}
 
 	@Override
-	public boolean isItemExist(Item item) {
+	public Boolean isItemExist(Item item) {
 		return itemService.isItemExist(item);
 	}
 
