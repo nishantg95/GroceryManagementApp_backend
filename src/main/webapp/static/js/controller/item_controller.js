@@ -75,7 +75,7 @@
 	 
 	    function edit(item){
 	        console.log('item to be edited', item);
-	        self.item = item;
+	        self.item = angular.copy(item);
 	        self.item.purchaseDate = new Date(self.item.purchaseDate);
 	    }
 	 

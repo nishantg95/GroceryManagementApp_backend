@@ -92,7 +92,7 @@
 		<br>
 		<br>
 		<div id="center_button">
-			<button id="backFromAsync" onclick="history.go(-1)">Back</button>
+			<button id="backFromAsync" onclick="window.location.href = 'index';">Back</button>
 		</div>
 	<!-- Center div -->
 	</div>
