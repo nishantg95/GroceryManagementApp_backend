@@ -3,6 +3,7 @@ package com.nishant.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +14,10 @@ import com.nishant.models.Item;
 @Service
 @Transactional
 public class ItemServiceImpl implements ItemService {
+	ItemServiceImpl(@Value("${sbpg.init.welcome-message}") String message) {
+	       
+	       System.out.println(message);
+	   }
 
 	@Autowired
 	private ItemDao dao;

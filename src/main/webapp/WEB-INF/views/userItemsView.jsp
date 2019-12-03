@@ -29,7 +29,7 @@
 					<input type="text" ng-model="ctrl.item.expiry" id="expiry"
 						class="form-control input-sm" placeholder="Expiry Duration" />
 					<!-- Today's date field -->
-					<input type="date" ng-model="ctrl.item.purchaseDate" id="purchase_date"
+					<input type="text" ng-model="ctrl.item.purchaseDate" id="purchase_date"
 						class="form-control input-sm" placeholder="Purchase date" />
 					<div class="row"><br></div>
 					<div class="row">

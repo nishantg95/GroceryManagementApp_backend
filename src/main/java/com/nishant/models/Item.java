@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name="ITEM")
 public class Item {
@@ -23,7 +25,8 @@ public class Item {
 	
 	
 	@Column(name="PURCHASE_DATE",nullable = false)
-	private java.sql.Date purchaseDate;
+	@JsonFormat(pattern="MM-dd-yyyy")
+	private java.util.Date purchaseDate;
 
 	public Integer getId() {
 		return id;
@@ -49,11 +52,11 @@ public class Item {
 		this.expiry = expiry;
 	}
 
-	public java.sql.Date getPurchaseDate() {
+	public java.util.Date getPurchaseDate() {
 		return purchaseDate;
 	}
 
-	public void setPurchaseDate(java.sql.Date purchaseDate) {
+	public void setPurchaseDate(java.util.Date purchaseDate) {
 		this.purchaseDate = purchaseDate;
 	}
 
