@@ -12,7 +12,7 @@ import com.nishant.services.ItemService;
 public class ItemManagerImpl implements ItemManager{
 	
 	@Autowired
-	ItemService itemService;
+	private ItemService itemService;
 
 	@Override
 	public Item findById(Integer id) {

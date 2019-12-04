@@ -14,10 +14,6 @@ import com.nishant.models.Item;
 @Service
 @Transactional
 public class ItemServiceImpl implements ItemService {
-	ItemServiceImpl(@Value("${sbpg.init.welcome-message}") String message) {
-	       
-	       System.out.println(message);
-	   }
 
 	@Autowired
 	private ItemDao dao;

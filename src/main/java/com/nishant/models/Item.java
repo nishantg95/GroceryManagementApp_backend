@@ -1,5 +1,7 @@
 package com.nishant.models;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,10 +25,9 @@ public class Item {
 	@Column(name="EXPIRY")
 	private String expiry;
 	
-	
+	@JsonFormat(pattern="MM-dd-yyyy", timezone = "CST")
 	@Column(name="PURCHASE_DATE",nullable = false)
-	@JsonFormat(pattern="MM-dd-yyyy")
-	private java.util.Date purchaseDate;
+	private Date purchaseDate;
 
 	public Integer getId() {
 		return id;
@@ -52,11 +53,11 @@ public class Item {
 		this.expiry = expiry;
 	}
 
-	public java.util.Date getPurchaseDate() {
+	public Date getPurchaseDate() {
 		return purchaseDate;
 	}
 
-	public void setPurchaseDate(java.util.Date purchaseDate) {
+	public void setPurchaseDate(Date purchaseDate) {
 		this.purchaseDate = purchaseDate;
 	}
 
