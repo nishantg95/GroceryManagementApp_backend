@@ -1,6 +1,9 @@
 package com.nishant.models;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,6 +28,7 @@ public class Item {
 	@Column(name="EXPIRY")
 	private String expiry;
 	
+	//Server is running in CST timezone, better approach- custom JSON Serializer/Deserializer
 	@JsonFormat(pattern="MM-dd-yyyy", timezone = "CST")
 	@Column(name="PURCHASE_DATE",nullable = false)
 	private Date purchaseDate;
@@ -58,7 +62,9 @@ public class Item {
 	}
 
 	public void setPurchaseDate(Date purchaseDate) {
+		// TODO Auto-generated constructor stub
 		this.purchaseDate = purchaseDate;
+		
 	}
 
 	@Override
@@ -108,9 +114,5 @@ public class Item {
 	public String toString() {
 		return "Item [id=" + id + ", name=" + name + ", expiry=" + expiry + ", purchaseDate=" + purchaseDate + "]";
 	}
-
-	
-	
-	
 	
 }
