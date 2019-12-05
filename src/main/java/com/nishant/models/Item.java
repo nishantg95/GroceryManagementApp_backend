@@ -1,11 +1,18 @@
 package com.nishant.models;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name="ITEM")
@@ -21,9 +28,10 @@ public class Item {
 	@Column(name="EXPIRY")
 	private String expiry;
 	
-	
+	//Server is running in CST timezone, better approach- custom JSON Serializer/Deserializer
+	@JsonFormat(pattern="MM-dd-yyyy", timezone = "CST")
 	@Column(name="PURCHASE_DATE",nullable = false)
-	private java.sql.Date purchaseDate;
+	private Date purchaseDate;
 
 	public Integer getId() {
 		return id;
@@ -49,12 +57,14 @@ public class Item {
 		this.expiry = expiry;
 	}
 
-	public java.sql.Date getPurchaseDate() {
+	public Date getPurchaseDate() {
 		return purchaseDate;
 	}
 
-	public void setPurchaseDate(java.sql.Date purchaseDate) {
+	public void setPurchaseDate(Date purchaseDate) {
+		// TODO Auto-generated constructor stub
 		this.purchaseDate = purchaseDate;
+		
 	}
 
 	@Override
@@ -104,9 +114,5 @@ public class Item {
 	public String toString() {
 		return "Item [id=" + id + ", name=" + name + ", expiry=" + expiry + ", purchaseDate=" + purchaseDate + "]";
 	}
-
-	
-	
-	
 	
 }

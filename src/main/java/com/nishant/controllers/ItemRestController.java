@@ -22,7 +22,7 @@ import com.nishant.models.Item;
 public class ItemRestController {
 
 @Autowired
-ItemManager itemManager;
+private ItemManager itemManager;
 
 
     //-------------------Retrieve All Items--------------------------------------------------------

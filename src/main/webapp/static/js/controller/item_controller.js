@@ -76,7 +76,7 @@
 	    function edit(item){
 	        console.log('item to be edited', item);
 	        self.item = angular.copy(item);
-	        self.item.purchaseDate = new Date(self.item.purchaseDate);
+//	        self.item.purchaseDate = new Date(self.item.purchaseDate);
 	    }
 	 
 	    function remove(id){
