@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.nishant.configurations;
 
@@ -18,9 +18,14 @@ import org.springframework.web.servlet.view.JstlView;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages="com.nishant")
-public class AppConfig extends WebMvcConfigurerAdapter{
-	
+@ComponentScan(basePackages = "com.nishant")
+public class AppConfig extends WebMvcConfigurerAdapter {
+
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/static/**").addResourceLocations("/static/");
+	}
+
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -28,11 +33,6 @@ public class AppConfig extends WebMvcConfigurerAdapter{
 		viewResolver.setPrefix("/WEB-INF/views/");
 		viewResolver.setSuffix(".jsp");
 		registry.viewResolver(viewResolver);
-	}
-	
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/static/**").addResourceLocations("/static/");
 	}
 
 }

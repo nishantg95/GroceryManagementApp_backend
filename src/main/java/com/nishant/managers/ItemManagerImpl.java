@@ -9,66 +9,56 @@ import com.nishant.models.Item;
 import com.nishant.services.ItemService;
 
 @Service
-public class ItemManagerImpl implements ItemManager{
-	
+public class ItemManagerImpl implements ItemManager {
+
 	@Autowired
 	private ItemService itemService;
 
 	@Override
-	public Item findById(Integer id) {
-		return itemService.findById(id);
-	}
-
-	@Override
-	public Item findbyName(String name) {
-		return itemService.findbyName(name);
-	}
-
-	@Override
-	public void saveItem(Item item) {
-		Boolean flag = itemService.saveItem(item);
-		if(flag == Boolean.TRUE) {
-			System.out.println("Manager: Following Item was saved successfully"+item);
-		}
-		else {
-			System.out.println("Manager: Following Item saved failed"+item);
-		}
-		
-	}
-
-	@Override
-	public void updateItem(Item item) {
-		Boolean flag = itemService.updateItem(item);
-		if(flag == Boolean.TRUE) {
-			System.out.println("Manager: Following Item was updated successfully"+item);
-		}
-		else {
-			System.out.println("Manager: Following Item update failed"+item);
-		}
-		
-	}
-
-	@Override
 	public void deleteItemById(Integer id) {
-		Integer deletedCountManager = itemService.deleteItemById(id);
-		System.out.println("Manager: Number of items deleted successfully = "+deletedCountManager);
-		
+		Integer deletedCountManager = this.itemService.deleteItemById(id);
+		System.out.println("Manager: Number of items deleted successfully = " + deletedCountManager);
 	}
 
 	@Override
 	public List<Item> findAllItems() {
-		return itemService.findAllItems();
+		return this.itemService.findAllItems();
 	}
 
 	@Override
-	public void deleteAllItems() {
-		Integer deletedCountManager = itemService.deleteAllItems();
-		System.out.println("Manager: Number of items deleted successfully = "+deletedCountManager);
+	public Item findById(Integer id) {
+		return this.itemService.findById(id);
+	}
+
+	@Override
+	public Item findbyName(String name) {
+		return this.itemService.findbyName(name);
 	}
 
 	@Override
 	public Boolean isItemExist(Item item) {
-		return itemService.isItemExist(item);
+		return this.itemService.isItemExist(item);
+	}
+
+	@Override
+	public void saveItem(Item item) {
+		Item savedItem = this.itemService.saveItem(item);
+		if (savedItem.getId() != null) {
+			System.out.println("Manager: Following Item was saved successfully" + item);
+		} else {
+			System.out.println("Manager: Following Item saved failed" + item);
+		}
+	}
+
+	@Override
+	public void updateItem(Item item) {
+		Item updatedItem = this.itemService.updateItem(item);
+		if (!updatedItem.equals(item)) {
+			System.out
+					.println("Manager: Following Item update failed" + item + "; updatedItem recieved " + updatedItem);
+		} else {
+			System.out.println("Manager: Following Item was updated successfully" + item + " to " + updatedItem);
+		}
 	}
 
 }

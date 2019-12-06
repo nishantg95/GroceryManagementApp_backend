@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.nishant.daos;
 
@@ -12,21 +12,19 @@ import com.nishant.models.Item;
  *
  */
 public interface ItemDao {
-	
-	Boolean saveItem(Item item);
-	
-	List<Item> findAllItems();
-	
-	Item findByName(String name);
-	
-	Boolean updateItem(Item item);
-
-	Item findById(Integer id);
 
 	Integer deleteItemById(Integer id);
 
-	Integer deleteAllItems();
+	List<Item> findAllItems();
+
+	Item findById(Integer id);
+
+	Item findByName(String name);
 
 	Boolean isItemExist(Item item);
-	
+
+	Item saveItem(Item item);
+
+	Item updateItem(Item item);
+
 }

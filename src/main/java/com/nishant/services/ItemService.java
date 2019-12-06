@@ -10,15 +10,13 @@ public interface ItemService {
 	
 	Item findbyName(String name);
 	
-	Boolean saveItem(Item item);
+	Item saveItem(Item item);
 	
-	Boolean updateItem(Item item);
+	Item updateItem(Item item);
 	
 	Integer deleteItemById(Integer id);
 	
 	List<Item> findAllItems();
-	
-	Integer deleteAllItems();
 	
 	public Boolean isItemExist(Item item);
 

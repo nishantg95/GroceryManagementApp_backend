@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.nishant.configurations;
 
@@ -9,11 +9,11 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
  * @author nishant.b.grover
  *
  */
-public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{
+public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class[] {AppConfig.class};
+		return new Class[] { AppConfig.class };
 	}
 
 	@Override
@@ -23,8 +23,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
 	@Override
 	protected String[] getServletMappings() {
-		return new String[] {"/"};
+		return new String[] { "/" };
 	}
-	
 
 }

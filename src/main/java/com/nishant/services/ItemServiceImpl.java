@@ -3,65 +3,54 @@ package com.nishant.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.nishant.daos.ItemDao;
 import com.nishant.models.Item;
 
-
 @Service
 @Transactional
 public class ItemServiceImpl implements ItemService {
 
 	@Autowired
-	private ItemDao dao;
-	
-	@Override
-	public Item findbyName(String name) {
-		return dao.findByName(name);
-	}
+	private ItemDao itemDao;
 
 	@Override
-	public Boolean saveItem(Item item) {
-		return dao.saveItem(item);
-		
-	}
+	public Integer deleteItemById(Integer id) {
+		return this.itemDao.deleteItemById(id);
 
-	@Override
-	public Boolean updateItem(Item item) {
-		return dao.updateItem(item);
-		
 	}
 
 	@Override
 	public List<Item> findAllItems() {
-		return dao.findAllItems();
+		return this.itemDao.findAllItems();
 	}
 
 	@Override
 	public Item findById(Integer id) {
-		return dao.findById(id);
+		return this.itemDao.findById(id);
 	}
 
 	@Override
-	public Integer deleteItemById(Integer id) {
-		return dao.deleteItemById(id);
-		
-	}
-
-	@Override
-	public Integer deleteAllItems() {
-		return dao.deleteAllItems();
-		
+	public Item findbyName(String name) {
+		return this.itemDao.findByName(name);
 	}
 
 	@Override
 	public Boolean isItemExist(Item item) {
-		return dao.isItemExist(item);
+		return this.itemDao.isItemExist(item);
 	}
-	
-	
+
+	@Override
+	public Item saveItem(Item item) {
+		return this.itemDao.saveItem(item);
+
+	}
+
+	@Override
+	public Item updateItem(Item item) {
+		return this.itemDao.updateItem(item);
+	}
 
 }
