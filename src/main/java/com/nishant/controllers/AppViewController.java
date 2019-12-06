@@ -13,16 +13,16 @@ import org.springframework.web.servlet.ModelAndView;
 import com.nishant.models.Item;
 
 @Controller
-public class NavigationController {
+public class AppViewController {
 
-	@RequestMapping(value = { "", "/", "index" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "", "/", "welcome" }, method = RequestMethod.GET)
 	public String homePage() {
-		return "index";
+		return "welcome";
 	}
 
-	@RequestMapping(value = "/addItem", method = RequestMethod.GET)
+	@RequestMapping(value = "/addItemForm", method = RequestMethod.GET)
 	public ModelAndView showForm() {
-		return new ModelAndView("itemForm", "item", new Item());
+		return new ModelAndView("addItemForm", "item", new Item());
 	}
 
 	@RequestMapping(value = "/viewItem", method = RequestMethod.POST)
@@ -36,9 +36,9 @@ public class NavigationController {
 		return "itemView";
 	}
 
-	@RequestMapping(value = "/items", method = RequestMethod.GET)
+	@RequestMapping(value = "/inventory", method = RequestMethod.GET)
 	public String userView() {
-		return "userItemsView";
+		return "inventory";
 	}
 
 }

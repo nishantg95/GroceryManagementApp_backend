@@ -37,14 +37,14 @@ td,table {
 }
 /************************************ Page speciifc style elements **************************************/
 
-	/*index.jsp */
+	/*welcome.jsp */
 .bar {
 	text-align: center;
 	width: 50%;
 	margin: 15px auto;
 }
 
-	/*itemForm.jsp */
+	/*addItemForm.jsp */
 	
 .required:after { 
    	content:" *";
@@ -54,7 +54,7 @@ td,table {
    	content:"* ";
    	color:red
 }
-	/* userItemsView.jsp */
+	/* inventory.jsp */
 #inner {
 	width: 50%;
 	margin: 0 auto;

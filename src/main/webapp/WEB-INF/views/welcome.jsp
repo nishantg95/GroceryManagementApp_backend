@@ -17,8 +17,8 @@
 		</p>
 	</div>
 	<div id="center_button">
-		<button id="syncPageLink" onclick="window.location.href = 'addItem';">Add new item</button>
-		<button id="asyncPageLink" onclick="window.location.href = 'items';">Show More</button>
+		<button id="syncPageLink" onclick="window.location.href = 'addItemForm';">Add new item</button>
+		<button id="asyncPageLink" onclick="window.location.href = 'inventory';">View Inventory</button>
 	</div>
 </body>
 </html>

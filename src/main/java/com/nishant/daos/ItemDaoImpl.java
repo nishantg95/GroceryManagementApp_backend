@@ -32,7 +32,6 @@ public class ItemDaoImpl implements ItemDao {
 		query.setInteger("id", id);
 		Integer deletedCountDao = query.executeUpdate();
 		return deletedCountDao;
-
 	}
 
 	@Override

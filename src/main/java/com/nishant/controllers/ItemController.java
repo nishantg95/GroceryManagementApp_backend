@@ -7,27 +7,37 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.nishant.managers.ItemManager;
 import com.nishant.models.Item;
 
-@RestController
-@RequestMapping(value = "/data/items")
+/***
+ *
+ * @author nishant.b.grover
+ *
+ */
+@Controller
+@RequestMapping(value = "/data")
 public class ItemController {
 
 	@Autowired
 	private ItemManager itemManager;
 
-	// -------------------Retrieve All
-	// Items--------------------------------------------------------
+	/***
+	 *
+	 * @param item
+	 * @param ucBuilder
+	 * @return
+	 */
 
-	@RequestMapping(value = "/item", method = RequestMethod.POST)
+	@RequestMapping(value = "/createItem", method = RequestMethod.POST)
 	public ResponseEntity<Void> createItem(@RequestBody Item item, UriComponentsBuilder ucBuilder) {
 		System.out.println("Creating Item " + item.getName());
 
@@ -44,10 +54,7 @@ public class ItemController {
 		return new ResponseEntity<>(headers, HttpStatus.CREATED);
 	}
 
-	// -------------------Retrieve Single
-	// Item--------------------------------------------------------
-
-	@RequestMapping(value = "/item/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/deleteItem/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Item> deleteItem(@PathVariable("id") Integer id) {
 		System.out.println("Fetching & Deleting Item with id " + id);
 
@@ -61,10 +68,7 @@ public class ItemController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
-	// -------------------Create a
-	// Item--------------------------------------------------------
-
-	@RequestMapping(value = "/item/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/getItem/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Item> getItem(@PathVariable("id") Integer id) {
 		System.out.println("Fetching Item with id " + id);
 		Item item = this.itemManager.findById(id);
@@ -75,11 +79,9 @@ public class ItemController {
 		return new ResponseEntity<>(item, HttpStatus.OK);
 	}
 
-	// ------------------- Update a Item
-	// --------------------------------------------------------
-
-	@RequestMapping(value = "", method = RequestMethod.GET)
-	public ResponseEntity<List<Item>> listAllItems() {
+	@RequestMapping(value = "/listAllItems", method = RequestMethod.GET)
+	public ResponseEntity<List<Item>> listAllItems(@RequestHeader HttpHeaders header) {
+		System.out.println(header.get(HttpHeaders.USER_AGENT));
 		List<Item> items = this.itemManager.findAllItems();
 		System.out.println("From ItemRestController" + items);
 		if (items.isEmpty()) {
@@ -88,10 +90,7 @@ public class ItemController {
 		return new ResponseEntity<>(items, HttpStatus.OK);
 	}
 
-	// ------------------- Delete a Item
-	// --------------------------------------------------------
-
-	@RequestMapping(value = "/item/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/updateItem/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Item> updateItem(@PathVariable("id") Integer id, @RequestBody Item item) {
 		System.out.println("Updating Item " + id);
 

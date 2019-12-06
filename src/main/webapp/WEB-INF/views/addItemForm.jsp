@@ -43,7 +43,7 @@
         <br>
         <br>
         <div id="center_button">
-			<button id="backFromAsync" onclick="window.location.href = 'index';">Back</button>
+			<button id="backFromAsync" onclick="window.location.href = 'welcome';">Back</button>
 		</div>        
     </body>
 </html>
