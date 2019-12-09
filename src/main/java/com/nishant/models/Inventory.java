@@ -17,7 +17,7 @@ public class Inventory {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	private List<Item> userItems;
+	private List<ItemModel> userItems;
 	
 	@Override
 	public String toString() {
@@ -29,10 +29,10 @@ public class Inventory {
 	public void setUser(String user) {
 		this.user = user;
 	}
-	public List<Item> getUserItems() {
+	public List<ItemModel> getUserItems() {
 		return userItems;
 	}
-	public void setUserItems(List<Item> userItems) {
+	public void setUserItems(List<ItemModel> userItems) {
 		this.userItems = userItems;
 	}
 	

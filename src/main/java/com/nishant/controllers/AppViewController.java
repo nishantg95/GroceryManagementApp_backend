@@ -2,6 +2,7 @@ package com.nishant.controllers;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -10,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.nishant.models.Item;
+import com.nishant.models.ItemModel;
+import com.nishant.views.ItemView;
 
 @Controller
 public class AppViewController {
@@ -22,17 +24,19 @@ public class AppViewController {
 
 	@RequestMapping(value = "/addItemForm", method = RequestMethod.GET)
 	public ModelAndView showForm() {
-		return new ModelAndView("addItemForm", "item", new Item());
+		return new ModelAndView("addItemForm", "item", new ItemView());
 	}
 
 	@RequestMapping(value = "/viewItem", method = RequestMethod.POST)
-	public String submit(@Valid @ModelAttribute("item") Item item, BindingResult result, ModelMap model) {
+	public String submit(@Valid @ModelAttribute("item") ItemModel item, BindingResult result, ModelMap model) {
+		ItemView itemView = new ItemView();
+		BeanUtils.copyProperties(item, itemView);
 		if (result.hasErrors()) {
 			return "error";
 		}
-		model.addAttribute("name", item.getName());
-		model.addAttribute("expiry", item.getExpiry());
-		model.addAttribute("id", item.getId());
+		model.addAttribute("name", itemView.getName());
+		model.addAttribute("expiry", itemView.getExpiry());
+		model.addAttribute("id", itemView.getId());
 		return "itemView";
 	}
 

@@ -2,22 +2,22 @@ package com.nishant.services;
 
 import java.util.List;
 
-import com.nishant.models.Item;
+import com.nishant.entities.ItemEntity;
 
 public interface ItemService {
 
-	Item findById(Integer id);
-	
-	Item findbyName(String name);
-	
-	Item saveItem(Item item);
-	
-	Item updateItem(Item item);
-	
 	Integer deleteItemById(Integer id);
-	
-	List<Item> findAllItems();
-	
-	public Boolean isItemExist(Item item);
+
+	List<ItemEntity> findAllItems();
+
+//	ItemEntity findById(Integer id);
+//
+//	ItemEntity findbyName(String name);
+//
+//	public Boolean isItemExist(ItemEntity item);
+//
+//	ItemEntity saveItem(ItemEntity item);
+//
+//	ItemEntity updateItem(ItemEntity item);
 
 }
