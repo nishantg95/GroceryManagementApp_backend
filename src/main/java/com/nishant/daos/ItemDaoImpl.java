@@ -9,6 +9,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -40,45 +41,44 @@ public class ItemDaoImpl implements ItemDao {
 		return criteria.list();
 	}
 
-//
-//	@Override
-//	public ItemModel findById(Integer id) {
-//		Criteria criteria = this.getSession().createCriteria(ItemModel.class);
-//		criteria.add(Restrictions.eq("id", id));
-//		return (ItemModel) criteria.uniqueResult();
-//	}
-//
-//	@Override
-//	public ItemModel findByName(String name) {
-//		Criteria criteria = this.getSession().createCriteria(ItemModel.class);
-//		criteria.add(Restrictions.eq("name", name));
-//		return (ItemModel) criteria.uniqueResult();
-//	}
-//
+	@Override
+	public ItemEntity findById(Integer id) {
+		Criteria criteria = this.getSession().createCriteria(ItemEntity.class);
+		criteria.add(Restrictions.eq("id", id));
+		return (ItemEntity) criteria.uniqueResult();
+	}
+
+	@Override
+	public ItemEntity findByName(String name) {
+		Criteria criteria = this.getSession().createCriteria(ItemEntity.class);
+		criteria.add(Restrictions.eq("name", name));
+		return (ItemEntity) criteria.uniqueResult();
+	}
+
 	protected Session getSession() {
 		return this.sessionFactory.getCurrentSession();
 	}
-//
-//	@Override
-//	public Boolean isItemExist(ItemModel item) {
-//		if (item != null) {
-//			ItemModel returnItem = this.findByName(item.getName());
-//			if (returnItem != null) {
-//				return true;
-//			}
-//		}
-//		return false;
-//	}
-//
-//	@Override
-//	public ItemModel saveItem(ItemModel item) {
-//		this.getSession().persist(item);
-//		return item;
-//	}
-//
-//	@Override
-//	public ItemModel updateItem(ItemModel item) {
-//		this.getSession().update(item);
-//		return item;
-//	}
+
+	@Override
+	public Boolean isItemExist(ItemEntity itemEntity) {
+		if (itemEntity != null) {
+			ItemEntity returnItem = this.findByName(itemEntity.getName());
+			if (returnItem != null) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public ItemEntity saveItem(ItemEntity itemEntity) {
+		this.getSession().persist(itemEntity);
+		return itemEntity;
+	}
+
+	@Override
+	public ItemEntity updateItem(ItemEntity itemEntity) {
+		this.getSession().update(itemEntity);
+		return itemEntity;
+	}
 }

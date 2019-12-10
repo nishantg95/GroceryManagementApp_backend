@@ -2,7 +2,6 @@ package com.nishant.managers;
 
 import java.util.List;
 
-import com.nishant.models.ItemModel;
 import com.nishant.views.ItemView;
 
 public interface ItemManager {
@@ -11,14 +10,14 @@ public interface ItemManager {
 
 	List<ItemView> findAllItems();
 
-	ItemModel findById(Integer id);
+	ItemView findById(Integer id);
 
-	ItemModel findbyName(String name);
+	ItemView findByName(String name);
 
-	public Boolean isItemExist(ItemModel item);
+	public Boolean isItemExist(ItemView item);
 
-	void saveItem(ItemModel item);
+	void saveItem(ItemView item);
 
-	void updateItem(ItemModel item);
+	void updateItem(ItemView item);
 
 }

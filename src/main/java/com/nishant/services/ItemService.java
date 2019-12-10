@@ -10,14 +10,14 @@ public interface ItemService {
 
 	List<ItemEntity> findAllItems();
 
-//	ItemEntity findById(Integer id);
-//
-//	ItemEntity findbyName(String name);
-//
-//	public Boolean isItemExist(ItemEntity item);
-//
-//	ItemEntity saveItem(ItemEntity item);
-//
-//	ItemEntity updateItem(ItemEntity item);
+	ItemEntity findById(Integer id);
+
+	ItemEntity findByName(String name);
+
+	public Boolean isItemExist(ItemEntity item);
+
+	ItemEntity saveItem(ItemEntity item);
+
+	ItemEntity updateItem(ItemEntity item);
 
 }

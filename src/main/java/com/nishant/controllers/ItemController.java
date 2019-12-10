@@ -30,25 +30,25 @@ public class ItemController {
 
 	/***
 	 *
-	 * @param item
+	 * @param itemView
 	 * @param ucBuilder
-	 * @return
+	 * @return ResponseEntity
 	 */
 
 	@RequestMapping(value = "/createItem", method = RequestMethod.POST)
-	public ResponseEntity<Void> createItem(@RequestBody ItemView item, UriComponentsBuilder ucBuilder) {
-		System.out.println("Creating Item " + item.getName());
+	public ResponseEntity<Void> createItem(@RequestBody ItemView itemView, UriComponentsBuilder ucBuilder) {
+		System.out.println("Creating Item " + itemView.getName());
 
-		if (this.itemManager.isItemExist(item)) {
-			System.out.println("A Item with name " + item.getName() + " already exist");
+		if (this.itemManager.isItemExist(itemView)) {
+			System.out.println("A Item with name " + itemView.getName() + " already exist");
 			return new ResponseEntity<>(HttpStatus.CONFLICT);
 
 		}
 
-		this.itemManager.saveItem(item);
+		this.itemManager.saveItem(itemView);
 
 		HttpHeaders headers = new HttpHeaders();
-		headers.setLocation(ucBuilder.path("/item/{id}").buildAndExpand(item.getId()).toUri());
+		headers.setLocation(ucBuilder.path("/itemView/{id}").buildAndExpand(itemView.getId()).toUri());
 		return new ResponseEntity<>(headers, HttpStatus.CREATED);
 	}
 
@@ -57,8 +57,8 @@ public class ItemController {
 //	public ResponseEntity<ItemView> deleteItem(@PathVariable("id") Integer id) {
 //		System.out.println("Fetching & Deleting Item with id " + id);
 //
-//		ItemView item = this.itemManager.findById(id);
-//		if (item == null) {
+//		ItemView itemView = this.itemManager.findById(id);
+//		if (itemView == null) {
 //			System.out.println("Unable to delete. Item with id " + id + " not found");
 //			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 //		}
@@ -70,12 +70,12 @@ public class ItemController {
 //	@RequestMapping(value = "/getItem/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 //	public ResponseEntity<ItemView> getItem(@PathVariable("id") Integer id) {
 //		System.out.println("Fetching Item with id " + id);
-//		ItemView item = this.itemManager.findById(id);
-//		if (item == null) {
+//		ItemView itemView = this.itemManager.findById(id);
+//		if (itemView == null) {
 //			System.out.println("Item with id " + id + " not found");
 //			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 //		}
-//		return new ResponseEntity<>(item, HttpStatus.OK);
+//		return new ResponseEntity<>(itemView, HttpStatus.OK);
 //	}
 //
 	@RequestMapping(value = "/listAllItems", method = RequestMethod.GET)
@@ -90,7 +90,7 @@ public class ItemController {
 	}
 
 //	@RequestMapping(value = "/updateItem/{id}", method = RequestMethod.PUT)
-//	public ResponseEntity<ItemView> updateItem(@PathVariable("id") Integer id, @RequestBody ItemView item) {
+//	public ResponseEntity<ItemView> updateItem(@PathVariable("id") Integer id, @RequestBody ItemView itemView) {
 //		System.out.println("Updating Item " + id);
 //
 //		ItemView currentItem = this.itemManager.findById(id);
@@ -100,8 +100,8 @@ public class ItemController {
 //			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 //		}
 //
-//		this.itemManager.updateItem(item);
-//		return new ResponseEntity<>(item, HttpStatus.OK);
+//		this.itemManager.updateItem(itemView);
+//		return new ResponseEntity<>(itemView, HttpStatus.OK);
 //	}
 
 }

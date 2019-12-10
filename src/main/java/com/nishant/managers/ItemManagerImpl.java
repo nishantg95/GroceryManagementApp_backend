@@ -28,11 +28,11 @@ public class ItemManagerImpl implements ItemManager {
 	public List<ItemView> findAllItems() {
 		List<ItemView> itemViewList = new ArrayList<>();
 		System.out.println("Manager");
-		List<ItemEntity> itementityList = this.itemService.findAllItems();
-		System.out.println(itementityList);
-		for (ItemEntity itemEntity : itementityList) {
+		List<ItemEntity> itemEntityList = this.itemService.findAllItems();
+		System.out.println(itemEntityList);
+		for (ItemEntity itemEntity : itemEntityList) {
 			ItemView itemView = new ItemView();
-			BeanUtils.copyProperties(itemEntity, itemView);
+			BeanUtils.copyProperties(itemEntity, itemView, ItemModel.class);
 			itemViewList.add(itemView);
 		}
 		System.out.println(itemViewList);
@@ -41,31 +41,41 @@ public class ItemManagerImpl implements ItemManager {
 	}
 
 	@Override
-	public ItemModel findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public ItemView findById(Integer id) {
+		ItemEntity itemEntity = this.itemService.findById(id);
+		ItemView itemView = new ItemView();
+		BeanUtils.copyProperties(itemEntity, itemView);
+		return itemView;
 	}
 
 	@Override
-	public ItemModel findbyName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	public ItemView findByName(String name) {
+		ItemEntity itemEntity = this.itemService.findByName(name);
+		ItemView itemView = new ItemView();
+		BeanUtils.copyProperties(itemEntity, itemView);
+		return itemView;
 	}
 
 	@Override
-	public Boolean isItemExist(ItemModel item) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean isItemExist(ItemView item) {
+		return this.isItemExist(item);
 	}
 
 	@Override
-	public void saveItem(ItemModel item) {
-		// TODO Auto-generated method stub
+	public void saveItem(ItemView item) {
+		ItemEntity itemEntity = new ItemEntity();
+		BeanUtils.copyProperties(item, itemEntity);
+		itemEntity = this.itemService.saveItem(itemEntity);
+		if (savedItem.getId() != null) {
+			System.out.println("Manager: Following Item was saved successfully" + item);
+		} else {
+			System.out.println("Manager: Following Item saved failed" + item);
+		}
 
 	}
 
 	@Override
-	public void updateItem(ItemModel item) {
+	public void updateItem(ItemView item) {
 		// TODO Auto-generated method stub
 
 	}
@@ -76,8 +86,8 @@ public class ItemManagerImpl implements ItemManager {
 //	}
 //
 //	@Override
-//	public ItemModel findbyName(String name) {
-//		return this.itemService.findbyName(name);
+//	public ItemModel findByName(String name) {
+//		return this.itemService.findByName(name);
 //	}
 //
 //	@Override

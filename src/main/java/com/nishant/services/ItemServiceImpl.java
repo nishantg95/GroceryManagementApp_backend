@@ -19,7 +19,6 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public Integer deleteItemById(Integer id) {
 		return this.itemDao.deleteItemById(id);
-
 	}
 
 	@Override
@@ -27,30 +26,29 @@ public class ItemServiceImpl implements ItemService {
 		return this.itemDao.findAllItems();
 	}
 
-//	@Override
-//	public ItemEntity findById(Integer id) {
-//		return this.itemDao.findById(id);
-//	}
-//
-//	@Override
-//	public ItemEntity findbyName(String name) {
-//		return this.itemDao.findByName(name);
-//	}
-//
-//	@Override
-//	public Boolean isItemExist(ItemEntity item) {
-//		return this.itemDao.isItemExist(item);
-//	}
-//
-//	@Override
-//	public ItemEntity saveItem(ItemEntity item) {
-//		return this.itemDao.saveItem(item);
-//
-//	}
-//
-//	@Override
-//	public ItemEntity updateItem(ItemEntity item) {
-//		return this.itemDao.updateItem(item);
-//	}
+	@Override
+	public ItemEntity findById(Integer id) {
+		return this.itemDao.findById(id);
+	}
+
+	@Override
+	public ItemEntity findByName(String name) {
+		return this.itemDao.findByName(name);
+	}
+
+	@Override
+	public Boolean isItemExist(ItemEntity itemEntity) {
+		return this.itemDao.isItemExist(itemEntity);
+	}
+
+	@Override
+	public ItemEntity saveItem(ItemEntity itemEntity) {
+		return this.itemDao.saveItem(itemEntity);
+	}
+
+	@Override
+	public ItemEntity updateItem(ItemEntity itemEntity) {
+		return this.itemDao.updateItem(itemEntity);
+	}
 
 }

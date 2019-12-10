@@ -17,14 +17,14 @@ public interface ItemDao {
 
 	List<ItemEntity> findAllItems();
 
-//	ItemEntity findById(Integer id);
-//
-//	ItemEntity findByName(String name);
-//
-//	Boolean isItemExist(ItemEntity item);
-//
-//	ItemEntity saveItem(ItemEntity item);
-//
-//	ItemEntity updateItem(ItemEntity item);
+	ItemEntity findById(Integer id);
+
+	ItemEntity findByName(String name);
+
+	Boolean isItemExist(ItemEntity item);
+
+	ItemEntity saveItem(ItemEntity item);
+
+	ItemEntity updateItem(ItemEntity item);
 
 }
