@@ -1,12 +1,16 @@
 package com.nishant.managers;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nishant.models.Item;
+import com.nishant.entities.ItemEntity;
+import com.nishant.models.ItemModel;
 import com.nishant.services.ItemService;
+import com.nishant.views.ItemView;
 
 @Service
 public class ItemManagerImpl implements ItemManager {
@@ -21,44 +25,67 @@ public class ItemManagerImpl implements ItemManager {
 	}
 
 	@Override
-	public List<Item> findAllItems() {
-		return this.itemService.findAllItems();
+	public List<ItemView> findAllItems() {
+		List<ItemView> itemViewList = new ArrayList<>();
+		System.out.println("Manager");
+		List<ItemEntity> itemEntityList = this.itemService.findAllItems();
+		System.out.println(itemEntityList);
+		for (ItemEntity itemEntity : itemEntityList) {
+			ItemView itemView = new ItemView();
+			BeanUtils.copyProperties(itemEntity, itemView, ItemModel.class);
+			itemViewList.add(itemView);
+		}
+		System.out.println(itemViewList);
+		return itemViewList;
 	}
 
 	@Override
-	public Item findById(Integer id) {
-		return this.itemService.findById(id);
+	public ItemView findById(Integer id) {
+		ItemEntity itemEntity = this.itemService.findById(id);
+		ItemView itemView = new ItemView();
+		BeanUtils.copyProperties(itemEntity, itemView, ItemModel.class);
+		return itemView;
 	}
 
 	@Override
-	public Item findbyName(String name) {
-		return this.itemService.findbyName(name);
+	public ItemView findByName(String name) {
+		ItemEntity itemEntity = this.itemService.findByName(name);
+		ItemView itemView = new ItemView();
+		BeanUtils.copyProperties(itemEntity, itemView, ItemModel.class);
+		return itemView;
 	}
 
 	@Override
-	public Boolean isItemExist(Item item) {
-		return this.itemService.isItemExist(item);
+	public Boolean isItemExist(ItemView item) {
+		ItemEntity itemEntity = new ItemEntity();
+		BeanUtils.copyProperties(item, itemEntity, ItemModel.class);
+		return this.itemService.isItemExist(itemEntity);
 	}
 
 	@Override
-	public void saveItem(Item item) {
-		Item savedItem = this.itemService.saveItem(item);
-		if (savedItem.getId() != null) {
+	public void saveItem(ItemView item) {
+		ItemEntity itemEntity = new ItemEntity();
+		BeanUtils.copyProperties(item, itemEntity, ItemModel.class);
+		itemEntity = this.itemService.saveItem(itemEntity);
+		if (itemEntity.getId() != null) {
 			System.out.println("Manager: Following Item was saved successfully" + item);
 		} else {
 			System.out.println("Manager: Following Item saved failed" + item);
 		}
+
 	}
 
 	@Override
-	public void updateItem(Item item) {
-		Item updatedItem = this.itemService.updateItem(item);
-		if (!updatedItem.equals(item)) {
-			System.out
-					.println("Manager: Following Item update failed" + item + "; updatedItem recieved " + updatedItem);
+	public void updateItem(ItemView item) {
+		ItemEntity itemEntity = new ItemEntity();
+		BeanUtils.copyProperties(item, itemEntity, ItemModel.class);
+		itemEntity = this.itemService.updateItem(itemEntity);
+		if (!itemEntity.equals(item)) {
+			System.out.println("Manager: Following Item update failed" + item + "; updatedItem recieved " + itemEntity);
 		} else {
-			System.out.println("Manager: Following Item was updated successfully" + item + " to " + updatedItem);
+			System.out.println("Manager: Following Item was updated successfully" + item + " to " + itemEntity);
 		}
+
 	}
 
 }

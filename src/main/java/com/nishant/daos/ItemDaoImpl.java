@@ -13,7 +13,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.nishant.models.Item;
+import com.nishant.entities.ItemEntity;
 
 /**
  * @author nishant.b.grover
@@ -35,23 +35,24 @@ public class ItemDaoImpl implements ItemDao {
 	}
 
 	@Override
-	public List<Item> findAllItems() {
-		Criteria criteria = this.getSession().createCriteria(Item.class);
+	public List<ItemEntity> findAllItems() {
+		Criteria criteria = this.getSession().createCriteria(ItemEntity.class);
+		System.out.println(criteria.list());
 		return criteria.list();
 	}
 
 	@Override
-	public Item findById(Integer id) {
-		Criteria criteria = this.getSession().createCriteria(Item.class);
+	public ItemEntity findById(Integer id) {
+		Criteria criteria = this.getSession().createCriteria(ItemEntity.class);
 		criteria.add(Restrictions.eq("id", id));
-		return (Item) criteria.uniqueResult();
+		return (ItemEntity) criteria.uniqueResult();
 	}
 
 	@Override
-	public Item findByName(String name) {
-		Criteria criteria = this.getSession().createCriteria(Item.class);
+	public ItemEntity findByName(String name) {
+		Criteria criteria = this.getSession().createCriteria(ItemEntity.class);
 		criteria.add(Restrictions.eq("name", name));
-		return (Item) criteria.uniqueResult();
+		return (ItemEntity) criteria.uniqueResult();
 	}
 
 	protected Session getSession() {
@@ -59,9 +60,9 @@ public class ItemDaoImpl implements ItemDao {
 	}
 
 	@Override
-	public Boolean isItemExist(Item item) {
-		if (item != null) {
-			Item returnItem = this.findByName(item.getName());
+	public Boolean isItemExist(ItemEntity itemEntity) {
+		if (itemEntity != null) {
+			ItemEntity returnItem = this.findByName(itemEntity.getName());
 			if (returnItem != null) {
 				return true;
 			}
@@ -70,14 +71,14 @@ public class ItemDaoImpl implements ItemDao {
 	}
 
 	@Override
-	public Item saveItem(Item item) {
-		this.getSession().persist(item);
-		return item;
+	public ItemEntity saveItem(ItemEntity itemEntity) {
+		this.getSession().persist(itemEntity);
+		return itemEntity;
 	}
 
 	@Override
-	public Item updateItem(Item item) {
-		this.getSession().update(item);
-		return item;
+	public ItemEntity updateItem(ItemEntity itemEntity) {
+		this.getSession().update(itemEntity);
+		return itemEntity;
 	}
 }
