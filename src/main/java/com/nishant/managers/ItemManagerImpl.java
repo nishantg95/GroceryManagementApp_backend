@@ -36,7 +36,6 @@ public class ItemManagerImpl implements ItemManager {
 			itemViewList.add(itemView);
 		}
 		System.out.println(itemViewList);
-
 		return itemViewList;
 	}
 
@@ -58,7 +57,9 @@ public class ItemManagerImpl implements ItemManager {
 
 	@Override
 	public Boolean isItemExist(ItemView item) {
-		return this.isItemExist(item);
+		ItemEntity itemEntity = new ItemEntity();
+		BeanUtils.copyProperties(item, itemEntity, ItemModel.class);
+		return this.itemService.isItemExist(itemEntity);
 	}
 
 	@Override
@@ -76,53 +77,15 @@ public class ItemManagerImpl implements ItemManager {
 
 	@Override
 	public void updateItem(ItemView item) {
-		// TODO Auto-generated method stub
 		ItemEntity itemEntity = new ItemEntity();
 		BeanUtils.copyProperties(item, itemEntity, ItemModel.class);
 		itemEntity = this.itemService.updateItem(itemEntity);
 		if (!itemEntity.equals(item)) {
-			System.out
-					.println("Manager: Following Item update failed" + item + "; updatedItem recieved " + itemEntity);
+			System.out.println("Manager: Following Item update failed" + item + "; updatedItem recieved " + itemEntity);
 		} else {
 			System.out.println("Manager: Following Item was updated successfully" + item + " to " + itemEntity);
 		}
 
 	}
-
-//	@Override
-//	public ItemModel findById(Integer id) {
-//		return this.itemService.findById(id);
-//	}
-//
-//	@Override
-//	public ItemModel findByName(String name) {
-//		return this.itemService.findByName(name);
-//	}
-//
-//	@Override
-//	public Boolean isItemExist(ItemModel item) {
-//		return this.itemService.isItemExist(item);
-//	}
-//
-//	@Override
-//	public void saveItem(ItemModel item) {
-//		ItemModel savedItem = this.itemService.saveItem(item);
-//		if (savedItem.getId() != null) {
-//			System.out.println("Manager: Following Item was saved successfully" + item);
-//		} else {
-//			System.out.println("Manager: Following Item saved failed" + item);
-//		}
-//	}
-//
-//	@Override
-//	public void updateItem(ItemModel item) {
-//		ItemModel updatedItem = this.itemService.updateItem(item);
-//		if (!updatedItem.equals(item)) {
-//			System.out
-//					.println("Manager: Following Item update failed" + item + "; updatedItem recieved " + updatedItem);
-//		} else {
-//			System.out.println("Manager: Following Item was updated successfully" + item + " to " + updatedItem);
-//		}
-//	}
 
 }
