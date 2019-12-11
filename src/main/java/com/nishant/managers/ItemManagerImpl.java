@@ -44,7 +44,7 @@ public class ItemManagerImpl implements ItemManager {
 	public ItemView findById(Integer id) {
 		ItemEntity itemEntity = this.itemService.findById(id);
 		ItemView itemView = new ItemView();
-		BeanUtils.copyProperties(itemEntity, itemView);
+		BeanUtils.copyProperties(itemEntity, itemView, ItemModel.class);
 		return itemView;
 	}
 
@@ -52,7 +52,7 @@ public class ItemManagerImpl implements ItemManager {
 	public ItemView findByName(String name) {
 		ItemEntity itemEntity = this.itemService.findByName(name);
 		ItemView itemView = new ItemView();
-		BeanUtils.copyProperties(itemEntity, itemView);
+		BeanUtils.copyProperties(itemEntity, itemView, ItemModel.class);
 		return itemView;
 	}
 
@@ -64,9 +64,9 @@ public class ItemManagerImpl implements ItemManager {
 	@Override
 	public void saveItem(ItemView item) {
 		ItemEntity itemEntity = new ItemEntity();
-		BeanUtils.copyProperties(item, itemEntity);
+		BeanUtils.copyProperties(item, itemEntity, ItemModel.class);
 		itemEntity = this.itemService.saveItem(itemEntity);
-		if (savedItem.getId() != null) {
+		if (itemEntity.getId() != null) {
 			System.out.println("Manager: Following Item was saved successfully" + item);
 		} else {
 			System.out.println("Manager: Following Item saved failed" + item);
@@ -77,6 +77,15 @@ public class ItemManagerImpl implements ItemManager {
 	@Override
 	public void updateItem(ItemView item) {
 		// TODO Auto-generated method stub
+		ItemEntity itemEntity = new ItemEntity();
+		BeanUtils.copyProperties(item, itemEntity, ItemModel.class);
+		itemEntity = this.itemService.updateItem(itemEntity);
+		if (!itemEntity.equals(item)) {
+			System.out
+					.println("Manager: Following Item update failed" + item + "; updatedItem recieved " + itemEntity);
+		} else {
+			System.out.println("Manager: Following Item was updated successfully" + item + " to " + itemEntity);
+		}
 
 	}
 
