@@ -60,7 +60,7 @@ public class HibernateConfig {
 	}
 
 	@Bean
-	@Autowired
+	@Autowired // TODO: Remove??
 	public HibernateTransactionManager transactionManager(SessionFactory s) {
 		HibernateTransactionManager txManager = new HibernateTransactionManager();
 		txManager.setSessionFactory(s);
