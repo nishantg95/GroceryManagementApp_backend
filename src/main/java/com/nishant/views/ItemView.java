@@ -18,65 +18,21 @@ public class ItemView implements ItemModel {
 
 	private String name;
 
-	private String expiry;
+	private String shelfLife;
 
-	// Server is running in CST timezone, better approach- custom JSON
-	// Serializer/Deserializer
+	private String storageState;
+
+	// Server is running in CST timezone, better approach- custom JSON...
+	// ... Serializer/Deserializer that gets/sets current jvm timezone
 	@JsonFormat(pattern = "MM-dd-yyyy", timezone = "CST")
 	private Date purchaseDate;
 
-	@Override
-	public boolean equals(ItemModel obj) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	@JsonFormat(pattern = "MM-dd-yyyy", timezone = "CST")
+	private Date expiryDate;
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (this.getClass() != obj.getClass()) {
-			return false;
-		}
-		ItemView other = (ItemView) obj;
-		if (this.expiry == null) {
-			if (other.expiry != null) {
-				return false;
-			}
-		} else if (!this.expiry.equals(other.expiry)) {
-			return false;
-		}
-		if (this.id == null) {
-			if (other.id != null) {
-				return false;
-			}
-		} else if (!this.id.equals(other.id)) {
-			return false;
-		}
-		if (this.name == null) {
-			if (other.name != null) {
-				return false;
-			}
-		} else if (!this.name.equals(other.name)) {
-			return false;
-		}
-		if (this.purchaseDate == null) {
-			if (other.purchaseDate != null) {
-				return false;
-			}
-		} else if (!this.purchaseDate.equals(other.purchaseDate)) {
-			return false;
-		}
-		return true;
-	}
-
-	@Override
-	public String getExpiry() {
-		return this.expiry;
+	public Date getExpiryDate() {
+		return this.expiryDate;
 	}
 
 	@Override
@@ -94,20 +50,22 @@ public class ItemView implements ItemModel {
 		return this.purchaseDate;
 	}
 
+	/**
+	 * @return the shelfLife
+	 */
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((this.expiry == null) ? 0 : this.expiry.hashCode());
-		result = prime * result + ((this.id == null) ? 0 : this.id.hashCode());
-		result = prime * result + ((this.name == null) ? 0 : this.name.hashCode());
-		result = prime * result + ((this.purchaseDate == null) ? 0 : this.purchaseDate.hashCode());
-		return result;
+	public String getShelfLife() {
+		return this.shelfLife;
 	}
 
 	@Override
-	public void setExpiry(String expiry) {
-		this.expiry = expiry;
+	public String getStorageState() {
+		return this.storageState;
+	}
+
+	@Override
+	public void setExpiryDate(Date expiryDate) {
+		this.expiryDate = expiryDate;
 	}
 
 	@Override
@@ -126,10 +84,23 @@ public class ItemView implements ItemModel {
 
 	}
 
+	/**
+	 * @param shelfLife the shelfLife to set
+	 */
+	@Override
+	public void setShelfLife(String shelfLife) {
+		this.shelfLife = shelfLife;
+	}
+
+	@Override
+	public void setStorageState(String storageState) {
+		this.storageState = storageState;
+	}
+
 	@Override
 	public String toString() {
-		return "Item [id=" + this.id + ", name=" + this.name + ", expiry=" + this.expiry + ", purchaseDate="
-				+ this.purchaseDate + "]";
+		return "ItemView [id=" + this.id + ", name=" + this.name + ", shelfLife=" + this.shelfLife + ", storageState="
+				+ this.storageState + ", purchaseDate=" + this.purchaseDate + ", expiryDate=" + this.expiryDate + "]";
 	}
 
 }

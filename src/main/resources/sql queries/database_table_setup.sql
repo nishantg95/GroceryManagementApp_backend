@@ -18,6 +18,9 @@ ALTER TABLE grocerymanagementapp.item MODIFY COLUMN date_today DATE NOT NULL;
 ALTER TABLE `grocerymanagementapp`.`item` 
 CHANGE COLUMN `date_today` `purchase_date` DATE NOT NULL ;
 
+ALTER TABLE `grocerymanagementapp`.`item` 
+CHANGE COLUMN `expiry` `shelf_life` VARCHAR(30) NULL DEFAULT NULL ;
+
 
 ---------------------------------------------------
 
@@ -31,3 +34,14 @@ CREATE TABLE `grocerymanagementapp`.`repository_items` (
   `rDate_U_R` VARCHAR(45) NULL COMMENT 'Repository Item\'s UNOPENED REFRIGERATED date',
   `rDate_O_R` VARCHAR(45) NULL COMMENT 'Repository Item\'s OPENED REFRIGERATED date',
   PRIMARY KEY (`rItemId`));
+  
+  -----------------------------------------------
+  CREATE TABLE `grocerymanagementapp`.`repo_items` (
+  `r_item_id` INT(11) NOT NULL ,
+  `r_item_name` VARCHAR(45) NOT NULL ,
+  `r_refigerate_date` VARCHAR(45) NULL DEFAULT NULL ,
+  `r_pantry_date` VARCHAR(45) NULL DEFAULT NULL ,
+  `r_freeze_date` VARCHAR(45) NULL DEFAULT NULL ;
+  PRIMARY KEY (`r_item_id`));
+
+  

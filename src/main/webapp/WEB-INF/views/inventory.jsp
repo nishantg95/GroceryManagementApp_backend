@@ -25,12 +25,22 @@
 					<input type="text" ng-model="ctrl.item.name" id="name"
 						class="form-control input-sm" placeholder="Item name" required />
 					<!--  TODO: Spans for validation -->
-					<!-- Expiry field -->
-					<input type="text" ng-model="ctrl.item.expiry" id="expiry"
-						class="form-control input-sm" placeholder="Expiry Duration" />
-					<!-- Today's date field -->
+					<!-- Shell Life field -->
+					<input type="text" ng-model="ctrl.item.shelfLife" id="expiry"
+						class="form-control input-sm" placeholder="Shelf Life" />
+					<!-- Purchase date field -->
 					<input type="text" ng-model="ctrl.item.purchaseDate" id="purchase_date"
 						class="form-control input-sm" placeholder="Purchase date" />
+					<!-- Storage state drop down -->
+					<select name="storage_state" ng-model="ctrl.item.storageState">
+						<option value="" disabled selected>Select storage option</option>
+    					<option value="Pantry">Pantry</option>
+    					<option value="Refrigerator">Refrigerator</option>
+    					<option value="Freezer" selected>Freezer</option>
+    				</select>
+  					<!-- Expiry Date -->
+					<input type="text" ng-model="ctrl.item.expiryDate" id="expiry_date"
+						class="form-control input-sm" placeholder="Expiry date" />
 					<div class="row"><br></div>
 					<div class="row">
 						<div class="form-actions floatRight">
@@ -55,19 +65,21 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<th>ID</th>
 								<th>Name</th>
-								<th>Expiry</th>
-								<th>Date</th>
-								<th width="20%"></th>
+								<th>Shell Life</th>
+								<th>Storage State</th>
+								<th>Purchase Date</th>
+								<th>Expiry Date</th>
+								<th width="30%"></th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr ng-repeat="i in ctrl.items">
-								<td ng-bind="i.id"></td>
 								<td ng-bind="i.name"></td>
-								<td ng-bind="i.expiry"></td>
+								<td ng-bind="i.shelfLife"></td>
+								<td ng-bind="i.storageState"></td>
 								<td ng-bind="i.purchaseDate|date:'MM-dd-yyyy'"></td>
+								<td ng-bind="i.expiryDate|date:'MM-dd-yyyy'"></td>
 								<td>
 									<button type="button" ng-click="ctrl.edit(i)"
 										class="btn" >Edit</button>

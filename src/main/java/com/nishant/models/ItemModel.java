@@ -4,9 +4,7 @@ import java.util.Date;
 
 public interface ItemModel {
 
-	public boolean equals(ItemModel obj);
-
-	public String getExpiry();
+	public Date getExpiryDate();
 
 	public Integer getId();
 
@@ -14,7 +12,11 @@ public interface ItemModel {
 
 	public Date getPurchaseDate();
 
-	public void setExpiry(String expiry);
+	public String getShelfLife();
+
+	public String getStorageState();
+
+	public void setExpiryDate(Date expiryDate);
 
 	public void setId(Integer id);
 
@@ -22,7 +24,8 @@ public interface ItemModel {
 
 	public void setPurchaseDate(Date purchaseDate);
 
-	@Override
-	public String toString();
+	public void setShelfLife(String shelfLife);
+
+	public void setStorageState(String storageState);
 
 }

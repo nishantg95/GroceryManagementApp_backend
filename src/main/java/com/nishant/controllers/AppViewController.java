@@ -35,7 +35,7 @@ public class AppViewController {
 			return "error";
 		}
 		model.addAttribute("name", itemView.getName());
-		model.addAttribute("expiry", itemView.getExpiry());
+		model.addAttribute("shelf_life", itemView.getShelfLife());
 		model.addAttribute("id", itemView.getId());
 		return "itemView";
 	}

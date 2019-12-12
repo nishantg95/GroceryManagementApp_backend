@@ -9,7 +9,7 @@
 	
 	function ItemController($scope, ItemService){
 		var self = this;
-		self.item = {id:null, name:'',expiry:'', purchaseDate:null};
+		self.item = {id:null, name:'',shelfLife:'', purchaseDate:null, expiryDate:null, storageState:''};
 		self.items = [];
 		
 		self.submit = submit;
@@ -76,7 +76,6 @@
 	    function edit(item){
 	        console.log('item to be edited', item);
 	        self.item = angular.copy(item);
-//	        self.item.purchaseDate = new Date(self.item.purchaseDate);
 	    }
 	 
 	    function remove(id){
@@ -87,9 +86,8 @@
 	        deleteItem(id);
 	    }
 	 
-	 
 	    function reset(){
-	        self.item={id:null,name:'',expiry:''};
+	        self.item={id:null,name:'',expiry:'', purchaseDate:null, expiryDate:null, storageDate:''};
 	        $scope.asyncForm.$setPristine(); //reset Form
 	    }
 	}
