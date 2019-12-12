@@ -5,7 +5,7 @@ package com.nishant.daos;
 
 import java.util.List;
 
-import com.nishant.models.Item;
+import com.nishant.entities.ItemEntity;
 
 /**
  * @author nishant.b.grover
@@ -15,16 +15,16 @@ public interface ItemDao {
 
 	Integer deleteItemById(Integer id);
 
-	List<Item> findAllItems();
+	List<ItemEntity> findAllItems();
 
-	Item findById(Integer id);
+	ItemEntity findById(Integer id);
 
-	Item findByName(String name);
+	ItemEntity findByName(String name);
 
-	Boolean isItemExist(Item item);
+	Boolean isItemExist(ItemEntity item);
 
-	Item saveItem(Item item);
+	ItemEntity saveItem(ItemEntity item);
 
-	Item updateItem(Item item);
+	ItemEntity updateItem(ItemEntity item);
 
 }

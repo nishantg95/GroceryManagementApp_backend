@@ -1,35 +1,35 @@
-package com.nishant.models;
+/**
+ *
+ */
+package com.nishant.views;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.nishant.models.ItemModel;
 
-@Entity
-@Table(name = "ITEM")
-public class Item {
+/**
+ * @author nishant.b.grover
+ *
+ */
+public class ItemView implements ItemModel {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(name = "NAME", nullable = false)
 	private String name;
 
-	@Column(name = "EXPIRY")
 	private String expiry;
 
 	// Server is running in CST timezone, better approach- custom JSON
 	// Serializer/Deserializer
 	@JsonFormat(pattern = "MM-dd-yyyy", timezone = "CST")
-	@Column(name = "PURCHASE_DATE", nullable = false)
 	private Date purchaseDate;
+
+	@Override
+	public boolean equals(ItemModel obj) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -42,7 +42,7 @@ public class Item {
 		if (this.getClass() != obj.getClass()) {
 			return false;
 		}
-		Item other = (Item) obj;
+		ItemView other = (ItemView) obj;
 		if (this.expiry == null) {
 			if (other.expiry != null) {
 				return false;
@@ -74,18 +74,22 @@ public class Item {
 		return true;
 	}
 
+	@Override
 	public String getExpiry() {
 		return this.expiry;
 	}
 
+	@Override
 	public Integer getId() {
 		return this.id;
 	}
 
+	@Override
 	public String getName() {
 		return this.name;
 	}
 
+	@Override
 	public Date getPurchaseDate() {
 		return this.purchaseDate;
 	}
@@ -101,20 +105,23 @@ public class Item {
 		return result;
 	}
 
+	@Override
 	public void setExpiry(String expiry) {
 		this.expiry = expiry;
 	}
 
+	@Override
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
+	@Override
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	@Override
 	public void setPurchaseDate(Date purchaseDate) {
-		// TODO Auto-generated constructor stub
 		this.purchaseDate = purchaseDate;
 
 	}
