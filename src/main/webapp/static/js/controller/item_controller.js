@@ -5,7 +5,7 @@
 		.module('myApp')
 		.controller('ItemController',ItemController);
 	
-	ItemController.inject = ['$scope', 'ItemService'];
+	ItemController.inject = ['$scope', 'ItemService','$log'];
 	
 	function ItemController($scope, ItemService){
 		var self = this;
@@ -24,10 +24,10 @@
 	            .then(
 	            function(d) {
 	                self.items = d;
-	                console.log("Fetching items "+self.item);
+	                $log.debug("Fetching items "+self.item);
 	            },
 	            function(errResponse){
-	                console.error('Error while fetching Items');
+	                $log.error('Error while fetching Items');
 	            }
 	        );
 	    }
@@ -37,7 +37,7 @@
 	            .then(
 	            fetchAllItems,
 	            function(errResponse){
-	                console.error('Error while creating Item');
+	                $log.error('Error while creating Item');
 	            }
 	        );
 	    }
@@ -47,7 +47,7 @@
 	            .then(
 	            fetchAllItems,
 	            function(errResponse){
-	                console.error('Error while updating Item');
+	                $log.error('Error while updating Item');
 	            }
 	        );
 	    }
@@ -57,29 +57,29 @@
 	            .then(
 	            fetchAllItems,
 	            function(errResponse){
-	                console.error('Error while deleting Item');
+	                $log.error('Error while deleting Item');
 	            }
 	        );
 	    }
 	 
 	    function submit() {
 	        if(self.item.id===null){
-	            console.log('Saving New Item', self.item);
+	            $log.debug('Saving New Item', self.item);
 	            createItem(self.item);
 	        }else{
 	            updateItem(self.item, self.item.id);
-	            console.log('Item updated with id ', self.item.id);
+	            $log.debug('Item updated with id ', self.item.id);
 	        }
 	        reset();
 	    }
 	 
 	    function edit(item){
-	        console.log('item to be edited', item);
+	        $log.debug('item to be edited', item);
 	        self.item = angular.copy(item);
 	    }
 	 
 	    function remove(id){
-	        console.log('id to be deleted', id);
+	        $log.debug('id to be deleted', id);
 	        if(self.item.id === id) {//clean form if the item to be deleted is shown there.
 	            reset();
 	        }

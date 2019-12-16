@@ -5,7 +5,7 @@
 		.module('myApp')
 		.factory('RepoItemService', RepoItemService);
 	
-	RepoItemService.inject = ['$http'];
+	RepoItemService.inject = ['$http','$log'];
 	
 	function RepoItemService($http){
 		
@@ -17,10 +17,10 @@
 		
 		function fetchAllRepoItems(){
 			return $http.get(REST_SERVICE_URI).then(function(resp){
-				console.log(resp.data);
+				$log.debug(resp.data);
 				return resp.data;
 			}).catch(function(error){
-				console.error(error);
+				$log.error(error);
 			});
 			
 		}		

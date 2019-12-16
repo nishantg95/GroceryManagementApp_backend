@@ -5,7 +5,7 @@
 		.module('myApp')
 		.factory('ItemService', ItemService);
 	
-	ItemService.inject = ['$http'];
+	ItemService.inject = ['$http','$log'];
 	
 	function ItemService($http){
 		
@@ -21,35 +21,35 @@
 		
 		function fetchAllItems(){
 			return $http.get(REST_SERVICE_URI+"/listAllItems").then(function(resp){
-				console.log(resp.data);
+				$log.debug(resp.data);
 				return resp.data;
 			}).catch(function(error){
-				console.error(error);
+				$log.error(error);
 			});
 			
 		}
 		
 		function createItem(item){
 			return $http.post(REST_SERVICE_URI+"/createItem", item).then(function(resp){
-				console.debug(resp.data);
+				$log.debug(resp.data);
 			}).catch(function(error){
-				console.error(error);
+				$log.error(error);
 			});
 		}
 		
 		function updateItem(item, id){
 			return $http.put(REST_SERVICE_URI+"/updateItem/"+id, item).then(function(resp){
-				console.debug(resp.data);
+				$log.debug(resp.data);
 			}).catch(function(error){
-				console.error(error);
+				$log.error(error);
 			});
 		}
 		
 		function deleteItem(id) {
 			return $http.delete(REST_SERVICE_URI+"/deleteItem/"+id).then(function(resp){
-				console.debug(resp.data);
+				$log.debug(resp.data);
 			}).catch(function(error){
-				console.error(error);
+				$log.error(error);
 			});
 		}
 		
