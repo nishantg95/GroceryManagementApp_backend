@@ -8,23 +8,25 @@
 </head>
 
     <body>
-        <h3>Enter new item</h3>
-        <br>
-        <div id="inner">
-	        <form:form method="POST" id="syncForm"
+    	<div class="container">
+    		<div class="row justify-content-center p-3">
+        		<h3>Enter new item</h3>
+			</div>
+        <div class="row justify-content-center p-5 ">
+	        <form:form method="POST" id="syncForm" class="form-group"
 	          action="viewItem" modelAttribute="item">
 	             <table>
 	                <tr>
-	                    <td class="required"><form:label path="name">Name</form:label></td>
+	                    <td class="required"><form:label path="name">Name:</form:label></td>
 	                    <td><form:input path="name" id="nameField" required="required" /></td>
 	                </tr>
 	                <tr>
-	                    <td><form:label path="id">Id</form:label></td>
+	                    <td><form:label path="id">Id:</form:label></td>
 	                    <td><form:input id="idField" path="id"/></td>
 	                </tr>
 	                <tr>
 	                    <td><form:label path="shelfLife">
-	                      Shelf Life</form:label></td>
+	                      Shelf Life:</form:label></td>
 	                    <td><form:input id="shelfLifeField" path="shelfLife"/></td>
 	                </tr>
 	                <tr></tr>
@@ -40,10 +42,9 @@
 	            </table>
 	        </form:form>
         </div>
-        <br>
-        <br>
-        <div id="center_button">
+        <div class="row justify-content-center p-3">
 			<button id="backFromAsync" onclick="window.location.href = 'welcome';">Back</button>
-		</div>        
+		</div>
+		</div>      
     </body>
 </html>
