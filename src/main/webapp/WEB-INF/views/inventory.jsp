@@ -43,14 +43,14 @@
 							<!-- Name field -->
 							<td><input type="text" data-ng-model="ctrl.item.name"
 								id="name" class="form-control input-sm" placeholder="Item name"
-								form="asyncForm" required /></td>
+								form="asyncForm" data-ng-required="true" /></td>
 							<!-- Shell Life field -->
 							<td><input type="text" data-ng-model="ctrl.item.shelfLife"
 								id="expiry" class="form-control input-sm"
 								placeholder="Shelf Life" form="asyncForm" /></td>
 							<!-- Storage state drop down -->
 							<td><select name="storage_state" class="form-control"
-								data-ng-model="ctrl.item.storageState" form="asyncForm">
+								data-ng-model="ctrl.item.storageState" data-ng-required="true" form="asyncForm">
 									<option value="" disabled selected>Select storage
 										option</option>
 									<option value="Pantry">Pantry</option>
@@ -59,7 +59,7 @@
 							</select></td>
 							<!-- Purchase date field -->
 							<td><input type="text"
-								data-ng-model="ctrl.item.purchaseDate" id="purchase_date"
+								data-ng-model="ctrl.item.purchaseDate" data-ng-required="true" id="purchase_date"
 								class="form-control input-sm" placeholder="Purchase date"
 								form="asyncForm" /></td>
 							<!-- Expiry Date -->

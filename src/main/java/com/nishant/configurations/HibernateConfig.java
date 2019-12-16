@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /***
  * <p>
- * This class sets and defines enviornment variables for Hibernate framework. By
+ * This class sets and defines environment variables for Hibernate framework. By
  * default it looks for properties defined in application.properties file under
  * the resources directory
  * </p>
@@ -93,7 +93,7 @@ public class HibernateConfig {
 	 * <p>
 	 * Defines and initializes Hibernate Transaction Manager bean
 	 * </p>
-	 * 
+	 *
 	 * @param s
 	 * @return
 	 */

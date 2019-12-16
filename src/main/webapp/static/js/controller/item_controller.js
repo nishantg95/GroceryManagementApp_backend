@@ -24,7 +24,7 @@
 	            .then(
 	            function(d) {
 	                self.items = d;
-	                $log.debug("Fetching items "+self.item);
+	                $log.debug("Fetching items "+self.items);
 	            },
 	            function(errResponse){
 	                $log.error('Error while fetching Items');

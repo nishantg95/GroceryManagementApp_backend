@@ -25,13 +25,13 @@ public class ItemEntity implements ItemModel {
 	@Column(name = "SHELF_LIFE")
 	private String shelfLife;
 
-	@Column(name = "STORAGE_STATE")
+	@Column(name = "STORAGE_STATE", nullable = false)
 	private String storageState;
 
 	@Column(name = "PURCHASE_DATE", nullable = false)
 	private Date purchaseDate;
 
-	@Column(name = "EXPIRY_DATE", nullable = false)
+	@Column(name = "EXPIRY_DATE")
 	private Date expiryDate;
 
 	@Override
