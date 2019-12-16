@@ -22,7 +22,7 @@
 			</tr>
 			<tr>
 				<td>Expiry Duration :</td>
-				<td>${expiry}</td>
+				<td>${shelfLife}</td>
 			</tr>
 		</table>
 	</div>
