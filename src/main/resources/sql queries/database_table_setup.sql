@@ -22,6 +22,13 @@ ALTER TABLE `grocerymanagementapp`.`item`
 CHANGE COLUMN `expiry` `shelf_life` VARCHAR(30) NULL DEFAULT NULL ;
 
 
+ALTER TABLE grocerymanagementapp.item
+ADD expiry_date DATE;
+
+ALTER TABLE grocerymanagementapp.item
+ADD storage_state VARCHAR(18) NULL DEFAULT NULL;
+
+
 ---------------------------------------------------
 
 CREATE TABLE `grocerymanagementapp`.`repository_items` (
@@ -41,7 +48,7 @@ CREATE TABLE `grocerymanagementapp`.`repository_items` (
   `r_item_name` VARCHAR(45) NOT NULL ,
   `r_refigerate_date` VARCHAR(45) NULL DEFAULT NULL ,
   `r_pantry_date` VARCHAR(45) NULL DEFAULT NULL ,
-  `r_freeze_date` VARCHAR(45) NULL DEFAULT NULL ;
+  `r_freeze_date` VARCHAR(45) NULL DEFAULT NULL ,
   PRIMARY KEY (`r_item_id`));
 
   
