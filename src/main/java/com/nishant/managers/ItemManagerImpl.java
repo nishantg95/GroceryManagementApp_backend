@@ -2,6 +2,7 @@ package com.nishant.managers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,27 +16,27 @@ import com.nishant.views.ItemView;
 @Service
 public class ItemManagerImpl implements ItemManager {
 
+	private static final Logger LOGGER = Logger.getLogger(Thread.currentThread().getStackTrace()[0].getClassName());
+
 	@Autowired
 	private ItemService itemService;
 
 	@Override
 	public void deleteItemById(Integer id) {
 		Integer deletedCountManager = this.itemService.deleteItemById(id);
-		System.out.println("Manager: Number of items deleted successfully = " + deletedCountManager);
+		LOGGER.info("Number of items deleted successfully = " + deletedCountManager);
 	}
 
 	@Override
 	public List<ItemView> findAllItems() {
 		List<ItemView> itemViewList = new ArrayList<>();
-		System.out.println("Manager");
 		List<ItemEntity> itemEntityList = this.itemService.findAllItems();
-		System.out.println(itemEntityList);
 		for (ItemEntity itemEntity : itemEntityList) {
 			ItemView itemView = new ItemView();
 			BeanUtils.copyProperties(itemEntity, itemView, ItemModel.class);
 			itemViewList.add(itemView);
 		}
-		System.out.println(itemViewList);
+		LOGGER.info("Returning all items fetched");
 		return itemViewList;
 	}
 
@@ -68,9 +69,9 @@ public class ItemManagerImpl implements ItemManager {
 		BeanUtils.copyProperties(item, itemEntity, ItemModel.class);
 		itemEntity = this.itemService.saveItem(itemEntity);
 		if (itemEntity.getId() != null) {
-			System.out.println("Manager: Following Item was saved successfully" + item);
+			LOGGER.info("Following Item was saved successfully" + item);
 		} else {
-			System.out.println("Manager: Following Item saved failed" + item);
+			LOGGER.info("Following Item saved failed" + item);
 		}
 
 	}
@@ -81,9 +82,9 @@ public class ItemManagerImpl implements ItemManager {
 		BeanUtils.copyProperties(item, itemEntity, ItemModel.class);
 		itemEntity = this.itemService.updateItem(itemEntity);
 		if (!itemEntity.equals(item)) {
-			System.out.println("Manager: Following Item update failed" + item + "; updatedItem recieved " + itemEntity);
+			LOGGER.info("Following Item update failed" + item + "; updatedItem recieved " + itemEntity);
 		} else {
-			System.out.println("Manager: Following Item was updated successfully" + item + " to " + itemEntity);
+			LOGGER.info("Following Item was updated successfully" + item + " to " + itemEntity);
 		}
 
 	}

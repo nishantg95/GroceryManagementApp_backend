@@ -16,6 +16,16 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+/***
+ * <p>
+ * This class sets and defines enviornment variables for Hibernate framework. By
+ * default it looks for properties defined in application.properties file under
+ * the resources directory
+ * </p>
+ *
+ * @author nishant.b.grover
+ *
+ */
 @Configuration
 @EnableTransactionManagement
 @ComponentScan({ "com.nishant" })
@@ -24,6 +34,14 @@ public class HibernateConfig {
 
 	@Autowired
 	private Environment environment;
+
+	/***
+	 * <p>
+	 * Produces DriverManagerDataSource object
+	 * </p>
+	 *
+	 * @return
+	 */
 
 	@Bean
 	public DataSource dataSource() {
@@ -37,6 +55,11 @@ public class HibernateConfig {
 		return dataSource;
 	}
 
+	/***
+	 * Sets properties to be used for Hibernate environment
+	 *
+	 * @return
+	 */
 	private Properties hibernateProperties() {
 
 		Properties properties = new Properties();
@@ -47,6 +70,13 @@ public class HibernateConfig {
 		return properties;
 	}
 
+	/***
+	 * <p>
+	 * Initializes LocalSessionFactory Bean
+	 * </p>
+	 *
+	 * @return
+	 */
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
 
@@ -59,8 +89,15 @@ public class HibernateConfig {
 		return sessionFactory;
 	}
 
+	/***
+	 * <p>
+	 * Defines and initializes Hibernate Transaction Manager bean
+	 * </p>
+	 * 
+	 * @param s
+	 * @return
+	 */
 	@Bean
-	@Autowired // TODO: Remove??
 	public HibernateTransactionManager transactionManager(SessionFactory s) {
 		HibernateTransactionManager txManager = new HibernateTransactionManager();
 		txManager.setSessionFactory(s);

@@ -9,14 +9,14 @@
 </head>
 
 
-<body ng-app="myApp" >
+<body data-ng-app="myApp" >
 	<!-- Center div -->
-	<div class = "container-fluid" ng-controller="ItemController as ctrl">
+	<div class = "container-fluid" data-ng-controller="ItemController as ctrl">
 	
 		<!-- Map page to controller -->
 
 			<h3>Items Available</h3>
-				<form ng-submit="ctrl.submit()" id="asyncForm"
+				<form data-ng-submit="ctrl.submit()" id="asyncForm"
 					class="form-inline" >
 					<!--  TODO: Spans for validation -->			
 				</form>
@@ -41,17 +41,17 @@
 							<tr class="table-info">
 								<!-- Name field -->
 								<td>
-									<input type="text" ng-model="ctrl.item.name" id="name"
+									<input type="text" data-ng-model="ctrl.item.name" id="name"
 										class="form-control input-sm" placeholder="Item name"  form="asyncForm" required />
 								</td>
 								<!-- Shell Life field -->
 								<td>
-									<input type="text" ng-model="ctrl.item.shelfLife" id="expiry"
+									<input type="text" data-ng-model="ctrl.item.shelfLife" id="expiry"
 										class="form-control input-sm" placeholder="Shelf Life" form="asyncForm"/>
 								</td>
 								<!-- Storage state drop down -->
 								<td>
-									<select name="storage_state" class= "form-control" ng-model="ctrl.item.storageState" form="asyncForm">
+									<select name="storage_state" class= "form-control" data-ng-model="ctrl.item.storageState" form="asyncForm">
 										<option value="" disabled selected>Select storage option</option>
 				    					<option value="Pantry">Pantry</option>
     									<option value="Refrigerator">Refrigerator</option>
@@ -60,12 +60,12 @@
 								</td>
 								<!-- Purchase date field -->
 								<td>
-									<input type="text" ng-model="ctrl.item.purchaseDate" id="purchase_date"
+									<input type="text" data-ng-model="ctrl.item.purchaseDate" id="purchase_date"
 										class="form-control input-sm" placeholder="Purchase date" form="asyncForm"/>
 								</td>
 								<!-- Expiry Date -->
 								<td>									
-									<input type="text" ng-model="ctrl.item.expiryDate" id="expiry_date"
+									<input type="text" data-ng-model="ctrl.item.expiryDate" id="expiry_date"
 										class="form-control input-sm" placeholder="Expiry date" form="asyncForm"/>
 								</td>
 								<!-- Add and Reset Buttons -->
@@ -73,23 +73,23 @@
 									<button type="submit" class="btn btn-success" data-toggle="tooltip" data-placement="right" title="Submit" form="asyncForm">
 										<i class="fas fa-plus"></i>
 									</button>
-									<button type="button" ng-click="ctrl.reset()" class="btn btn-primary" form="asyncForm"
-										 ng-disabled="asyncForm.$pristine" data-toggle="tooltip" data-placement="right" title="Clear">
+									<button type="button" data-ng-click="ctrl.reset()" class="btn btn-primary" form="asyncForm"
+										 data-ng-disabled="asyncForm.$pristine" data-toggle="tooltip" data-placement="right" title="Clear">
 										<i class="fas fa-backspace"></i>
 									</button>
 								</td>
 							</tr>
-							<tr ng-repeat="i in ctrl.items">
-								<td ng-bind="i.name"></td>
-								<td ng-bind="i.shelfLife"></td>
-								<td ng-bind="i.storageState"></td>
-								<td ng-bind="i.purchaseDate|date:'MM-dd-yyyy'"></td>
-								<td ng-bind="i.expiryDate|date:'MM-dd-yyyy'"></td>
+							<tr data-ng-repeat="i in ctrl.items">
+								<td data-ng-bind="i.name"></td>
+								<td data-ng-bind="i.shelfLife"></td>
+								<td data-ng-bind="i.storageState"></td>
+								<td data-ng-bind="i.purchaseDate|date:'MM-dd-yyyy'"></td>
+								<td data-ng-bind="i.expiryDate|date:'MM-dd-yyyy'"></td>
 								<td>
-									<button type="button" ng-click="ctrl.edit(i)" class="btn btn-warning" >
+									<button type="button" data-ng-click="ctrl.edit(i)" class="btn btn-warning" >
 										<i class="fas fa-edit"></i>
 									</button>
-									<button type="button" ng-click="ctrl.remove(i.id)" class="btn btn-danger" >
+									<button type="button" data-ng-click="ctrl.remove(i.id)" class="btn btn-danger" >
 										<i class="fas fa-trash"></i>
 									</button>
 								</td>
@@ -114,7 +114,6 @@
 			<button id="backFromAsync" onclick="window.location.href = 'welcome';">Back</button>
 		</div>
 	<!-- Center div -->
-	</div>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"
 		type="text/javascript"></script>

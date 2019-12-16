@@ -9,6 +9,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.nishant.models.ItemModel;
 
 /**
+ * <p>
+ * This class implements the itemModel interface defined in com.nishant.models.
+ * *
+ * </p>
+ * 
  * @author nishant.b.grover
  *
  */
@@ -50,9 +55,6 @@ public class ItemView implements ItemModel {
 		return this.purchaseDate;
 	}
 
-	/**
-	 * @return the shelfLife
-	 */
 	@Override
 	public String getShelfLife() {
 		return this.shelfLife;
@@ -84,9 +86,6 @@ public class ItemView implements ItemModel {
 
 	}
 
-	/**
-	 * @param shelfLife the shelfLife to set
-	 */
 	@Override
 	public void setShelfLife(String shelfLife) {
 		this.shelfLife = shelfLife;

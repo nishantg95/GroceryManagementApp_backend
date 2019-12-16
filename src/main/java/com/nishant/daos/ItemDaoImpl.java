@@ -37,7 +37,6 @@ public class ItemDaoImpl implements ItemDao {
 	@Override
 	public List<ItemEntity> findAllItems() {
 		Criteria criteria = this.getSession().createCriteria(ItemEntity.class);
-		System.out.println(criteria.list());
 		return criteria.list();
 	}
 
