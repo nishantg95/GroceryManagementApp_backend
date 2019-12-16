@@ -6,7 +6,7 @@ body {
 	background: linear-gradient(to right, #2F80ED, #56CCF2);
 	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-
+/* 
 h2 {
 	line-height: 400px;
 	height: 250px;
@@ -26,13 +26,12 @@ p {
 	text-align: center;
 	color: white;
 }
-
+ */
 td,table {
     align: center;
 }
 
 #center_button{
-	line-height: 200px;
 	text-align: center;
 }
 /************************************ Page speciifc style elements **************************************/
