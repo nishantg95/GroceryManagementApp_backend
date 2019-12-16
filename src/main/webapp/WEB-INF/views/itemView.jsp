@@ -14,15 +14,15 @@
 		<table id="syncFormResult">
 			<tr>
 				<td>Name :</td>
-				<td>${name}</td>
+				<td>${item.name}</td>
 			</tr>
 			<tr>
 				<td>ID :</td>
-				<td>${id}</td>
+				<td>${item.id}</td>
 			</tr>
 			<tr>
-				<td>Expiry Duration :</td>
-				<td>${shelfLife}</td>
+				<td>Shelf Life:</td>
+				<td>${item.shelfLife}</td>
 			</tr>
 		</table>
 	</div>

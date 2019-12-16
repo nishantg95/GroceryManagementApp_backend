@@ -24,7 +24,7 @@
 	                </tr>
 	                <tr>
 	                    <td><form:label path="shelfLife">
-	                      Expiry</form:label></td>
+	                      Shelf Life</form:label></td>
 	                    <td><form:input id="shelfLifeField" path="shelfLife"/></td>
 	                </tr>
 	                <tr></tr>
