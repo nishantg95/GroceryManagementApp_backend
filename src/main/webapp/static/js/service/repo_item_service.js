@@ -16,7 +16,7 @@
 		return factory;
 		
 		function fetchAllRepoItems(){
-			return $http.get(REST_SERVICE_URI).then(function(resp){
+			return $http.get(REST_SERVICE_URI+"/listAllRepoItems").then(function(resp){
 				$log.debug(resp.data);
 				return resp.data;
 			}).catch(function(error){

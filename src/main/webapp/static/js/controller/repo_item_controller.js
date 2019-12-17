@@ -8,26 +8,18 @@
 	RepoItemController.inject = ['$scope', 'RepoItemService','$log'];
 	
 	function RepoItemController($scope, RepoItemService){
-		var self = this;
-		self.item = {id:null, name:'',expiry:'', purchaseDate:null};
-		self.items = [];
+		self.repoItems = [];
+		fetchAllRepoItems();
 		
-		self.submit = submit;
-		self.edit = edit;
-		self.remove = remove;
-		self.reset = reset;
-		
-		fetchAllItems();
-		
-	    function fetchAllItems(){
-	        ItemService.fetchAllItems()
+	    function fetchAllRepoItems(){
+	        RepoItemService.fetchAllRepoItems()
 	            .then(
 	            function(d) {
-	                self.items = d;
-	                $log.debug("Fetching items "+self.item);
+	                self.repoItems = d;
+	                $log.debug("Fetching Repoitems "+self.repoItems);
 	            },
 	            function(errResponse){
-	                $log.error('Error while fetching Items');
+	                $log.error('Error while fetching RepoItems');
 	            }
 	        );
 	    }
