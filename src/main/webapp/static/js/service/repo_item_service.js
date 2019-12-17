@@ -7,7 +7,7 @@
 	
 	RepoItemService.inject = ['$http','$log'];
 	
-	function RepoItemService($http){
+	function RepoItemService($http,$log){
 		
 		var REST_SERVICE_URI = "/GroceryManagementApp/data/repo";
 		var factory = {

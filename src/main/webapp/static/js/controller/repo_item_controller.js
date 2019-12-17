@@ -7,7 +7,7 @@
 	
 	RepoItemController.inject = ['$scope', 'RepoItemService','$log'];
 	
-	function RepoItemController($scope, RepoItemService){
+	function RepoItemController($scope, RepoItemService,$log){
 		self.repoItems = [];
 		fetchAllRepoItems();
 		
