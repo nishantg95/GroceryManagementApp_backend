@@ -7,7 +7,7 @@
 	
 	ItemController.inject = ['$scope', 'ItemService','$log'];
 	
-	function ItemController($scope, ItemService){
+	function ItemController($scope, ItemService, $log){
 		var self = this;
 		self.item = {id:null, name:'',shelfLife:'', purchaseDate:null, expiryDate:null, storageState:''};
 		self.items = [];
