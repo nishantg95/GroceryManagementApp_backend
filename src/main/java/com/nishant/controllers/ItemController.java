@@ -119,7 +119,7 @@ public class ItemController {
 	public ResponseEntity<List<ItemView>> listAllItems(@RequestHeader HttpHeaders header) {
 		LOGGER.info(header.get(HttpHeaders.USER_AGENT).toString());
 		List<ItemView> items = this.itemManager.findAllItems();
-		LOGGER.info("From ItemRestController" + items);
+		LOGGER.info("Items:" + items.toString());
 		if (items.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
