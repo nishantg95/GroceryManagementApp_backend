@@ -29,10 +29,15 @@ public class RepoItemController {
 	@Autowired
 	private RepoItemManager repoItemManager;
 
+	@RequestMapping(value = "test", method = RequestMethod.GET)
+	public String homePage() {
+		return "autocomplete";
+	}
+
 	@RequestMapping(value = "/listAllRepoItems", method = RequestMethod.GET)
 	public ResponseEntity<List<RepoItemEntity>> listAllRepoItems() {
 		List<RepoItemEntity> repoItems = this.repoItemManager.findAllRepoItems();
-		LOGGER.info(repoItems.toString());
+		LOGGER.info(String.valueOf(repoItems.size()));
 		// TODO:implement isEmpty
 //		if (repoItems.isEmpty()) {
 //			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

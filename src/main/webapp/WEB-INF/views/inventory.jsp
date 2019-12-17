@@ -9,23 +9,16 @@
 	crossorigin="anonymous"></script>
 </head>
 
-
 <body data-ng-app="myApp">
-	<!-- Center div -->
 	<div class="container-fluid"
 		data-ng-controller="ItemController as ctrl">
-
-		<!-- Map page to controller -->
 		<div class="row justify-content-center p-3">
 			<h3>Items Available</h3>
 		</div>
 		<form data-ng-submit="ctrl.submit()" id="asyncForm"
 			class="form-inline">
-			<!--  TODO: Spans for validation -->
 		</form>
-		<!-- List view of Items -->
 		<div class="panel">
-			<!-- Table container div -->
 			<div class="tablecontainer p-3">
 				<table class="table table-light table-hover">
 					<thead>
@@ -40,15 +33,12 @@
 					</thead>
 					<tbody>
 						<tr class="table-info">
-							<!-- Name field -->
 							<td><input type="text" data-ng-model="ctrl.item.name"
 								id="name" class="form-control input-sm" placeholder="Item name"
 								form="asyncForm" data-ng-required="true" /></td>
-							<!-- Shell Life field -->
 							<td><input type="text" data-ng-model="ctrl.item.shelfLife"
 								id="expiry" class="form-control input-sm"
 								placeholder="Shelf Life" form="asyncForm" /></td>
-							<!-- Storage state drop down -->
 							<td><select name="storage_state" class="form-control"
 								data-ng-model="ctrl.item.storageState" data-ng-required="true" form="asyncForm">
 									<option value="" disabled selected>Select storage
@@ -57,16 +47,13 @@
 									<option value="Refrigerator">Refrigerator</option>
 									<option value="Freezer" selected>Freezer</option>
 							</select></td>
-							<!-- Purchase date field -->
 							<td><input type="text"
 								data-ng-model="ctrl.item.purchaseDate" data-ng-required="true" id="purchase_date"
 								class="form-control input-sm" placeholder="Purchase date"
 								form="asyncForm" /></td>
-							<!-- Expiry Date -->
 							<td><input type="text" data-ng-model="ctrl.item.expiryDate"
 								id="expiry_date" class="form-control input-sm"
 								placeholder="Expiry date" form="asyncForm" /></td>
-							<!-- Add and Reset Buttons -->
 							<td>
 								<button type="submit" class="btn btn-success"
 									data-toggle="tooltip" data-placement="right" title="Submit"
@@ -106,13 +93,8 @@
 						onclick="window.location.href = 'welcome';">Back</button>
 				</div>
 			</div>
-			<!-- Table container div -->
-			<!-- List view of Items -->
 		</div>
-		<!-- Map page to controller -->
 	</div>
-
-	<!-- Center div -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"
 		type="text/javascript"></script>
@@ -123,6 +105,15 @@
 	<script
 		src="<c:url value='/static/js/controller/item_controller.js' />"
 		type="text/javascript"></script>
+	<script
+		 src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+	</script>
+	<script
+	 	src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js">
+	 </script>
+	<script
+	 src="<c:url value='/static/js/scripts/autofill.js'/>" type="text/javascript">
+	 </script>
 
 </body>
 </html>
