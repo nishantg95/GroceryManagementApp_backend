@@ -2,7 +2,7 @@
 	'use strict';
 	
 	angular
-		.module('myApp')
+		.module('itemTracker')
 		.controller('RepoItemController',RepoItemController);
 	
 	RepoItemController.inject = ['$scope', 'RepoItemService','$log'];

@@ -9,7 +9,7 @@
 	crossorigin="anonymous"></script>
 </head>
 
-<body data-ng-app="myApp">
+<body data-ng-app="itemTracker">
 	<div class="container-fluid"
 		data-ng-controller="ItemController as ctrl">
 		<div class="row justify-content-center p-3">
@@ -24,7 +24,7 @@
 					<thead>
 						<tr>
 							<th>Name</th>
-							<th>Shell Life</th>
+							<th>Storage Location</th>
 							<th>Storage State</th>
 							<th>Purchase Date</th>
 							<th>Expiry Date</th>
@@ -37,7 +37,7 @@
 								id="name" class="form-control input-sm" placeholder="Item name"
 								form="asyncForm" data-ng-required="true" /></td>
 							<td><input type="text" data-ng-model="ctrl.item.shelfLife"
-								id="expiry" class="form-control input-sm"
+								id="shelf_life" class="form-control input-sm"
 								placeholder="Shelf Life" form="asyncForm" /></td>
 							<td><select name="storage_state" class="form-control"
 								data-ng-model="ctrl.item.storageState" data-ng-required="true" form="asyncForm">

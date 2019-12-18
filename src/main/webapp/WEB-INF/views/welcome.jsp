@@ -7,7 +7,7 @@
 <jsp:include page="head.jsp" />  
 </head>
 
-<body ng-app="myApp">
+<body ng-app="itemTracker">
 	<div class="jumbotron text-center jumbotron-fluid">
 		<div class="container" ng-controller="ItemController as ctrl" ng-model="ctrl.items">
 			<h2>Welcome Back, Nishant!!</h2>

@@ -2,7 +2,7 @@
 	'use strict'
 	
 	angular
-		.module('myApp')
+		.module('itemTracker')
 		.factory('ItemService', ItemService);
 	
 	ItemService.inject = ['$http','$log'];

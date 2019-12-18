@@ -2,7 +2,7 @@
 	'use strict';
 	
 	angular
-		.module('myApp')
+		.module('itemTracker')
 		.controller('ItemController',ItemController);
 	
 	ItemController.inject = ['$scope', 'ItemService','$log'];
@@ -87,7 +87,7 @@
 	    }
 	 
 	    function reset(){
-	        self.item={id:null,name:'',expiry:'', purchaseDate:null, expiryDate:null, storageDate:''};
+	        self.item={id:null, name:'',shelfLife:'', purchaseDate:null, expiryDate:null, storageState:''};
 	        $scope.asyncForm.$setPristine(); //reset Form
 	    }
 	}
