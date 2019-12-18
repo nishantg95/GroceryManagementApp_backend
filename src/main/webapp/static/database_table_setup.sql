@@ -50,5 +50,8 @@ CREATE TABLE `grocerymanagementapp`.`repository_items` (
   `r_pantry_date` VARCHAR(45) NULL DEFAULT NULL ,
   `r_freeze_date` VARCHAR(45) NULL DEFAULT NULL ,
   PRIMARY KEY (`r_item_id`));
+-----------------------------------------
 
+  ALTER TABLE `grocerymanagementapp`.`item` 
+CHANGE COLUMN `name` `name` VARCHAR(200) NOT NULL ;
   

@@ -1,13 +1,7 @@
 //https://www.roytuts.com/spring-boot-mvc-autocomplete/
 $(function() {
-	$("#name").autocomplete({
-		minLength : 1,
-		messages: {
-	        noResults: 'no results',
-	        results: function(amount) {
-	            return amount + 'results.'
-	        }
-		},
+	$("#project").autocomplete({
+		minLength : 3,
 		source : function(request, response) {
 			$.ajax({
 				url : "/GroceryManagementApp/repo/listAllRepoItems",
@@ -37,21 +31,20 @@ $(function() {
 			});
 		},
 		focus: function(event, ui) {
-			$( "#name" ).val( ui.item.label);
+			$( "#project" ).val( ui.item.label );
 	        return false
 		},
 		select: function(event, ui) {
 //            event.preventDefault();
-			$('#name').val(ui.item.label);
-			$('#shelf_life').val(ui.item.fridgeDate);
-			$('#shelf_life').trigger('input');
+			$('#project').val(ui.item.label);
+			$('#project-description').html(ui.item.fridgeDate)
 			return false;
 		}
-	})/*.autocomplete( "instance" )._renderItem = function( ul, item ) {
+	}).autocomplete( "instance" )._renderItem = function( ul, item ) {
 	      return $( "<li>" )
-	        .append( "<div class= \"item_result\">" + item.label + "<br>" + item.fridgeDate + "</div>" )
+	        .append( "<div>" + item.label + "<br>" + item.fridgeDate + "</div>" )
 	        .appendTo( ul );
-	};*/
+	};
 });
 
 
