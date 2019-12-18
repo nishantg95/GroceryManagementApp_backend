@@ -71,6 +71,11 @@ public class AppViewController {
 		return new ModelAndView("itemView", "item", itemView);
 	}
 
+	@RequestMapping(value = "/inventoryT", method = RequestMethod.GET)
+	public String userTestView() {
+		return "inventory_test";
+	}
+
 	/***
 	 * <p>
 	 * Sets the URL and view for user inventory view

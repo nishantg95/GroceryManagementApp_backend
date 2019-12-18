@@ -16,7 +16,7 @@
 	            .then(
 	            function(d) {
 	                self.repoItems = d;
-	                $log.debug("Fetching Repoitems "+self.repoItems);
+	                $log.debug("Fetching Repoitems");
 	            },
 	            function(errResponse){
 	                $log.error('Error while fetching RepoItems');

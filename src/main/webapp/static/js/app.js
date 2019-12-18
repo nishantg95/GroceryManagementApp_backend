@@ -1,4 +1,4 @@
 'use strict';
 
 angular
-	.module('itemTracker',[]);
+	.module('itemTracker',['ui.bootstrap']);

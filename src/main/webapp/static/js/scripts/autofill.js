@@ -43,8 +43,11 @@ $(function() {
 		select: function(event, ui) {
 //            event.preventDefault();
 			$('#name').val(ui.item.label);
-			$('#shelf_life').val(ui.item.fridgeDate);
-			$('#shelf_life').trigger('input');
+    		var myInput = $("#shelf_life");
+    		myInput.val(ui.item.fridgeDate);
+    		myInput.trigger('input');
+    		myInput.trigger('change');
+
 			return false;
 		}
 	})/*.autocomplete( "instance" )._renderItem = function( ul, item ) {

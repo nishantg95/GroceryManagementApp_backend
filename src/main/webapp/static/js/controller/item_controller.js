@@ -5,19 +5,35 @@
 		.module('itemTracker')
 		.controller('ItemController',ItemController);
 	
-	ItemController.inject = ['$scope', 'ItemService','$log'];
+	ItemController.inject = ['$scope', 'ItemService', 'RepoItemService','$log'];
 	
-	function ItemController($scope, ItemService, $log){
+	function ItemController($scope, ItemService, RepoItemService, $log){
 		var self = this;
 		self.item = {id:null, name:'',shelfLife:'', purchaseDate:null, expiryDate:null, storageState:''};
 		self.items = [];
+		self.repoItems = [];
 		
 		self.submit = submit;
 		self.edit = edit;
 		self.remove = remove;
 		self.reset = reset;
+		self.test = test;
 		
 		fetchAllItems();
+		fetchAllRepoItems();
+		
+		function fetchAllRepoItems(){
+			RepoItemService.fetchAllRepoItems()
+				.then(
+						function(d){
+							self.repoItems = d;
+							$log.debug("item_controller: Initializing repo with "+ self.repoItems.length +" items");
+						},
+						function(errResponse){
+							$log.error('item_controller: Error initializing repo');
+						}
+				)
+		}
 		
 	    function fetchAllItems(){
 	        ItemService.fetchAllItems()
@@ -88,7 +104,14 @@
 	 
 	    function reset(){
 	        self.item={id:null, name:'',shelfLife:'', purchaseDate:null, expiryDate:null, storageState:''};
-	        $scope.asyncForm.$setPristine(); //reset Form
+//	        $scope.asyncForm.$setPristine(); //reset Form
 	    }
+	    function test($item, $model, $label, $event){
+	    	$log.log("item=",$item, "model=",$model, "label=",$label, "event=",$event);
+	    	$model.name = $item.rName;
+	    	$model.shelfLife = $item.rFridgeDate;
+	    	
+	    }
+
 	}
 })();

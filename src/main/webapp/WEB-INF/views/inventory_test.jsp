@@ -33,12 +33,11 @@
 					</thead>
 					<tbody>
 						<tr class="table-info">
-							<td><input type="text" data-ng-model="ctrl.item.name"
-								id="name" class="form-control input-sm" placeholder="Item name"
-								form="asyncForm" data-ng-required="true" /></td>
-							<td><input type="text" data-ng-model="ctrl.item.shelfLife" data-ng-change="ctrl.changeDetected()"
-								id="shelf_life" class="form-control input-sm"
-								placeholder="Shelf Life" form="asyncForm" /></td>
+							<td><input type="text" data-ng-model="ctrl.item.name" id="name" class="form-control input-sm" placeholder="Item name"
+								form="asyncForm" data-ng-required="true" uib-typeahead="rItem as rItem.rName for rItem in ctrl.repoItems | filter:$viewValue | limitTo:10" 
+								typeahead-on-select="ctrl.test($item, ctrl.item, $label, $event)"/>
+								<!-- uib-typeahead="rItem as rItem.rName for rItem in ctrl.repoItems | filter:$viewValue | limitTo:10" /> -->
+							</td>
 							<td><select name="storage_state" class="form-control"
 								data-ng-model="ctrl.item.storageState" data-ng-required="true" form="asyncForm">
 									<option value="" disabled selected>Select storage
@@ -46,7 +45,10 @@
 									<option value="Pantry">Pantry</option>
 									<option value="Refrigerator">Refrigerator</option>
 									<option value="Freezer" selected>Freezer</option>
-							</select></td>
+							</select></td>							
+							<td><input type="text" data-ng-model="ctrl.item.shelfLife"
+								id="shelf_life" class="form-control input-sm"
+								placeholder="Shelf Life" form="asyncForm" /></td>
 							<td><input type="text"
 								data-ng-model="ctrl.item.purchaseDate" data-ng-required="true" id="purchase_date"
 								class="form-control input-sm" placeholder="Purchase date"
@@ -70,8 +72,8 @@
 						</tr>
 						<tr data-ng-repeat="i in ctrl.items">
 							<td data-ng-bind="i.name"></td>
-							<td data-ng-bind="i.shelfLife"></td>
 							<td data-ng-bind="i.storageState"></td>
+							<td data-ng-bind="i.shelfLife"></td>
 							<td data-ng-bind="i.purchaseDate|date:'MM-dd-yyyy'"></td>
 							<td data-ng-bind="i.expiryDate|date:'MM-dd-yyyy'"></td>
 							<td>
@@ -97,22 +99,30 @@
 	</div>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"
-		type="text/javascript"></script>
+		type="text/javascript">
+	</script>
 	<script src="<c:url value='/static/js/app.js' />"
-		type="text/javascript"></script>
+		type="text/javascript">
+	</script>
 	<script src="<c:url value='/static/js/service/item_service.js' />"
-		type="text/javascript"></script>
+		type="text/javascript">
+	</script>
 	<script
 		src="<c:url value='/static/js/controller/item_controller.js' />"
-		type="text/javascript"></script>
+		type="text/javascript">
+	</script>
+	<script
+		src="<c:url value='/static/js/ui-bootstrap.min.js' />"
+		type="text/javascript">
+	</script>
+	<script src="<c:url value='/static/js/service/repo_item_service.js' />"
+		type="text/javascript">
+	</script>
 	<script
 		 src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
 	</script>
 	<script
 	 	src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js">
-	 </script>
-	<script
-	 src="<c:url value='/static/js/scripts/autofill.js'/>" type="text/javascript">
 	 </script>
 
 </body>
