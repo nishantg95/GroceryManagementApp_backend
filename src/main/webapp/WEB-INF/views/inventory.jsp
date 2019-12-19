@@ -15,7 +15,7 @@
 		<div class="row justify-content-center p-3">
 			<h3>Items Available</h3>
 		</div>
-		<form data-ng-submit="ctrl.submit()" id="asyncForm"
+		<form  autocomplete ="off" data-ng-submit="ctrl.submit()" id="asyncForm"
 			class="form-inline">
 		</form>
 		<div class="panel">
@@ -25,7 +25,7 @@
 						<tr>
 							<th class = "required">Name</th>
 							<th class = "required">Storage Location</th>
-							<th>Storage State</th>
+							<th>Longevity</th>
 							<th class = "required">Purchase Date</th>
 							<th>Expiry Date</th>
 							<th></th>
@@ -33,12 +33,15 @@
 					</thead>
 					<tbody>
 						<tr class="table-info">
-							<td><input type="text" data-ng-model="ctrl.item.name" id="name" class="form-control input-sm" placeholder="Item name"
-								form="asyncForm" data-ng-required="true" uib-typeahead="rItem as rItem.rName for rItem in ctrl.repoItems | filter:$viewValue | limitTo:10" 
-								typeahead-on-select="ctrl.test($item, ctrl.item, $label, $event)"/>
-								<!-- uib-typeahead="rItem as rItem.rName for rItem in ctrl.repoItems | filter:$viewValue | limitTo:10" /> -->
+							<td>
+								<div class = "name-typeahead">
+									<input type="text" data-ng-model="ctrl.item.name" id="name" class="form-control input-sm" placeholder="Item name"
+										form="asyncForm" data-ng-required="true" uib-typeahead="rItem as rItem.rName for rItem in ctrl.repoItems | filter:$viewValue | limitTo:10" 
+										typeahead-on-select="ctrl.test($item, ctrl.item, $label, $event)"/>
+								</div>
 							</td>
-							<td><select name="storage_state" class="form-control"
+							<td>
+								<select name="storage_state" class="form-control"
 								data-ng-model="ctrl.item.storageState" data-ng-required="true" form="asyncForm">
 									<option value="" disabled selected>Select storage
 										option</option>
@@ -98,7 +101,7 @@
 		</div>
 	</div>
 	<script
-		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"
+		src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.10/angular.min.js"
 		type="text/javascript">
 	</script>
 	<script src="<c:url value='/static/js/app.js' />"
@@ -118,12 +121,6 @@
 	<script src="<c:url value='/static/js/service/repo_item_service.js' />"
 		type="text/javascript">
 	</script>
-	<script
-		 src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
-	</script>
-	<script
-	 	src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js">
-	 </script>
 
 </body>
 </html>

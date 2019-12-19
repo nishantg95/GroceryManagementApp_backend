@@ -28,7 +28,7 @@
 	</div>
 	<!-- Script includes for js files -->
 		<script
-		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"
+		src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.10/angular.min.js"
 		type="text/javascript"></script>
 	<script src="<c:url value='/static/js/app.js' />"
 		type="text/javascript"></script>

@@ -6,31 +6,7 @@ body {
 	background: linear-gradient(to right, #2F80ED, #56CCF2);
 	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-/* 
-h2 {
-	line-height: 400px;
-	height: 250px;
-	text-align: center;
-	font-size: 45px;
-	color: white;
-}
 
-h3 {
-	line-height: 200px;
-	height: 150px;
-	text-align: center;
-	color: white;
-}
-
-p {
-	text-align: center;
-	color: white;
-}
-
-td,table {
-    align: center;
-}
- */
 #center_button {
 	text-align: center;
 }
@@ -59,38 +35,11 @@ td,table {
 	margin: 0 auto;
 }
 /* Bootstrap style CSS for autocomplete */
-.ui-autocomplete {
-	position: absolute;
-	top: 100%;
-	left: 0;
-	z-index: 1000;
-	float: left;
-	display: none;
-	min-width: 160px;
-	padding: 4px 0;
-	margin: 0 0 10px 25px;
-	list-style: none;
-	background-color: #ffffff;
-	border-color: #ccc;
-	border-color: rgba(0, 0, 0, 0.2);
-	border-style: solid;
-	border-width: 1px;
-	max-height: 50vh;
-	overflow-y: auto;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-	-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-	-webkit-background-clip: padding-box;
-	-moz-background-clip: padding;
-	background-clip: padding-box;
-	*border-right-width: 2px;
-	*border-bottom-width: 2px;
+.name-typeahead .dropdown-menu {
+
 }
 
-.ui-menu-item>a.ui-corner-all {
+.name-typeahead .dropdown-menu li a {
 	display: block;
 	padding: 3px 15px;
 	clear: both;
@@ -101,18 +50,12 @@ td,table {
 	text-decoration: none;
 }
 
-.ui-state-hover, .ui-state-active {
-	color: #ffffff;
+.name-typeahead .dropdown-menu li.active a{
+	color: white;
 	text-decoration: none;
-	background-color: #0088cc;
+	background-color: #007bff;
 	border-radius: 0px;
 	-webkit-border-radius: 0px;
 	-moz-border-radius: 0px;
 	background-image: none;
-}
-.ui-helper-hidden-accessible {
-	position: absolute; left:-999em;
-}
-.tablecontainer{
-	overflow:auto;
 }
