@@ -113,3 +113,6 @@ td,table {
 .ui-helper-hidden-accessible {
 	position: absolute; left:-999em;
 }
+.tablecontainer{
+	overflow:auto;
+}

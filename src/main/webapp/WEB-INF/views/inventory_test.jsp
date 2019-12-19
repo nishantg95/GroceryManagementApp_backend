@@ -23,10 +23,10 @@
 				<table class="table table-light table-hover">
 					<thead>
 						<tr>
-							<th>Name</th>
-							<th>Storage Location</th>
+							<th class = "required">Name</th>
+							<th class = "required">Storage Location</th>
 							<th>Storage State</th>
-							<th>Purchase Date</th>
+							<th class = "required">Purchase Date</th>
 							<th>Expiry Date</th>
 							<th></th>
 						</tr>

@@ -37,5 +37,12 @@
 	<script
 		src="<c:url value='/static/js/controller/item_controller.js' />"
 		type="text/javascript"></script>
+			<script
+		src="<c:url value='/static/js/ui-bootstrap.min.js' />"
+		type="text/javascript">
+	</script>
+		<script src="<c:url value='/static/js/service/repo_item_service.js' />"
+		type="text/javascript">
+	</script>
 </body>
 </html>
