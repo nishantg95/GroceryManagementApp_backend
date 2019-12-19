@@ -29,11 +29,6 @@ public class RepoItemController {
 	@Autowired
 	private RepoItemManager repoItemManager;
 
-	@RequestMapping(value = "test", method = RequestMethod.GET)
-	public String homePage() {
-		return "autocomplete";
-	}
-
 	@RequestMapping(value = "/listAllRepoItems", method = RequestMethod.GET)
 	public ResponseEntity<List<RepoItemEntity>> listAllRepoItems() {
 		List<RepoItemEntity> repoItems = this.repoItemManager.findAllRepoItems();
