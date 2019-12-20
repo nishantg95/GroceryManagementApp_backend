@@ -2,8 +2,11 @@ GRANT ALL PRIVILEGES ON grocerymanagementapp.* TO 'groot'@'localhost';
 USE grocerymanagementapp;
 CREATE TABLE ITEM(
     id INT NOT NULL auto_increment, 
-    name VARCHAR(50) NOT NULL,
-    expiry VARCHAR(30),
+    name VARCHAR(200) NOT NULL,
+    purchase_date DATE NOT NULL,
+    storage_state VARCHAR(18) NULL DEFAULT NULL,
+    shelf_life VARCHAR(30) NULL DEFAULT NULL,
+    expiry_date DATE,
     PRIMARY KEY (id)
 );
 
@@ -44,7 +47,7 @@ CREATE TABLE `grocerymanagementapp`.`repository_items` (
   
   -----------------------------------------------
   CREATE TABLE `grocerymanagementapp`.`repo_items` (
-  `r_item_id` INT(11) NOT NULL ,
+  `r_item_id` INT(11) NOT NULL AUTO_INCREMENT,
   `r_item_name` VARCHAR(45) NOT NULL ,
   `r_refigerate_date` VARCHAR(45) NULL DEFAULT NULL ,
   `r_pantry_date` VARCHAR(45) NULL DEFAULT NULL ,

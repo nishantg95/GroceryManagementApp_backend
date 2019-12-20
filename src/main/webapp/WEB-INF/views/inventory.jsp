@@ -64,7 +64,7 @@
 							<th>
 								<button type="submit" class="btn btn-success"
 									data-toggle="tooltip" data-placement="right" title="Submit"
-									form="asyncForm">
+									form="asyncForm" id="addChangeButton">
 									<i class="fas fa-plus"></i>
 								</button>
 								<button type="button" data-ng-click="ctrl.reset()"
