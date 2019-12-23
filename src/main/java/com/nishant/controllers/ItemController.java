@@ -1,8 +1,9 @@
 package com.nishant.controllers;
 
 import java.util.List;
-import java.util.logging.Logger;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -32,7 +33,7 @@ import com.nishant.views.ItemView;
 @RequestMapping(value = "/data")
 public class ItemController {
 
-	private static final Logger LOGGER = Logger.getLogger(Thread.currentThread().getStackTrace()[0].getClassName());
+	private static final Logger LOGGER = LogManager.getLogger(ItemController.class);
 
 	@Autowired
 	private ItemManager itemManager;
@@ -49,10 +50,10 @@ public class ItemController {
 
 	@RequestMapping(value = "/createItem", method = RequestMethod.POST)
 	public ResponseEntity<Void> createItem(@RequestBody ItemView itemView, UriComponentsBuilder ucBuilder) {
-		LOGGER.info("Creating Item " + itemView.getName());
+		LOGGER.debug("Creating Item " + itemView.getName());
 
 		if (this.itemManager.isItemExist(itemView)) {
-			LOGGER.info("A Item with name " + itemView.getName() + " already exist");
+			LOGGER.debug("A Item with name " + itemView.getName() + " already exist");
 			return new ResponseEntity<>(HttpStatus.CONFLICT);
 
 		}
@@ -75,11 +76,11 @@ public class ItemController {
 	 */
 	@RequestMapping(value = "/deleteItem/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<ItemView> deleteItem(@PathVariable("id") Integer id) {
-		LOGGER.info("Fetching & Deleting Item with id " + id);
+		LOGGER.debug("Fetching & Deleting Item with id " + id);
 
 		ItemView itemView = this.itemManager.findById(id);
 		if (itemView == null) {
-			LOGGER.info("Unable to delete. Item with id " + id + " not found");
+			LOGGER.debug("Unable to delete. Item with id " + id + " not found");
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 
@@ -98,10 +99,10 @@ public class ItemController {
 	 */
 	@RequestMapping(value = "/getItem/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ItemView> getItem(@PathVariable("id") Integer id) {
-		LOGGER.info("Fetching Item with id " + id);
+		LOGGER.debug("Fetching Item with id " + id);
 		ItemView itemView = this.itemManager.findById(id);
 		if (itemView == null) {
-			LOGGER.info("Item with id " + id + " not found");
+			LOGGER.debug("Item with id " + id + " not found");
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<>(itemView, HttpStatus.OK);
@@ -117,9 +118,9 @@ public class ItemController {
 	 */
 	@RequestMapping(value = "/listAllItems", method = RequestMethod.GET)
 	public ResponseEntity<List<ItemView>> listAllItems(@RequestHeader HttpHeaders header) {
-		LOGGER.info(header.get(HttpHeaders.USER_AGENT).toString());
+		LOGGER.debug(header.get(HttpHeaders.USER_AGENT).toString());
 		List<ItemView> items = this.itemManager.findAllItems();
-		LOGGER.info("Items:" + items.toString());
+		LOGGER.debug("Items:" + items.toString());
 		if (items.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
@@ -136,12 +137,12 @@ public class ItemController {
 	 */
 	@RequestMapping(value = "/updateItem/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<ItemView> updateItem(@PathVariable("id") Integer id, @RequestBody ItemView itemView) {
-		LOGGER.info("Updating Item " + id);
+		LOGGER.debug("Updating Item " + id);
 
 		ItemView currentItem = this.itemManager.findById(id);
 
 		if (currentItem == null) {
-			LOGGER.info("Item with id " + id + " not found");
+			LOGGER.debug("Item with id " + id + " not found");
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 

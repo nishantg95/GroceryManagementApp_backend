@@ -1,17 +1,13 @@
 package com.nishant.controllers;
 
-import java.util.logging.Logger;
-
 import javax.validation.Valid;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.nishant.entities.ItemEntity;
 import com.nishant.views.ItemView;
 
 /***
@@ -26,8 +22,6 @@ import com.nishant.views.ItemView;
  */
 @Controller
 public class AppViewController {
-
-	private static final Logger LOGGER = Logger.getLogger(Thread.currentThread().getStackTrace()[0].getClassName());
 
 	/***
 	 * <p>
@@ -64,11 +58,8 @@ public class AppViewController {
 	 * @return
 	 */
 	@RequestMapping(value = "/viewItem", method = RequestMethod.POST)
-	public ModelAndView submit(@Valid @ModelAttribute("item") ItemEntity item) {
-		ItemView itemView = new ItemView();
-		BeanUtils.copyProperties(item, itemView);
-		LOGGER.info(itemView.toString());
-		return new ModelAndView("itemView", "item", itemView);
+	public ModelAndView submit(@Valid @ModelAttribute("item") ItemView item) {
+		return new ModelAndView("itemView", "item", item);
 	}
 
 	/***
