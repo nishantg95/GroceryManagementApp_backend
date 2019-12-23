@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.nishant.models.RepoItemsModel;
+import com.nishant.interfaces.RepoItemsInterface;
 
 /**
  * @author nishant.b.grover
@@ -18,7 +18,7 @@ import com.nishant.models.RepoItemsModel;
  */
 @Entity
 @Table(name = "REPO_ITEMS")
-public class RepoItemEntity implements RepoItemsModel {
+public class RepoItemEntity implements RepoItemsInterface {
 	@Id
 	@Column(name = "R_ITEM_ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

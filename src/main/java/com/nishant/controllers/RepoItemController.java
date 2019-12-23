@@ -24,7 +24,7 @@ import com.nishant.managers.RepoItemManager;
 @RequestMapping(value = "/repo")
 public class RepoItemController {
 
-	private static final Logger LOGGER = Logger.getLogger(Thread.currentThread().getStackTrace()[0].getClassName());
+	private static final Logger LOGGER = Logger.getLogger(RepoItemController.class.toString());
 
 	@Autowired
 	private RepoItemManager repoItemManager;
@@ -32,7 +32,7 @@ public class RepoItemController {
 	@RequestMapping(value = "/listAllRepoItems", method = RequestMethod.GET)
 	public ResponseEntity<List<RepoItemEntity>> listAllRepoItems() {
 		List<RepoItemEntity> repoItems = this.repoItemManager.findAllRepoItems();
-		LOGGER.info(String.valueOf(repoItems.size()));
+		LOGGER.finer(String.valueOf(repoItems.size()));
 		// TODO:implement isEmpty
 //		if (repoItems.isEmpty()) {
 //			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

@@ -21,7 +21,8 @@
 		<hibernate.version>5.1.0.Final</hibernate.version>     <!--Newer versions 5.4.X available -->
 		<mysql.connector.version>8.0.18</mysql.connector.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
-    	<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<log4j.version>2.13.0</log4j.version>  
 	</properties>
 
 	<dependencies>
@@ -89,6 +90,18 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>${hibernate.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j.version}</version>
 		</dependency>
 
 	</dependencies>
