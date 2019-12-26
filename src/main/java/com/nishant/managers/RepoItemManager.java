@@ -15,4 +15,9 @@ public interface RepoItemManager {
 
 	List<RepoItemEntity> findAllRepoItems();
 
+	/**
+	 * @param repoItem
+	 */
+	void saveItem(RepoItemEntity repoItem);
+
 }

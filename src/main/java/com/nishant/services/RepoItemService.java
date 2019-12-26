@@ -15,4 +15,10 @@ public interface RepoItemService {
 
 	List<RepoItemEntity> findAllRepoItems();
 
+	/**
+	 * @param repoItem
+	 * @return
+	 */
+	RepoItemEntity saveRepoItem(RepoItemEntity repoItem);
+
 }

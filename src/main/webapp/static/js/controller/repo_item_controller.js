@@ -5,10 +5,13 @@
 		.module('itemTracker')
 		.controller('RepoItemController',RepoItemController);
 	
-	RepoItemController.inject = ['$scope', 'RepoItemService','$log'];
+	RepoItemController.inject = ['RepoItemService','$log'];
 	
-	function RepoItemController($scope, RepoItemService,$log){
+	function RepoItemController(RepoItemService,$log){
+		var self = this;
+		self.repoItem = {repoItemId:null, repoItemName:'',repoRefigerateDate:'', repoPantryDate:null, repoFreezerDate:null};
 		self.repoItems = [];
+		
 		fetchAllRepoItems();
 		
 	    function fetchAllRepoItems(){

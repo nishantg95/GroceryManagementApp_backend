@@ -28,4 +28,9 @@ public class RepoItemServiceImpl implements RepoItemService {
 		return this.repoItemDao.findAllRepoItems();
 	}
 
+	@Override
+	public RepoItemEntity saveRepoItem(RepoItemEntity repoItem) {
+		return this.repoItemDao.saveRepoItem(repoItem);
+	}
+
 }

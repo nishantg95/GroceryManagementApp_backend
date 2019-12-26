@@ -15,4 +15,10 @@ public interface RepoItemDao {
 
 	List<RepoItemEntity> findAllRepoItems();
 
+	/**
+	 * @param repoItem
+	 * @return
+	 */
+	RepoItemEntity saveRepoItem(RepoItemEntity repoItem);
+
 }
