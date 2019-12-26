@@ -5,9 +5,9 @@
 	.module('itemTracker')
 	.controller('ItemController',ItemController);
 
-	ItemController.inject = ['$scope', 'ItemService', 'RepoItemService','$log'];
+	ItemController.inject = ['ItemService', 'RepoItemService','$log'];
 
-	function ItemController($scope, ItemService, RepoItemService, $log){
+	function ItemController(ItemService, RepoItemService, $log){
 		var self = this;
 		self.item = {id:null, name:'',shelfLife:'', purchaseDate:null, expiryDate:null, storageState:''};
 		self.items = [];
@@ -104,7 +104,6 @@
 
 		function reset(){
 			self.item={id:null, name:'',shelfLife:'', purchaseDate:null, expiryDate:null, storageState:''};
-//			$scope.asyncForm.$setPristine(); //reset Form
 		}
 		function test($item, $model, $label, $event){
 			$log.log("item=",$item, "model=",$model, "label=",$label, "event=",$event);

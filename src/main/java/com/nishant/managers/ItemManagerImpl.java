@@ -2,8 +2,9 @@ package com.nishant.managers;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ import com.nishant.views.ItemView;
 @Service
 public class ItemManagerImpl implements ItemManager {
 
-	private static final Logger LOGGER = Logger.getLogger(ItemManagerImpl.class.toString());
+	private static final Logger LOGGER = LogManager.getLogger(ItemManagerImpl.class);
 
 	@Autowired
 	private ItemService itemService;
@@ -24,7 +25,7 @@ public class ItemManagerImpl implements ItemManager {
 	@Override
 	public void deleteItemById(Integer id) {
 		Integer deletedCountManager = this.itemService.deleteItemById(id);
-		LOGGER.finer("Number of items deleted successfully = " + deletedCountManager);
+		LOGGER.debug("Number of items deleted successfully = " + deletedCountManager);
 	}
 
 	@Override
@@ -36,7 +37,7 @@ public class ItemManagerImpl implements ItemManager {
 			BeanUtils.copyProperties(itemEntity, itemView, ItemInterface.class);
 			itemViewList.add(itemView);
 		}
-		LOGGER.finer("Returning all items fetched");
+		LOGGER.debug("Returning all items fetched");
 		return itemViewList;
 	}
 
@@ -69,9 +70,9 @@ public class ItemManagerImpl implements ItemManager {
 		BeanUtils.copyProperties(item, itemEntity, ItemInterface.class);
 		itemEntity = this.itemService.saveItem(itemEntity);
 		if (itemEntity.getId() != null) {
-			LOGGER.finer("Following Item was saved successfully" + item);
+			LOGGER.debug("Following Item was saved successfully" + item);
 		} else {
-			LOGGER.finer("Following Item saved failed" + item);
+			LOGGER.debug("Following Item saved failed" + item);
 		}
 
 	}
@@ -82,9 +83,9 @@ public class ItemManagerImpl implements ItemManager {
 		BeanUtils.copyProperties(item, itemEntity, ItemInterface.class);
 		itemEntity = this.itemService.updateItem(itemEntity);
 		if (!itemEntity.equals(item)) {
-			LOGGER.finer("Following Item update failed" + item + "; updatedItem recieved " + itemEntity);
+			LOGGER.debug("Following Item update failed" + item + "; updatedItem recieved " + itemEntity);
 		} else {
-			LOGGER.finer("Following Item was updated successfully" + item + " to " + itemEntity);
+			LOGGER.debug("Following Item was updated successfully" + item + " to " + itemEntity);
 		}
 
 	}
