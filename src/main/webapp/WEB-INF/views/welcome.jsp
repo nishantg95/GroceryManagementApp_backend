@@ -7,7 +7,7 @@
 <jsp:include page="head.jsp" />  
 </head>
 
-<body ng-app="myApp">
+<body ng-app="itemTracker">
 	<div class="jumbotron text-center jumbotron-fluid">
 		<div class="container" ng-controller="ItemController as ctrl" ng-model="ctrl.items">
 			<h2>Welcome Back, Nishant!!</h2>
@@ -28,7 +28,7 @@
 	</div>
 	<!-- Script includes for js files -->
 		<script
-		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"
+		src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.10/angular.min.js"
 		type="text/javascript"></script>
 	<script src="<c:url value='/static/js/app.js' />"
 		type="text/javascript"></script>
@@ -37,5 +37,12 @@
 	<script
 		src="<c:url value='/static/js/controller/item_controller.js' />"
 		type="text/javascript"></script>
+			<script
+		src="<c:url value='/static/js/ui-bootstrap.min.js' />"
+		type="text/javascript">
+	</script>
+		<script src="<c:url value='/static/js/service/repo_item_service.js' />"
+		type="text/javascript">
+	</script>
 </body>
 </html>

@@ -6,56 +6,56 @@ body {
 	background: linear-gradient(to right, #2F80ED, #56CCF2);
 	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-/* 
-h2 {
-	line-height: 400px;
-	height: 250px;
-	text-align: center;
-	font-size: 45px;
-	color: white;
-}
 
-h3 {
-	line-height: 200px;
-	height: 150px;
-	text-align: center;
-	color: white;
-}
-
-p {
-	text-align: center;
-	color: white;
-}
-
-td,table {
-    align: center;
-}
- */
-#center_button{
+#center_button {
 	text-align: center;
 }
 /************************************ Page speciifc style elements **************************************/
 
-	/*welcome.jsp */
+/*welcome.jsp */
 .bar {
 	text-align: center;
 	width: 50%;
 	margin: 15px auto;
 }
 
-	/*addItemForm.jsp */
-	
-.required:after { 
-   	content:" *";
-   	color:red
+/*addItemForm.jsp */
+.required:after {
+	content: " *";
+	color: red
 }
-.requiredfootnote:before { 
-   	content:"* ";
-   	color:red
+
+.requiredfootnote:before {
+	content: "* ";
+	color: red
 }
-	/* inventory.jsp */
+/* inventory.jsp */
 #inner {
 	width: 50%;
 	margin: 0 auto;
 }
+/* Bootstrap style CSS for autocomplete */
+.name-typeahead .dropdown-menu {
 
+}
+
+.name-typeahead .dropdown-menu li a {
+	display: block;
+	padding: 3px 15px;
+	clear: both;
+	font-weight: normal;
+	line-height: 18px;
+	color: #555555;
+	white-space: nowrap;
+	text-decoration: none;
+}
+
+.name-typeahead .dropdown-menu li.active a{
+	color: white;
+	text-decoration: none;
+	background-color: #007bff;
+	border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	background-image: none;
+}

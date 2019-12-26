@@ -2,14 +2,14 @@
 	'use strict'
 	
 	angular
-		.module('myApp')
+		.module('itemTracker')
 		.factory('RepoItemService', RepoItemService);
 	
 	RepoItemService.inject = ['$http','$log'];
 	
 	function RepoItemService($http,$log){
 		
-		var REST_SERVICE_URI = "/GroceryManagementApp/data/repo";
+		var REST_SERVICE_URI = "/GroceryManagementApp/repo";
 		var factory = {
 				fetchAllRepoItems: fetchAllRepoItems,
 		};

@@ -2,7 +2,7 @@
 	'use strict';
 	
 	angular
-		.module('myApp')
+		.module('itemTracker')
 		.controller('RepoItemController',RepoItemController);
 	
 	RepoItemController.inject = ['$scope', 'RepoItemService','$log'];
@@ -16,7 +16,7 @@
 	            .then(
 	            function(d) {
 	                self.repoItems = d;
-	                $log.debug("Fetching Repoitems "+self.repoItems);
+	                $log.debug("Fetching Repoitems");
 	            },
 	            function(errResponse){
 	                $log.error('Error while fetching RepoItems');

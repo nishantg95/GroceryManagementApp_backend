@@ -9,11 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.nishant.models.ItemModel;
+import com.nishant.interfaces.ItemInterface;
 
 @Entity
 @Table(name = "ITEM")
-public class ItemEntity implements ItemModel {
+public class ItemEntity implements ItemInterface {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

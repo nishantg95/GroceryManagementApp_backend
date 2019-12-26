@@ -6,18 +6,18 @@ package com.nishant.views;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.nishant.models.ItemModel;
+import com.nishant.interfaces.ItemInterface;
 
 /**
  * <p>
- * This class implements the itemModel interface defined in com.nishant.models.
+ * This class implements the itemModel interface defined in com.nishant.interfaces.
  * *
  * </p>
  * 
  * @author nishant.b.grover
  *
  */
-public class ItemView implements ItemModel {
+public class ItemView implements ItemInterface {
 
 	private Integer id;
 

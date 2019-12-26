@@ -83,7 +83,7 @@ public class HibernateConfig {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setDataSource(this.dataSource());
 		sessionFactory
-				.setPackagesToScan(new String[] { "com.nishant.models", "com.nishant.entities", "com.nishant.views" });
+				.setPackagesToScan(new String[] { "com.nishant.entities"});
 		sessionFactory.setHibernateProperties(this.hibernateProperties());
 
 		return sessionFactory;
