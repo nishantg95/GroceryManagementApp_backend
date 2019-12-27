@@ -10,13 +10,14 @@
 
 <body>
 	<div class="container">
-		<div class="row justify-content-center">
+		<div class="row justify-content-center p-5">
 			<h3>Admin Panel</h3>
 		</div>
 		<div class="container-fluid ">
 			<div class="row justify-content-center">
-				<div class="col-auto">
-				<table id="syncFormResult" class="table-sm table-borderless table-responsive">
+				<div class="col-auto p-3">
+				<h6> Added following item to the Repo</h6>
+				<table id="syncFormResult" class="table table-borderless table-responsive p-3 .w-auto">
 					<tr>
 						<td>Item Name :</td>
 						<td>${repoItem.rName}</td>
@@ -37,7 +38,7 @@
 				</div>
 				<div data-ng-app="itemTracker" >
 					<table data-ng-controller="RepoItemController as ctrl" 
-						class="table table-light table-hover" id="repo_items">
+						class="table table-light table-hover .w-auto p-3" id="repo_items">
 						<thead>
 							<tr>
 								<th>ID</th>
@@ -49,7 +50,7 @@
 						</thead>
 						<tbody>
 							<tr data-ng-repeat="i in ctrl.repoItems">
-								<td data-ng-bind="i.rId"></td>
+								<td data-ng-bind="i.rId" ng-hide=${"${repoItem.rName}"==""} 	></td>
 								<td data-ng-bind="i.rName"></td>
 								<td data-ng-bind="i.rFridgeDate"></td>
 								<td data-ng-bind="i.rFreezeDate"></td>

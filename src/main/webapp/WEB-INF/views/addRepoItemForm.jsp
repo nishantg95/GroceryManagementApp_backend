@@ -9,7 +9,7 @@
 
     <body>
     	<div class="container">
-    		<div class="row justify-content-center p-3">
+    		<div class="row justify-content-center p-5">
         		<h3>Enter new Autocomplete item</h3>
 			</div>
         <div class="row justify-content-center p-5 ">
@@ -46,7 +46,7 @@
 	        </form:form>
         </div>
         <div class="row justify-content-center p-3">
-			<button id="backFromAsync" onclick="window.location.href = 'welcome';">Back</button>
+			<button id="backFromAsync" onclick="window.location.href = '../welcome';">Back</button>
 		</div>
 		</div>      
     </body>

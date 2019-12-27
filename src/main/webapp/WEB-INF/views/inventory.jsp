@@ -13,15 +13,15 @@
 <body data-ng-app="itemTracker">
 	<div class="container-fluid"
 		data-ng-controller="ItemController as ctrl">
-		<div class="row justify-content-center p-3">
+		<div class="row justify-content-center p-5">
 			<h3>Items Available</h3>
 		</div>
 		<form  autocomplete ="off" data-ng-submit="ctrl.submit()" id="asyncForm"
 			class="form-inline">
 		</form>
 		<div class="panel">
-			<div class="tablecontainer p-3">
-				<table class="table table-light table-hover" id="items">
+			<div class="tablecontainer">
+				<table class="table table-light table-hover .w-auto" id="items">
 					<thead>
 						<tr>
 							<th class = "required">Name</th>
@@ -62,17 +62,19 @@
 								id="expiry_date" class="form-control input-sm"
 								placeholder="Expiry date" form="asyncForm" /></td>
 							<th>
-								<button type="submit" class="btn btn-success"
-									data-toggle="tooltip" data-placement="right" title="Submit"
-									form="asyncForm" id="addChangeButton">
-									<i class="fas fa-plus"></i>
-								</button>
-								<button type="button" data-ng-click="ctrl.reset()"
-									class="btn btn-primary" form="asyncForm"
-									data-ng-disabled="asyncForm.$pristine" data-toggle="tooltip"
-									data-placement="right" title="Clear">
-									<i class="fas fa-backspace"></i>
-								</button>
+								<div class="text-nowrap">
+									<button type="submit" class="btn btn-success"
+										data-toggle="tooltip" data-placement="right" title="Submit"
+										form="asyncForm" id="addChangeButton">
+										<i class="fas fa-plus"></i>
+									</button>
+									<button type="button" data-ng-click="ctrl.reset()"
+										class="btn btn-primary" form="asyncForm"
+										data-ng-disabled="asyncForm.$pristine" data-toggle="tooltip"
+										data-placement="right" title="Clear">
+										<i class="fas fa-backspace"></i>
+									</button>
+								</div>
 							</th>
 						</tr>
 					</thead>
@@ -85,14 +87,16 @@
 							<td data-ng-bind="i.purchaseDate|date:'MM-dd-yyyy'"></td>
 							<td data-ng-bind="i.expiryDate|date:'MM-dd-yyyy'"></td>
 							<td>
-								<button type="button" data-ng-click="ctrl.edit(i)"
-									class="btn btn-warning">
-									<i class="fas fa-edit"></i>
-								</button>
-								<button type="button" data-ng-click="ctrl.remove(i.id)"
-									class="btn btn-danger">
-									<i class="fas fa-trash"></i>
-								</button>
+								<div class="text-nowrap">
+									<button type="button" data-ng-click="ctrl.edit(i)"
+										class="btn btn-warning">
+										<i class="fas fa-edit"></i>
+									</button>
+									<button type="button" data-ng-click="ctrl.remove(i.id)"
+										class="btn btn-danger">
+										<i class="fas fa-trash"></i>
+									</button>
+								</div>
 							</td>
 						</tr>
 

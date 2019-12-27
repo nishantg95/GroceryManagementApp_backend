@@ -7,9 +7,9 @@
 <jsp:include page="head.jsp" />  
 </head>
 
-<body ng-app="itemTracker">
+<body data-ng-app="itemTracker">
 	<div class="jumbotron text-center jumbotron-fluid">
-		<div class="container" ng-controller="ItemController as ctrl" ng-model="ctrl.items">
+		<div class="container" data-ng-controller="ItemController as ctrl" data-ng-model="ctrl.items">
 			<h2>Welcome Back, Nishant!!</h2>
 			<p>You have <span>{{ctrl.items.length}}</span> ingredients in your inventory.</p>
 		</div>
@@ -22,7 +22,7 @@
 		</p>
 	</div>
 	<div id="center_button">
-		<button id="syncPageLink" onclick="window.location.href = 'addItemForm';">Add new item</button>
+		<button id="syncPageLink" onclick="window.location.href = 'repo/addRepoItemForm';">Admin Panel</button>
 		<button id="asyncPageLink" onclick="window.location.href = 'inventory';">View Inventory</button>
 	</div>
 	</div>

@@ -7,7 +7,7 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="com.nishant" level="debug" additivity="true">
+        <Logger name="com.nishant" level="debug" additivity="false">
             <appender-ref ref="console" level="debug" />
         </Logger>
         <Root level="ERROR" additivity="false">
