@@ -5,15 +5,18 @@ package com.nishant.views;
 
 import java.util.Date;
 
+import org.springframework.beans.BeanUtils;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.nishant.entities.ItemEntity;
 import com.nishant.interfaces.ItemInterface;
 
 /**
  * <p>
- * This class implements the itemModel interface defined in com.nishant.interfaces.
- * *
+ * This class implements the itemModel interface defined in
+ * com.nishant.interfaces. *
  * </p>
- * 
+ *
  * @author nishant.b.grover
  *
  */
@@ -34,6 +37,22 @@ public class ItemView implements ItemInterface {
 
 	@JsonFormat(pattern = "MM-dd-yyyy", timezone = "CST")
 	private Date expiryDate;
+
+	/**
+	 *
+	 */
+	public ItemView() {
+		super();
+		// Default Constructor
+	}
+
+	/**
+	 * This Constructor initializes itemView with the bean type ItemEntity (passed
+	 * as a parameter)
+	 */
+	public ItemView(ItemEntity itemEntity) {
+		BeanUtils.copyProperties(itemEntity, this, ItemInterface.class);
+	}
 
 	@Override
 	public Date getExpiryDate() {

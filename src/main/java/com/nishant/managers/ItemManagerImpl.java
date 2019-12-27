@@ -33,8 +33,8 @@ public class ItemManagerImpl implements ItemManager {
 		List<ItemView> itemViewList = new ArrayList<>();
 		List<ItemEntity> itemEntityList = this.itemService.findAllItems();
 		for (ItemEntity itemEntity : itemEntityList) {
-			ItemView itemView = new ItemView();
-			BeanUtils.copyProperties(itemEntity, itemView, ItemInterface.class);
+			ItemView itemView = new ItemView(itemEntity);
+//			BeanUtils.copyProperties(itemEntity, itemView, ItemInterface.class);
 			itemViewList.add(itemView);
 		}
 		LOGGER.debug("Returning all items fetched");
@@ -44,16 +44,16 @@ public class ItemManagerImpl implements ItemManager {
 	@Override
 	public ItemView findById(Integer id) {
 		ItemEntity itemEntity = this.itemService.findById(id);
-		ItemView itemView = new ItemView();
-		BeanUtils.copyProperties(itemEntity, itemView, ItemInterface.class);
+		ItemView itemView = new ItemView(itemEntity);
+//		BeanUtils.copyProperties(itemEntity, itemView, ItemInterface.class);
 		return itemView;
 	}
 
 	@Override
 	public ItemView findByName(String name) {
 		ItemEntity itemEntity = this.itemService.findByName(name);
-		ItemView itemView = new ItemView();
-		BeanUtils.copyProperties(itemEntity, itemView, ItemInterface.class);
+		ItemView itemView = new ItemView(itemEntity);
+//		BeanUtils.copyProperties(itemEntity, itemView, ItemInterface.class);
 		return itemView;
 	}
 
