@@ -22,7 +22,7 @@
 		</p>
 	</div>
 	<div id="center_button">
-		<button id="syncPageLink" onclick="window.location.href = 'repo/addRepoItemForm';">Admin Panel</button>
+		<button id="syncPageLink" onclick="window.location.href = 'repo/viewRepoItems';">Admin Panel</button>
 		<button id="asyncPageLink" onclick="window.location.href = 'inventory';">View Inventory</button>
 	</div>
 	</div>

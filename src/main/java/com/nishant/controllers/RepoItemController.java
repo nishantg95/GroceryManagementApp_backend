@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.nishant.entities.RepoItemEntity;
 import com.nishant.managers.RepoItemManager;
@@ -64,15 +66,13 @@ public class RepoItemController {
 	 * @return
 	 */
 	@RequestMapping(value = "/viewRepoItems", method = RequestMethod.POST)
-	public ModelAndView viewRepoItems(@Valid @ModelAttribute("repoItem") RepoItemEntity repoItem) {
+	public View viewRepoItems(@Valid @ModelAttribute("repoItem") RepoItemEntity repoItem) {
 		this.repoItemManager.saveItem(repoItem);
-		return new ModelAndView("viewRepoItems", "repoItem", repoItem);
+		return new RedirectView("viewRepoItems");
 	}
 
 	@RequestMapping(value = "/viewRepoItems", method = RequestMethod.GET)
-	public ModelAndView viewRepoItemsGet() {
-		RepoItemEntity reiEntity = new RepoItemEntity();
-		LOGGER.debug(reiEntity.toString());
-		return new ModelAndView("viewRepoItems", "repoItem", reiEntity);
+	public String viewRepoItemsGet() {
+		return "viewRepoItems";
 	}
 }
