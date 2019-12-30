@@ -120,7 +120,7 @@ public class ItemController {
 	public ResponseEntity<List<ItemView>> listAllItems(@RequestHeader HttpHeaders header) {
 		LOGGER.debug(header.get(HttpHeaders.USER_AGENT).toString());
 		List<ItemView> items = this.itemManager.findAllItems();
-		LOGGER.debug("Items:" + items.toString());
+		LOGGER.debug("fetched " + items.size() + " items.");
 		if (items.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}

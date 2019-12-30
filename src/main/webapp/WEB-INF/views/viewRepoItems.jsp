@@ -50,7 +50,7 @@
 						</thead>
 						<tbody>
 							<tr data-ng-repeat="i in ctrl.repoItems">
-								<td data-ng-bind="i.rId" ng-hide=${"${repoItem.rName}"==""} 	></td>
+								<td data-ng-bind="i.rId"></td>
 								<td data-ng-bind="i.rName"></td>
 								<td data-ng-bind="i.rFridgeDate"></td>
 								<td data-ng-bind="i.rFreezeDate"></td>

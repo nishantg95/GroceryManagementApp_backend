@@ -68,4 +68,11 @@ public class RepoItemController {
 		this.repoItemManager.saveItem(repoItem);
 		return new ModelAndView("viewRepoItems", "repoItem", repoItem);
 	}
+
+	@RequestMapping(value = "/viewRepoItems", method = RequestMethod.GET)
+	public ModelAndView viewRepoItemsGet() {
+		RepoItemEntity reiEntity = new RepoItemEntity();
+		LOGGER.debug(reiEntity.toString());
+		return new ModelAndView("viewRepoItems", "repoItem", reiEntity);
+	}
 }
