@@ -60,7 +60,7 @@
 							</th>
 							<th><input type="text" data-ng-model="ctrl.item.expiryDate"
 								id="expiry_date" class="form-control input-sm"
-								placeholder="Expiry date" form="asyncForm" /></td>
+								placeholder="Expiry date" form="asyncForm" />
 							<th>
 								<div class="text-nowrap">
 									<button type="submit" class="btn btn-success"
