@@ -11,7 +11,7 @@
 
 <body>
 	<div class="container" data-ng-app="itemTracker">
-		<div class="row justify-content-center p-5">
+		<div class="row justify-content-center p-3">
 			<h3>Admin Panel</h3>
 		</div>
 		<div class="row justify-content-center">
@@ -45,8 +45,9 @@
 						data-placement="right" title="Add new item to repo">
 						<i class="fas fa-plus"></i>
 					</button>
-					</div>
 				</div>
+			</div>
+			<div id=table_repo_items">
 				<table data-ng-controller="RepoItemController as ctrl"
 					class="table table-light table-hover .w-auto p-3" id="repo_items">
 					<thead>
@@ -69,6 +70,7 @@
 
 					</tbody>
 				</table>
+			</div>
 		</div>
 	</div>
 

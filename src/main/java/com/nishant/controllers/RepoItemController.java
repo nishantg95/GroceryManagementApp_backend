@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.nishant.entities.RepoItemEntity;
@@ -55,6 +55,11 @@ public class RepoItemController {
 		return new ResponseEntity<>(repoItems, HttpStatus.OK);
 	}
 
+	@RequestMapping(value = "/viewRepoItems", method = RequestMethod.GET)
+	public ModelAndView viewRepoItems(@ModelAttribute("repoItem") RepoItemEntity repoItem) {
+		return new ModelAndView("viewRepoItems", "repoItem", repoItem);
+	}
+
 	/***
 	 * <p>
 	 * This function receives a ItemEntity object
@@ -65,14 +70,12 @@ public class RepoItemController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "/viewRepoItems", method = RequestMethod.POST)
-	public View viewRepoItems(@Valid @ModelAttribute("repoItem") RepoItemEntity repoItem) {
-		this.repoItemManager.saveItem(repoItem);
-		return new RedirectView("viewRepoItems");
-	}
 
-	@RequestMapping(value = "/viewRepoItems", method = RequestMethod.GET)
-	public String viewRepoItemsGet() {
-		return "viewRepoItems";
+	@RequestMapping(value = "/viewRepoItems", method = RequestMethod.POST)
+	public RedirectView viewRepoItems(@Valid @ModelAttribute("repoItem") RepoItemEntity repoItem,
+			RedirectAttributes attributes) {
+		this.repoItemManager.saveItem(repoItem);
+		attributes.addFlashAttribute("repoItem", repoItem);
+		return new RedirectView("viewRepoItems");
 	}
 }
