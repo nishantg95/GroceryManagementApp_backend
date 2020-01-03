@@ -14,7 +14,7 @@ public interface ItemService {
 
 	ItemEntity findByName(String name);
 
-	public Boolean isItemExist(ItemEntity item);
+	Boolean isItemExist(ItemEntity item);
 
 	ItemEntity saveItem(ItemEntity item);
 

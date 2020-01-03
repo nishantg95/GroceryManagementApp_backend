@@ -14,7 +14,7 @@ public interface ItemManager {
 
 	ItemView findByName(String name);
 
-	public Boolean isItemExist(ItemView item);
+	Boolean isItemExist(ItemView item);
 
 	void saveItem(ItemView item);
 

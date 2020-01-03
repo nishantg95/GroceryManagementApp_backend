@@ -5,6 +5,9 @@ package com.nishant.daos;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -25,6 +28,8 @@ public class ItemDaoImpl implements ItemDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
+	@PersistenceContext
+	private EntityManager entityManager;
 
 	@Override
 	public Integer deleteItemById(Integer id) {

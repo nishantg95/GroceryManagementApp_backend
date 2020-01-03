@@ -9,9 +9,6 @@
         <version>2.2.2.RELEASE</version>
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
-
- 
-
     <groupId>com.nishant</groupId>
     <artifactId>GroceryManagementApp</artifactId>
     <packaging>jar</packaging>
@@ -19,48 +16,23 @@
     <name>GroceryManagement Maven Webapp</name>
     <url>http://maven.apache.org</url>
 
- 
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
- 
-<!--         <jackson.version>2.10.1</jackson.version> -->
-<!--         <jstl.version>1.2</jstl.version> -->
-<!--         <javax.servlet-api.version>3.1.0</javax.servlet-api.version> -->
-<!--         <standard.version>1.1.2</standard.version> -->
-<!--         <javax.validation.version>2.0.1.Final</javax.validation.version> -->
-<!--         <hibernate.version>5.1.0.Final</hibernate.version>     Newer versions 5.4.X available -->
-<!--         <mysql.connector.version>8.0.18</mysql.connector.version> -->
+        <standard.version>1.1.2</standard.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-<!--         <log4j.version>2.13.0</log4j.version> -->
     </properties>
 
- 
-
     <dependencies>
-        <!-- Spring MVC framework- Required <dependency> <groupId>org.springframework</groupId> 
-            <artifactId>spring-webmvc</artifactId> <version>${springframework.version}</version> 
-            </dependency> For hibernate integration with JPA,JDO,DAO <dependency> <groupId>org.springframework</groupId> 
-            <artifactId>spring-orm</artifactId> <version>${springframework.version}</version> 
-            </dependency> -->
-        <!-- For @transactional annotations, spring TX is included with Spring-orm -->
-
- 
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
- 
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-
- 
 
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
@@ -77,27 +49,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-<!--             <scope>runtime</scope> -->
         </dependency>
-        
-
- 
-
-<!--         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-        </dependency> -->
-        
-
- 
-
-        <!-- Jackson databind- for mapping JSON and Java contents -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-
- 
 
         <!-- Taglibs- for c:url usage, might not be needed since JSTL has this -->
         <dependency>
@@ -106,74 +58,20 @@
             <version>1.1.2</version>
         </dependency>
 
- 
-
         <!-- Javax- Servlet API- Required -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
         </dependency>
 
- 
-
-        <!-- JSTL- enables JSP functionalities -->
-<!--         <dependency> -->
-<!--             <groupId>javax.servlet</groupId> -->
-<!--             <artifactId>jstl</artifactId> -->
-<!--             <scope>provided</scope> -->
-<!--         </dependency> -->
-
- 
-
         <!-- Java Validation- bean validator @Valid -->
 <!--         <dependency> -->
 <!--             <groupId>javax.validation</groupId> -->
 <!--             <artifactId>validation-api</artifactId> -->
 <!--         </dependency> -->
-
- 
-
-        <!-- MYSQL -->
-<!--         <dependency> -->
-<!--             <groupId>mysql</groupId> -->
-<!--             <artifactId>mysql-connector-java</artifactId> -->
-<!--         </dependency> -->
-
- 
-
-        <!-- Hibernate -->
-        <!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-core</artifactId> 
-            </dependency> -->
-
- 
-
-<!--         <dependency> -->
-<!--             <groupId>org.apache.logging.log4j</groupId> -->
-<!--             <artifactId>log4j-api</artifactId> -->
-<!--         </dependency> -->
-
- 
-
-<!--         <dependency> -->
-<!--             <groupId>org.apache.logging.log4j</groupId> -->
-<!--             <artifactId>log4j-core</artifactId> -->
-<!--         </dependency> -->
-
- 
-
     </dependencies>
+
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
+        <finalName>GroceryManagementApp</finalName>
     </build>
-
- 
-
-<!--     <build> -->
-<!--         <finalName>GroceryManagementApp</finalName> -->
-<!--     </build> -->
 </project>
