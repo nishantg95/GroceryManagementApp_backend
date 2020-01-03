@@ -1,4 +1,4 @@
-package com.nishant.configurations;
+package com.nishant;
 
 import java.util.Properties;
 
