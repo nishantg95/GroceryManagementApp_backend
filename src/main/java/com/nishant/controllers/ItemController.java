@@ -7,16 +7,13 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import com.nishant.managers.ItemManager;
 import com.nishant.views.ItemView;
@@ -50,7 +47,7 @@ public class ItemController {
 	 */
 
 	@RequestMapping(value = "/createItem", method = RequestMethod.POST)
-	public ResponseEntity<Void> createItem(@RequestBody ItemView itemView, UriComponentsBuilder ucBuilder) {
+	public ResponseEntity<Void> createItem(@RequestBody ItemView itemView) {
 		LOGGER.debug("Creating Item " + itemView.getName());
 
 		if (this.itemManager.isItemExist(itemView)) {
@@ -61,9 +58,7 @@ public class ItemController {
 
 		this.itemManager.saveItem(itemView);
 
-		HttpHeaders headers = new HttpHeaders();
-		headers.setLocation(ucBuilder.path("/itemView/{id}").buildAndExpand(itemView.getId()).toUri());
-		return new ResponseEntity<>(headers, HttpStatus.CREATED);
+		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
 	/***
@@ -91,33 +86,12 @@ public class ItemController {
 
 	/***
 	 * <p>
-	 * Performs Read operation for Item Entity for the specified ID supplied by
-	 * PathVariable
-	 * </p>
-	 *
-	 * @param id
-	 * @return
-	 */
-	@RequestMapping(value = "/getItem/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ItemView> getItem(@PathVariable("id") Integer id) {
-		LOGGER.debug("Fetching Item with id " + id);
-		ItemView itemView = this.itemManager.findById(id);
-		if (itemView == null) {
-			LOGGER.debug("Item with id " + id + " not found");
-			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		}
-		return new ResponseEntity<>(itemView, HttpStatus.OK);
-	}
-
-	/***
-	 * <p>
 	 * Fetches all objects as an array list for for the item entity
 	 * </p>
 	 *
 	 * @param header
 	 * @return
 	 */
-	@ResponseBody
 	@RequestMapping(value = "/listAllItems", method = RequestMethod.GET)
 	public ResponseEntity<List<ItemView>> listAllItems(@RequestHeader HttpHeaders header) {
 		LOGGER.debug(header.get(HttpHeaders.USER_AGENT).toString());
