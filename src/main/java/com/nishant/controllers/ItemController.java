@@ -113,7 +113,7 @@ public class ItemController {
 	 */
 	@RequestMapping(value = "/updateItem/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<ItemView> updateItem(@PathVariable("id") Integer id, @RequestBody ItemView itemView) {
-		LOGGER.debug("Updating Item " + id);
+		LOGGER.info("Updating Item " + id);
 
 		ItemView currentItem = this.itemManager.findById(id);
 

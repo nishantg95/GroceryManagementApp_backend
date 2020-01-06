@@ -28,7 +28,7 @@ import com.nishant.managers.RepoItemManager;
  *
  */
 @RestController
-@RequestMapping(value = "/repo")
+@RequestMapping(value = "/GroceryManagementApp/repo")
 public class RepoItemController {
 
 	private static final Logger LOGGER = LogManager.getLogger(RepoItemController.class);
