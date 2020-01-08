@@ -23,9 +23,10 @@ public class ItemManagerImpl implements ItemManager {
 	private ItemService itemService;
 
 	@Override
-	public void deleteItemById(Integer id) {
+	public Integer deleteItemById(Integer id) {
 		Integer deletedCountManager = this.itemService.deleteItemById(id);
 		LOGGER.debug("Number of items deleted successfully = " + deletedCountManager);
+		return deletedCountManager;
 	}
 
 	@Override
@@ -65,7 +66,7 @@ public class ItemManagerImpl implements ItemManager {
 	}
 
 	@Override
-	public void saveItem(ItemView item) {
+	public ItemView saveItem(ItemView item) {
 		ItemEntity itemEntity = new ItemEntity();
 		BeanUtils.copyProperties(item, itemEntity, ItemInterface.class);
 		itemEntity = this.itemService.saveItem(itemEntity);
@@ -74,7 +75,8 @@ public class ItemManagerImpl implements ItemManager {
 		} else {
 			LOGGER.debug("Following Item saved failed" + item);
 		}
-
+		BeanUtils.copyProperties(itemEntity, item, ItemInterface.class);
+		return item;
 	}
 
 	@Override

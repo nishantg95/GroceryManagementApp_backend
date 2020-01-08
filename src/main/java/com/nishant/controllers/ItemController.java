@@ -47,7 +47,7 @@ public class ItemController {
 	 */
 
 	@RequestMapping(value = "/createItem", method = RequestMethod.POST)
-	public ResponseEntity<Void> createItem(@RequestBody ItemView itemView) {
+	public ResponseEntity<ItemView> createItem(@RequestBody ItemView itemView) {
 		LOGGER.debug("Creating Item " + itemView.getName());
 
 		if (this.itemManager.isItemExist(itemView)) {
@@ -56,9 +56,9 @@ public class ItemController {
 
 		}
 
-		this.itemManager.saveItem(itemView);
+		itemView = (ItemView) this.itemManager.saveItem(itemView);
 
-		return new ResponseEntity<>(HttpStatus.CREATED);
+		return new ResponseEntity<>(itemView, HttpStatus.CREATED);
 	}
 
 	/***
@@ -71,7 +71,7 @@ public class ItemController {
 	 * @return
 	 */
 	@RequestMapping(value = "/deleteItem/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<ItemView> deleteItem(@PathVariable("id") Integer id) {
+	public ResponseEntity<Integer> deleteItem(@PathVariable("id") Integer id) {
 		LOGGER.debug("Fetching & Deleting Item with id " + id);
 
 		ItemView itemView = this.itemManager.findById(id);
@@ -80,8 +80,9 @@ public class ItemController {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 
-		this.itemManager.deleteItemById(id);
-		return new ResponseEntity<>(HttpStatus.OK);
+		Integer deletedCountInteger = this.itemManager.deleteItemById(id);
+		LOGGER.info("Number of Ztems deleted :" + deletedCountInteger);
+		return new ResponseEntity<>(deletedCountInteger, HttpStatus.OK);
 	}
 
 	/***

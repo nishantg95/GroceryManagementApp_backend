@@ -6,7 +6,7 @@ import com.nishant.views.ItemView;
 
 public interface ItemManager {
 
-	void deleteItemById(Integer id);
+	Integer deleteItemById(Integer id);
 
 	List<ItemView> findAllItems();
 
@@ -16,7 +16,7 @@ public interface ItemManager {
 
 	Boolean isItemExist(ItemView item);
 
-	void saveItem(ItemView item);
+	ItemView saveItem(ItemView item);
 
 	void updateItem(ItemView item);
 
