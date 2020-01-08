@@ -56,7 +56,7 @@ public class ItemController {
 
 		}
 
-		itemView = (ItemView) this.itemManager.saveItem(itemView);
+		itemView = this.itemManager.saveItem(itemView);
 
 		return new ResponseEntity<>(itemView, HttpStatus.CREATED);
 	}
