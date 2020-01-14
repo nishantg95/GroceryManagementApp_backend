@@ -17,7 +17,8 @@ public interface RepoItemManager {
 
 	/**
 	 * @param repoItem
+	 * @return
 	 */
-	void saveItem(RepoItemEntity repoItem);
+	RepoItemEntity saveItem(RepoItemEntity repoItem);
 
 }

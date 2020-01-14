@@ -30,13 +30,15 @@ public class RepoItemManagerImpl implements RepoItemManager {
 	}
 
 	@Override
-	public void saveItem(RepoItemEntity repoItem) {
+	public RepoItemEntity saveItem(RepoItemEntity repoItem) {
 		this.repoItemService.saveRepoItem(repoItem);
 		if (repoItem.getrId() != null) {
 			LOGGER.debug("Following Item was saved successfully" + repoItem);
 		} else {
 			LOGGER.debug("Following Item saved failed" + repoItem);
 		}
+
+		return repoItem;
 
 	}
 
