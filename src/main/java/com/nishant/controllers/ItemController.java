@@ -81,7 +81,7 @@ public class ItemController {
 		}
 
 		Integer deletedCountInteger = this.itemManager.deleteItemById(id);
-		LOGGER.info("Number of Ztems deleted :" + deletedCountInteger);
+		LOGGER.debug("Number of Ztems deleted :" + deletedCountInteger);
 		return new ResponseEntity<>(deletedCountInteger, HttpStatus.OK);
 	}
 
@@ -114,7 +114,7 @@ public class ItemController {
 	 */
 	@RequestMapping(value = "/updateItem/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<ItemView> updateItem(@PathVariable("id") Integer id, @RequestBody ItemView itemView) {
-		LOGGER.info("Updating Item " + id);
+		LOGGER.debug("Updating Item " + id);
 
 		ItemView currentItem = this.itemManager.findById(id);
 

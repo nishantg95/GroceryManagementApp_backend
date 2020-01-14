@@ -35,7 +35,6 @@ public class ItemManagerImpl implements ItemManager {
 		List<ItemEntity> itemEntityList = this.itemService.findAllItems();
 		for (ItemEntity itemEntity : itemEntityList) {
 			ItemView itemView = new ItemView(itemEntity);
-//			BeanUtils.copyProperties(itemEntity, itemView, ItemInterface.class);
 			itemViewList.add(itemView);
 		}
 		LOGGER.debug("Returning all items fetched");
@@ -46,7 +45,6 @@ public class ItemManagerImpl implements ItemManager {
 	public ItemView findById(Integer id) {
 		ItemEntity itemEntity = this.itemService.findById(id);
 		ItemView itemView = new ItemView(itemEntity);
-//		BeanUtils.copyProperties(itemEntity, itemView, ItemInterface.class);
 		return itemView;
 	}
 
@@ -54,21 +52,18 @@ public class ItemManagerImpl implements ItemManager {
 	public ItemView findByName(String name) {
 		ItemEntity itemEntity = this.itemService.findByName(name);
 		ItemView itemView = new ItemView(itemEntity);
-//		BeanUtils.copyProperties(itemEntity, itemView, ItemInterface.class);
 		return itemView;
 	}
 
 	@Override
 	public Boolean isItemExist(ItemView item) {
-		ItemEntity itemEntity = new ItemEntity();
-		BeanUtils.copyProperties(item, itemEntity, ItemInterface.class);
+		ItemEntity itemEntity = new ItemEntity(item);
 		return this.itemService.isItemExist(itemEntity);
 	}
 
 	@Override
 	public ItemView saveItem(ItemView item) {
-		ItemEntity itemEntity = new ItemEntity();
-		BeanUtils.copyProperties(item, itemEntity, ItemInterface.class);
+		ItemEntity itemEntity = new ItemEntity(item);
 		itemEntity = this.itemService.saveItem(itemEntity);
 		if (itemEntity.getId() != null) {
 			LOGGER.debug("Following Item was saved successfully" + item);
@@ -81,8 +76,7 @@ public class ItemManagerImpl implements ItemManager {
 
 	@Override
 	public void updateItem(ItemView item) {
-		ItemEntity itemEntity = new ItemEntity();
-		BeanUtils.copyProperties(item, itemEntity, ItemInterface.class);
+		ItemEntity itemEntity = new ItemEntity(item);
 		itemEntity = this.itemService.updateItem(itemEntity);
 		if (!itemEntity.equals(item)) {
 			LOGGER.debug("Following Item update failed" + item + "; updatedItem recieved " + itemEntity);

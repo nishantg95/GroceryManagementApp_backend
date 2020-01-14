@@ -9,7 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.beans.BeanUtils;
+
 import com.nishant.interfaces.ItemInterface;
+import com.nishant.views.ItemView;
 
 @Entity
 @Table(name = "ITEM")
@@ -33,6 +36,17 @@ public class ItemEntity implements ItemInterface {
 
 	@Column(name = "EXPIRY_DATE")
 	private Date expiryDate;
+
+	/**
+	 *
+	 */
+	public ItemEntity() {
+		// Default Constructor
+	}
+
+	public ItemEntity(ItemView itemView) {
+		BeanUtils.copyProperties(itemView, this, ItemInterface.class);
+	}
 
 	@Override
 	public Date getExpiryDate() {
