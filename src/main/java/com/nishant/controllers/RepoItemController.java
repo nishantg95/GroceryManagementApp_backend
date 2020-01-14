@@ -40,12 +40,6 @@ public class RepoItemController {
 	 */
 	@RequestMapping(value = "/addRepoItem", method = RequestMethod.POST)
 	public ResponseEntity<RepoItemEntity> addRepoItem(@RequestBody RepoItemEntity repoItemEntity) {
-
-//		if (this.itemManager.isItemExist(itemView)) {
-//			return new ResponseEntity<>(HttpStatus.CONFLICT);
-//
-//		}
-
 		repoItemEntity = this.repoItemManager.saveItem(repoItemEntity);
 		return new ResponseEntity<>(repoItemEntity, HttpStatus.CREATED);
 
